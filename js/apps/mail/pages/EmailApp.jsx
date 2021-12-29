@@ -4,10 +4,7 @@ import {EmailList} from '../cmps/EmailList.jsx'
 export class EmailApp extends React.Component {
 
     state = {
-        mails: [],
-        criteria: {
-            txt: 'Mail 1'
-        }
+        mails: []
     }
 
     componentDidMount() {
