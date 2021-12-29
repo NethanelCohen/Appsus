@@ -35,16 +35,15 @@ export class EmailPreview extends React.Component {
                     <h6>{mail.body}</h6>
                     <h6>{mail.to}</h6>
                 </div>}
-                {isClicked && <div className="long-mail-view">
-                    <h4>Title: {mail.subject}</h4>
-                    <div className="long-mail-btn">
+                {isClicked && <div className="long-mail-view grid">
+                    <div className="long-mail-btn flex">
                         <Link to={`/mail/${mail.id}`}><button>❏</button></Link>
                         <button onClick={this.replyToMail}>reply</button>
                         <DangerButton func={this.deleteMail} txt="Delete"/>
-                        {/* <button onClick={this.deleteMail}>✘</button> */}
                     </div>
-                    <h6>From: {mail.to}</h6>
-                    <h6>{mail.body}</h6>
+                    <h4 className="subject">{mail.subject}</h4>
+                    <h6 className="to">{mail.to}</h6>
+                    <h6 className="mail-body" >{mail.body}</h6>
                 </div>}
             </div>
         );

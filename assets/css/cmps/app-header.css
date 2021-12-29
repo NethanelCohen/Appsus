@@ -27,6 +27,7 @@
     padding: 1rem;
     border-radius: 6px;
     font-size: 2rem;
+    min-height: 80px;
 }
 
 .main-nav a:hover {
