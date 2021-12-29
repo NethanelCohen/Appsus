@@ -11,7 +11,7 @@ export function AppHeader() {
        
       </NavLink>
       <nav className="main-nav flex">
-        <NavLink activeClassName="header-active" to="/Book">Mail</NavLink>
+        <NavLink activeClassName="header-active" to="/Mail">Mail</NavLink>
         <NavLink activeClassName="header-active" to="/About">About</NavLink>
       </nav>
     </header>
