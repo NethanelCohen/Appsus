@@ -1,7 +1,7 @@
 import { utilService } from '../../../services/util.services.js'
 import { storageService } from '../../../services/storage.service.js'
 
-export const emailService = {
+export const mailService = {
     query,
     getMailById,
     remove,
@@ -25,7 +25,6 @@ const criteria = {
 
 
 function query() {
-    console.log('from service');
     const mails = storageService.loadFromStorage(KEY);
     return Promise.resolve(mails);
 }
@@ -57,10 +56,9 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
 }
 
 function _createMails() {
-    var mails = storageService.loadFromStorage(KEY) || [];
+    let mails = storageService.loadFromStorage(KEY) || [];
     if (!mails || !mails.length) {
-        mails = [
-            {
+        mails = [{
                 id: utilService.makeId(),
                 subject: 'Mail 1',
                 body: 'Here the body should go in',
@@ -109,4 +107,3 @@ function _createMails() {
 function _saveMailsToStorage(mails) {
     storageService.saveToStorage(KEY, mails)
 }
-

@@ -1,6 +1,7 @@
-import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
+import { MailApp } from "./js/apps/mail/pages/MailApp.jsx";
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
+import { MailDetails } from './pages/About.jsx';
 
 
 import { AppHeader } from './cmps/AppHeader.jsx';
@@ -20,8 +21,9 @@ export function App() {
         <main >
         <div className="main-container flex column">
           <Switch>
+          {/* <Route component={EmailDetails} path="/mail/:mailId" /> */}
             <Route component={About} path="/about" />
-            <Route component={EmailApp} path="/Mail" />
+            <Route component={MailApp} path="/mail" />
             <Route component={Home} path="/" />
           </Switch>
           </div>
