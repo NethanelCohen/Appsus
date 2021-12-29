@@ -30,3 +30,11 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.star.on {
+    color: gold;
+}
+
+.star.off {
+    color: #ccc;
+}
