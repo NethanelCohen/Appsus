@@ -5,10 +5,7 @@
     border: 1px solid black;
     grid-area: mails;
     margin-inline-end: 2rem;
-}
-
-.mails-list>* {
-    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
 
