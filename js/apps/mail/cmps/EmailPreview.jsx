@@ -6,6 +6,7 @@ const { Link } = ReactRouterDOM;
 export class EmailPreview extends React.Component {
   state = {
     isClicked: false,
+    isMouseOver: false
   };
 
   extandMailView = () => {
@@ -32,14 +33,19 @@ export class EmailPreview extends React.Component {
     return date;
   };
 
+  handleMouse = (state) => {
+      state === 'on' ? this.setState({isMouseOver: true}) : this.setState({isMouseOver: false});
+  }
+
   render() {
     const { mail } = this.props;
     const { isClicked } = this.state;
+    const {isMouseOver} = this.state;
     const date = this.handleDateCheck(mail.sentAt);
     return (
       <div
         className="mail-preview-container flex"
-        onClick={this.extandMailView}>
+        onClick={this.extandMailView} onMouseOver={() => this.handleMouse('on')} onMouseLeave={() => this.handleMouse('off')}>
         {!isClicked && (
           <div className="short-mail-view flex">
             <h6>CheckBox</h6>
@@ -51,6 +57,13 @@ export class EmailPreview extends React.Component {
             <h6>{mail.subject}</h6>
             <h6>{mail.to}</h6>
             <h6>{mail.body}</h6>
+            {isMouseOver && <div className="hover-mail-btn flex">
+              <Link to={`/mail/${mail.id}`}>
+                <button>❏</button>
+              </Link>
+              <button onClick={this.replyToMail}>reply</button>
+              <DangerButton func={this.deleteMail} txt="Delete" />
+            </div>}
             <h6>{date}</h6>
           </div>
         )}
