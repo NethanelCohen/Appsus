@@ -23,7 +23,7 @@ export class EmailApp extends React.Component {
         console.log("mails: ", mails);
         return (
             <section>
-                <EmailList mails={mails} />
+                <EmailList mails={mails} loadMails={this.loadMails}/>
             </section>
         )
     }

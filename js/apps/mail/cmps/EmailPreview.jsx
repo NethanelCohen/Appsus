@@ -1,6 +1,6 @@
-const { Link } = ReactRouterDOM;
+import { emailService } from "../services/email.service.js";
 
-// ({ mail })
+const { Link } = ReactRouterDOM;
 
 export class EmailPreview extends React.Component {
     state = {
@@ -9,7 +9,17 @@ export class EmailPreview extends React.Component {
 
     extandMailView = () => {
         const { isClicked } = this.state;
+        this.props.mail.isRead = true;
         !isClicked ? this.setState({ isClicked: true }) : this.setState({ isClicked: false });
+    }
+
+    replyToMail = () => {
+        console.log('Reply to mail');
+    }
+
+    deleteMail = () => {
+        const {mail} = this.props;
+        emailService.remove(mail.id).then(this.props.loadMails);
     }
 
     render() {
@@ -28,6 +38,9 @@ export class EmailPreview extends React.Component {
                     <h4>{mail.subject}</h4>
                     <div className="long-mail-btn">
                         <Link to={`/mail/${mail.id}`}><button>❏</button></Link>
+                        <button onClick={this.replyToMail}>reply</button>
+                        <button onClick={this.deleteMail}>✘</button>
+                        {/* <DangerButton func={() => this.deleteMail} txt="Delete"/> */}
                     </div>
                     <h6>{mail.to}</h6>
                     <h6>{mail.body}</h6>
