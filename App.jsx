@@ -1,3 +1,4 @@
+import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
 // import {  } from './js/apps/mail/pages/EmailApp';
