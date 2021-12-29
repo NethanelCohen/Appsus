@@ -38,7 +38,9 @@
     gap: 1rem;
 }
 
-.search-filter {}
+.search-filter {
+    padding: 0.5rem;
+}
 
 .search-filter input {
     font-size: 2rem;
