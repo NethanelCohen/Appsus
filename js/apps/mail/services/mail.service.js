@@ -1,7 +1,7 @@
 import { utilService } from '../../../services/util.services.js'
 import { storageService } from '../../../services/storage.service.js'
 
-export const emailService = {
+export const mailService = {
     query,
     getMailById,
     remove,
