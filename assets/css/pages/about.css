@@ -1,0 +1,9 @@
+.about-container {
+    margin-top: 3rem;
+}
+
+.about-container h1 {
+    font-size: 7rem;
+    color: white;
+    text-shadow: 5px 5px black;
+}

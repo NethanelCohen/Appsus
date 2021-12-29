@@ -1,24 +1,32 @@
+import { Home } from './pages/Home.jsx';
+import { About } from './pages/About.jsx';
 
-// const Router = ReactRouterDOM.HashRouter
-// const { Route, Switch } = ReactRouterDOM
+import { AppHeader } from './cmps/AppHeader.jsx';
+import { AppFooter } from './cmps/AppFooter.jsx';
+import { UserMsg } from './cmps/UserMsg.jsx';
+
+
+const Router = ReactRouterDOM.HashRouter
+const { Route, Switch } = ReactRouterDOM
 
 
 export function App() {
   return (
-    // <Router >
-      <section className="app" >
-        {/* <AppHeader /> */}
-        {/* <main>
+    <Router>
+      <div className="app flex column">
+        <AppHeader />
+        <main >
+        <div className="main-container flex column">
           <Switch>
-            <Route component={CarEdit} path="/car/edit/:carId?" />
-            <Route component={CarDetails} path="/car/:carId" />
-            <Route component={CarApp} path="/car" />
             <Route component={About} path="/about" />
             <Route component={Home} path="/" />
           </Switch>
-        </main> */}
-      </section>
-    // </Router>
+          </div>
+        </main>
+        <AppFooter />
+      </div>
+      {/* <UserMsg /> */}
+    </Router>
   );
 }
 
