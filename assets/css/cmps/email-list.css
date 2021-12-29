@@ -1,0 +1,11 @@
+.mails-list {
+    padding-top: 1rem;
+    grid-template-rows: 1fr;
+    font-size: 2rem;
+    gap: 1rem;
+    border: 1px solid black;
+}
+
+.mails-list>* {
+    justify-content: space-between;
+}

@@ -1,4 +1,7 @@
-.mail-preview {
+.mail-preview-container {
     background-color: greenyellow;
     cursor: pointer;
+    width: 100%;
+    border: 1px solid black;
+    justify-content: space-between;
 }
