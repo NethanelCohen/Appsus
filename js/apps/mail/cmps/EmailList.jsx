@@ -1,6 +1,6 @@
 import { EmailPreview } from '../cmps/EmailPreview.jsx';
 
-export function EmailList({ mails }) {
+export function EmailList({ mails, loadMails}) {
   console.log(mails);
   if (!mails.length) return <h1> Inbox is empty... </h1>;
   return (
@@ -13,7 +13,7 @@ export function EmailList({ mails }) {
         <h6>Date</h6>
       </div>
       {mails.map((mail) => (
-        <EmailPreview key={mail.id} mail={mail} />
+        <EmailPreview key={mail.id} mail={mail} loadMails={loadMails} />
       ))}
     </section>
   );

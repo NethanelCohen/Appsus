@@ -41,7 +41,7 @@ function remove(mailId) {
     let mails = storageService.loadFromStorage(KEY)
     mails = mails.filter(mail => mail.id !== mailId)
     storageService.saveToStorage(KEY, mails)
-    return Promise.resolve()
+    return Promise.resolve(mails)
 }
 
 function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, to = 'example@example.com') {
