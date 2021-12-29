@@ -19,14 +19,12 @@ export function App() {
       <div className="app flex column">
         <AppHeader />
         <main >
-        <div className="main-container flex column">
           <Switch>
           <Route component={EmailDetails} path="/mail/:mailId" />
             <Route component={About} path="/about" />
             <Route component={EmailApp} path="/mail" />
             <Route component={Home} path="/" />
           </Switch>
-          </div>
         </main>
         <AppFooter />
       </div>

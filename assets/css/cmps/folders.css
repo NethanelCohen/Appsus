@@ -1,0 +1,9 @@
+.email-folder-list ul {
+    grid-area: folders;
+}
+
+.email-folder-list ul>* {
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}

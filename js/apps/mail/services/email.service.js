@@ -44,7 +44,7 @@ function _getCriteriaMails(mails, criteria) {
     lables = lables ? lables : [];
     return mails.filter(mail => {
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
-               _makeLowerCase( mail.body).includes(_makeLowerCase(txt))) &&
+                _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
             mail.isRead === isRead &&
             mail.isStared === isStared &&
@@ -85,60 +85,60 @@ function _createMails() {
     let mails = storageService.loadFromStorage(KEY) || [];
     if (!mails || !mails.length) {
         mails = [{
-            id: utilService.makeId(),
-            subject: 'Mail 1',
-            body: 'Here the body should go in',
-            isRead: false,
-            isStared: false,
-            lables: ['important'],
-            status: 'trash',
-            sentAt: Date.now(),
-            to: 'example@example.com'
-        },
-        {
-            id: utilService.makeId(),
-            subject: 'Mail 2',
-            body: 'Here the body should go in',
-            isRead: false,
-            isStared: false,
-            lables: [],
-            status: 'inbox',
-            sentAt: Date.now(),
-            to: 'example@example.com'
-        },
-        {
-            id: utilService.makeId(),
-            subject: 'Mail 3',
-            body: 'Here the body should go in',
-            isRead: false,
-            isStared: false,
-            lables: [],
-            status: 'inbox',
-            sentAt: Date.now(),
-            to: 'example@example.com'
-        },
-        {
-            id: utilService.makeId(),
-            subject: 'Mail 4',
-            body: 'Here the body should go in',
-            isRead: false,
-            isStared: false,
-            lables: [],
-            status: 'inbox',
-            sentAt: Date.now(),
-            to: 'example@example.com'
-        },
-        {
-            id: utilService.makeId(),
-            subject: 'Mail 5',
-            body: 'Here the body should go in',
-            isRead: false,
-            isStared: false,
-            lables: [],
-            status: 'inbox',
-            sentAt: Date.now(),
-            to: 'example@example.com'
-        }
+                id: utilService.makeId(),
+                subject: 'Mail 1',
+                body: 'Here the body should go in',
+                isRead: false,
+                isStared: false,
+                lables: ['important'],
+                status: 'trash',
+                sentAt: Date.now(),
+                to: 'example@example.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Mail 2',
+                body: 'Here the body should go in',
+                isRead: false,
+                isStared: false,
+                lables: [],
+                status: 'inbox',
+                sentAt: Date.now(),
+                to: 'example@example.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Mail 3',
+                body: 'Here the body should go in',
+                isRead: false,
+                isStared: false,
+                lables: [],
+                status: 'inbox',
+                sentAt: Date.now(),
+                to: 'example@example.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Mail 4',
+                body: 'Here the body should go in',
+                isRead: false,
+                isStared: false,
+                lables: [],
+                status: 'inbox',
+                sentAt: Date.now(),
+                to: 'example@example.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Mail 5',
+                body: 'Here the body should go in',
+                isRead: false,
+                isStared: false,
+                lables: [],
+                status: 'inbox',
+                sentAt: Date.now(),
+                to: 'example@example.com'
+            }
         ]
         mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.isStared, mail.lables, mail.status, mail.to))
         _saveMailsToStorage(mails)

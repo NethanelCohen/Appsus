@@ -19,7 +19,7 @@ export function EmailList({ mails, loadMails }) {
         <h6>Date</h6>
       </div>
       {mails.map((mail) => (
-        <EmailPreview key={mail.id} mail={mail} loadMails={loadMails} />
+        <EmailPreview key={mail.id} mail={mail} loadMails={loadMails} setColorStar={setColorStar} />
       ))}
     </section>
   );
