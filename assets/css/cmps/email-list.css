@@ -6,6 +6,15 @@
     border: 1px solid black;
 }
 
-.mails-list>* {
-    justify-content: space-between;
+.mails-list>:first-child {
+    width: 75%;
+}
+
+.mails-list>:first-child,
+.short-mail-view {
+    justify-content: space-around;
+}
+
+.mails-list .short-mail-view {
+    width: 100%;
 }

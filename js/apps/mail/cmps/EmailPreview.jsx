@@ -17,7 +17,7 @@ export class EmailPreview extends React.Component {
         const { isClicked } = this.state;
         return (
             <div className="mail-preview-container flex" onClick={this.extandMailView}>
-                {!isClicked && <div className="short-mail-view">
+                {!isClicked && <div className="short-mail-view flex">
                     <h6>CheckBox</h6>
                     <h6>Star</h6>
                     <h6>{mail.subject}</h6>
