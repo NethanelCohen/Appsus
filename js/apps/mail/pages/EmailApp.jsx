@@ -1,13 +1,13 @@
-import {mailService} from '../services/mail.service.js'
+import {eMailService} from '../services/email.service'
 
-export class MailApp extends React.Component {
+export class EmailApp extends React.Component {
 
     state = {
         mails: []
     }
 
     componentDidMount() {
-        const mails = mailService.query()
+        const mails = eMailService.query()
         
     }
 
