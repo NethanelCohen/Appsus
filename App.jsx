@@ -1,5 +1,7 @@
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
+// import {  } from './js/apps/mail/pages/EmailApp';
+
 
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { AppFooter } from './cmps/AppFooter.jsx';
@@ -18,6 +20,7 @@ export function App() {
         <main >
         <div className="main-container flex column">
           <Switch>
+            <Route component={About} path="/about" />
             <Route component={About} path="/about" />
             <Route component={Home} path="/" />
           </Switch>
