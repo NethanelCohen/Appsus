@@ -23,9 +23,16 @@ export class EmailPreview extends React.Component {
         emailService.remove(mail.id).then(this.props.loadMails);
     }
 
+    handleDateCheck = (timestamp) => {
+        var date = new Date(timestamp).toLocaleDateString("en-US") + ' ' + new Date(timestamp).toLocaleTimeString("en-US");
+        if (Date.now() - timestamp < 1000*60*60*24) date = 'Today at ' + new Date(timestamp).toLocaleTimeString("en-US");
+        return date;
+    }
+
     render() {
         const { mail } = this.props;
         const { isClicked } = this.state;
+        const date = this.handleDateCheck(mail.sentAt)
         return (
             <div className="mail-preview-container flex" onClick={this.extandMailView}>
                 {!isClicked && <div className="short-mail-view flex">
@@ -34,6 +41,7 @@ export class EmailPreview extends React.Component {
                     <h6>{mail.subject}</h6>
                     <h6>{mail.body}</h6>
                     <h6>{mail.to}</h6>
+                    <h6>{date}</h6>
                 </div>}
                 {isClicked && <div className="long-mail-view grid">
                     <div className="long-mail-btn flex">
@@ -43,6 +51,7 @@ export class EmailPreview extends React.Component {
                     </div>
                     <h4 className="subject">{mail.subject}</h4>
                     <h6 className="to">{mail.to}</h6>
+                    <h6>{date}</h6>
                     <h6 className="mail-body" >{mail.body}</h6>
                 </div>}
             </div>

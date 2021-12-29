@@ -40,7 +40,7 @@ function _makeLowerCase(value) {
 function _getCriteriaMails(mails, criteria) {
     let { status, txt, isRead, isStared, lables } = criteria;
     status = status ? status : 'inbox';
-    txt === txt ? _makeLowerCase(txt) : '';
+    txt === txt ? txt : '';
     isRead = isRead ? isRead : false;
     isStared = isStared ? isStared : false;
     lables = lables ? lables : [];
@@ -93,7 +93,7 @@ function _createMails() {
             isRead: false,
             isStared: false,
             lables: ['important'],
-            status: 'inbox',
+            status: 'trash',
             sentAt: Date.now(),
             to: 'example@example.com'
         },
