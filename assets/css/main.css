@@ -2,6 +2,7 @@
 @import './parts/helpers.css';
 @import './pages/home.css';
 @import './pages/about.css';
+@import './pages/email-app.css';
 @import './cmps/app-header.css';
 @import './cmps/app-footer.css';
 @import './cmps/danger-button.css';

@@ -25,7 +25,6 @@ const criteria = {
 
 
 function query() {
-    console.log('from service');
     const mails = storageService.loadFromStorage(KEY);
     return Promise.resolve(mails);
 }
@@ -57,11 +56,9 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
 }
 
 function _createMails() {
-    console.log('storage');
-    var mails = storageService.loadFromStorage(KEY) || [];
+    let mails = storageService.loadFromStorage(KEY) || [];
     if (!mails || !mails.length) {
-        mails = [
-            {
+        mails = [{
                 id: utilService.makeId(),
                 subject: 'This is a mail 1',
                 body: 'Here the body should go in',
@@ -111,4 +108,3 @@ function _createMails() {
 function _saveMailsToStorage(mails) {
     storageService.saveToStorage(KEY, mails)
 }
-

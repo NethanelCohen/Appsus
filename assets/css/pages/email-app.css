@@ -1,0 +1,16 @@
+.mails-list-contianer {
+    background-color: #ffffffd6;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 3rem;
+    border: 1px solid black;
+    width: 80%;
+    /* grid-template-columns: 0.3fr 0.7fr;
+    grid-template-rows: 0.7fr 0.3fr;
+    gap: 2rem;
+    grid-template-areas: 'img details pages'
+    'img desc .'
+    ' reviews reviews  reviews' */
+}
