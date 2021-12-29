@@ -1,13 +1,15 @@
 
 import {emailService} from '../services/email.service.js';
 import {DangerButton} from '../../../../cmps/DangerButton.jsx';
+import {EmailReply} from '../cmps/EmailReply.jsx'
 
 const {Link} = ReactRouterDOM;
 
 export class EmailDetails extends React.Component {
 
     state = {
-        mail: null
+        mail: null,
+        repliedClicked: false
     }
 
     componentDidMount() {
@@ -30,7 +32,8 @@ export class EmailDetails extends React.Component {
     }
 
     replyToMail = () => {
-        console.log('Reply to mail');
+        const {repliedClicked} = this.state;
+        !repliedClicked ?  this.setState({ repliedClicked: true }) : this.setState({ repliedClicked: false })
     }
 
     deleteMail = () => {
@@ -41,6 +44,7 @@ export class EmailDetails extends React.Component {
 
     render() {
         const {mail} = this.state;
+        const {repliedClicked} = this.state;
         if (!mail) return <h1>There is no mail!</h1>
         const date = new Date(mail.sentAt).toLocaleDateString("en-US") + ' ' + new Date(mail.sentAt).toLocaleTimeString("en-US");
         return (
@@ -54,9 +58,11 @@ export class EmailDetails extends React.Component {
                 <div className="mail-description">
                 <h4>{mail.to}</h4>
                 <h4>{date}</h4>
+                {repliedClicked && <EmailReply />}
                 </div>
                 <h2>{mail.body}</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo architecto consequatur cumque atque explicabo autem odio vero illum. Cumque mollitia nihil exercitationem rem magni perspiciatis nesciunt dolorum delectus qui eveniet.</p>
+                {repliedClicked && <EmailReply replyToMail={this.replyToMail} mail={this.state.mail}/>}
             </section>
         )
     }

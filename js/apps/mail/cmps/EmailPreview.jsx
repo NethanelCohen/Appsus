@@ -26,8 +26,9 @@ export class EmailPreview extends React.Component {
   };
 
   handleDateCheck = (timestamp) => {
-    var date = new Date(timestamp).toLocaleDateString("en-US") + ' ' + new Date(timestamp).toLocaleTimeString("en-US");
+    var date = new Date(timestamp).toLocaleDateString("en-US")
     if (Date.now() - timestamp < 1000*60*60*24) date = 'Today at ' + new Date(timestamp).toLocaleTimeString("en-US");
+    else if (Date.now() - timestamp < 1000*60*60*24*2) date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString("en-US");
     return date;
 }
 
@@ -44,8 +45,8 @@ export class EmailPreview extends React.Component {
             <h6>CheckBox</h6>
             <h6 className="star">&#9733;</h6>
             <h6>{mail.subject}</h6>
-            <h6>{mail.body}</h6>
             <h6>{mail.to}</h6>
+            <h6>{mail.body}</h6>
             <h6>{date}</h6>
 
           </div>

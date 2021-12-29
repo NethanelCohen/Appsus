@@ -16,14 +16,6 @@ const loggedinUser = {
     fullname: 'Netanel Netanel'
 }
 
-// const criteria = {
-//     status: 'inbox/sent/trash/draft',
-//     txt: 'puki',
-//     isRead: false,
-//     isStared: true,
-//     lables: ['important', 'romantic']
-// }
-
 function query(criteria = null) {
     const mails = storageService.loadFromStorage(KEY);
     if (!criteria) return Promise.resolve(mails);
@@ -67,7 +59,7 @@ function remove(mailId) {
     return Promise.resolve(mails)
 }
 
-function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, isStared = false, lables = [], status = 'inbox', to = 'example@example.com') {
+function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, isStared = false, lables = [], status = 'inbox', sentAt, to = 'example@example.com') {
     return {
         id: utilService.makeId(),
         subject,
@@ -76,7 +68,7 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
         isStared,
         lables,
         status,
-        sentAt: Date.now(),
+        sentAt,
         to
     }
 }
@@ -103,7 +95,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now(),
+            sentAt: Date.now() - 86400001,
             to: 'example@example.com'
         },
         {
@@ -114,7 +106,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now(),
+            sentAt: Date.now() - 1000400000,
             to: 'example@example.com'
         },
         {
@@ -125,7 +117,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now(),
+            sentAt: Date.now() - 10004250000,
             to: 'example@example.com'
         },
         {
@@ -136,11 +128,11 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now(),
+            sentAt: Date.now() - 10250000000,
             to: 'example@example.com'
         }
         ]
-        mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.isStared, mail.lables, mail.status, mail.to))
+        mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.isStared, mail.lables, mail.status, mail.sentAt, mail.to))
         _saveMailsToStorage(mails)
     }
 }
