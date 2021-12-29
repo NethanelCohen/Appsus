@@ -1,13 +1,18 @@
 .email-folder-list ul {
     grid-area: folders;
     gap: 0.5rem;
+    padding-inline-start: 1rem;
 }
 
 .email-folder-list ul>li {
     font-size: 2rem;
     padding: 0.5rem;
     cursor: pointer;
-    max-width: 120px;
-    border-radius: 6px;
-    background-color: green;
+    max-width: 200px;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+li:hover {
+    background-color: #ff00007d;
 }

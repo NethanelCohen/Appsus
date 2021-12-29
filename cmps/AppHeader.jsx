@@ -16,6 +16,9 @@ export function AppHeader() {
         <NavLink activeClassName="header-active" to="/Mail">
           Mail
         </NavLink>
+        <NavLink activeClassName="header-active" to="/Keep">
+          Miss Keep
+        </NavLink>
         <NavLink activeClassName="header-active" to="/About">
           About
         </NavLink>
