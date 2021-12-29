@@ -22,13 +22,19 @@ ul {
 
 button,
 input,
-a {
+a,
+.star {
     cursor: pointer;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.star {
+    font-size: 1.5rem;
+    align-self: baseline;
 }
 
 .star.on {
