@@ -5,6 +5,7 @@
 @import './pages/email-app.css';
 @import './cmps/app-header.css';
 @import './cmps/app-footer.css';
+@import './cmps/email-preview.css';
 @import './cmps/danger-button.css';
 @import './cmps/user-msg.css';
 @font-face {
