@@ -1,12 +1,12 @@
 import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
-// import { EmailDetails } from '../Appsus/js/pages/';
+// import { EmailDetails } from '../Appsus/js/apps/mail/cmps/EmailDetails.jsx';
 
 
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { AppFooter } from './cmps/AppFooter.jsx';
-// import { UserMsg } from './cmps/UserMsg.jsx';
+import { UserMsg } from './cmps/UserMsg.jsx';
 
 
 const Router = ReactRouterDOM.HashRouter
@@ -30,7 +30,7 @@ export function App() {
         </main>
         <AppFooter />
       </div>
-      {/* <UserMsg /> */}
+      <UserMsg />
     </Router>
   );
 }
