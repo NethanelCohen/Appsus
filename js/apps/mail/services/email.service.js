@@ -1,4 +1,4 @@
-import { utilService } from './util.service.js'
+import { utilService } from '../../../services/util.services.js'
 import { storageService } from '../../../services/storage.service.js'
 
 export const emailService = {
@@ -9,6 +9,7 @@ export const emailService = {
 }
 
 const KEY = 'mails_DB'
+_createMails()
 
 const loggedinUser = {
     email: 'nati@appsus.com',
@@ -22,9 +23,9 @@ const criteria = {
     lables: ['important', 'romantic']
 }
 
-_createMails()
 
 function query() {
+    console.log('from service');
     const mails = storageService.loadFromStorage(KEY);
     return Promise.resolve(mails);
 }
@@ -44,21 +45,22 @@ function remove(mailId) {
     return Promise.resolve()
 }
 
-function createMail(subject, body, mailedTo) {
+function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, to = 'example@example.com') {
     return {
         id: utilService.makeId(),
         subject,
-        body: body,
-        isRead: false,
+        body,
+        isRead,
         sentAt: Date.now(),
-        to: mailedTo
+        to
     }
 }
 
 function _createMails() {
+    console.log('storage');
     const mails = storageService.loadFromStorage(KEY)
     if (!mails || !mails.length) {
-        const mails = [
+        var mails = [
             {
                 id: utilService.makeId(),
                 subject: 'This is a mail 1',
@@ -100,10 +102,13 @@ function _createMails() {
                 to: 'example@example.com'
             }
         ]
-        mails = mails.map(_createMail)
-        storageService.saveToStorage(KEY, mails)
+        mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.to))
+        _saveMailsToStorage(mails)
+        console.log('saved');
     }
+}
 
-
+function _saveMailsToStorage(mails) {
+    storageService.saveToStorage(KEY, mails)
 }
 
