@@ -36,14 +36,14 @@ export class EmailPreview extends React.Component {
                     <h6>{mail.to}</h6>
                 </div>}
                 {isClicked && <div className="long-mail-view">
-                    <h4>{mail.subject}</h4>
+                    <h4>Title: {mail.subject}</h4>
                     <div className="long-mail-btn">
                         <Link to={`/mail/${mail.id}`}><button>❏</button></Link>
                         <button onClick={this.replyToMail}>reply</button>
                         <DangerButton func={this.deleteMail} txt="Delete"/>
                         {/* <button onClick={this.deleteMail}>✘</button> */}
                     </div>
-                    <h6>{mail.to}</h6>
+                    <h6>From: {mail.to}</h6>
                     <h6>{mail.body}</h6>
                 </div>}
             </div>
