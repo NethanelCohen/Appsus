@@ -4,6 +4,7 @@
 
 .about-container h1 {
     font-size: 7rem;
-    color: white;
+    color: red;
     text-shadow: 5px 5px black;
+    text-align: center;
 }
