@@ -52,3 +52,7 @@ a {
 .star.off {
     color: #ccc;
 }
+
+::placeholder {
+    border: none;
+}

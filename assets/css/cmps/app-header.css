@@ -41,7 +41,9 @@
 .search-filter {
     padding: 0.5rem;
     width: 50%;
-    text-align: center
+    text-align: center;
+    border-radius: 30px;
+    border: 3px solid black;
 }
 
 .search-filter input {
@@ -49,4 +51,9 @@
     padding: 0.5rem;
     width: 100%;
     text-align: center;
+    border: none;
+}
+
+.search-filter input:focus {
+    outline: none;
 }

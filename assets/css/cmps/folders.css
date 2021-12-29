@@ -8,6 +8,11 @@
     font-size: 2rem;
     padding: 0.5rem;
     cursor: pointer;
-    max-width: 120px;
-    border-radius: 6px;
+    max-width: 200px;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+li:hover {
+    background-color: #ff00007d;
 }
