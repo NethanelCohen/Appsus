@@ -15,13 +15,13 @@ export class EmailPreview extends React.Component {
     const { mail } = this.props;
     return (
       <Link to={`/book/${mail.id}`}>
-        <React.Fragment>
-            <td>CheckBox</td>
-            <td>Star</td>
-            <td>{mail.subject}</td>
-            <td>{mail.body}</td>
-            <td>{mail.to}</td>
-            </React.Fragment>
+        <div className="mail-preview">
+          <h6>CheckBox</h6>
+          <h6>Star</h6>
+          <h6>{mail.subject}</h6>
+          <h6>{mail.body}</h6>
+          <h6>{mail.to}</h6>
+        </div>
       </Link>
     );
   }
