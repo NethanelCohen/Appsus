@@ -1,4 +1,5 @@
 import { emailService } from "../services/email.service.js";
+import {DangerButton} from '../../../../cmps/DangerButton.jsx';
 
 const { Link } = ReactRouterDOM;
 
@@ -39,8 +40,8 @@ export class EmailPreview extends React.Component {
                     <div className="long-mail-btn">
                         <Link to={`/mail/${mail.id}`}><button>❏</button></Link>
                         <button onClick={this.replyToMail}>reply</button>
-                        <button onClick={this.deleteMail}>✘</button>
-                        {/* <DangerButton func={() => this.deleteMail} txt="Delete"/> */}
+                        <DangerButton func={this.deleteMail} txt="Delete"/>
+                        {/* <button onClick={this.deleteMail}>✘</button> */}
                     </div>
                     <h6>{mail.to}</h6>
                     <h6>{mail.body}</h6>
