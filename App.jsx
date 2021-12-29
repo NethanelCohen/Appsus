@@ -1,12 +1,12 @@
-import { MailApp } from "./js/apps/mail/pages/MailApp.jsx";
+import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
-import { MailDetails } from './pages/About.jsx';
+// import { EmailDetails } from '../Appsus/js/pages/';
 
 
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { AppFooter } from './cmps/AppFooter.jsx';
-import { UserMsg } from './cmps/UserMsg.jsx';
+// import { UserMsg } from './cmps/UserMsg.jsx';
 
 
 const Router = ReactRouterDOM.HashRouter
@@ -23,7 +23,7 @@ export function App() {
           <Switch>
           {/* <Route component={EmailDetails} path="/mail/:mailId" /> */}
             <Route component={About} path="/about" />
-            <Route component={MailApp} path="/mail" />
+            <Route component={EmailApp} path="/mail" />
             <Route component={Home} path="/" />
           </Switch>
           </div>

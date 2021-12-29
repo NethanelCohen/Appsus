@@ -1,7 +1,7 @@
 import {emailService} from '../services/email.service.js';
 import {EmailList} from '../cmps/EmailList.jsx'
 
-export class MailApp extends React.Component {
+export class EmailApp extends React.Component {
 
     state = {
         mails: []
