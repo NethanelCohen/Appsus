@@ -1,7 +1,7 @@
 export function Folders() {
   return (
     <section className="email-folder-list">
-      <ul onClick={() => console.log(event.target.dataset.value)}>
+      <ul className="flex column" onClick={() => console.log(event.target.dataset.value)}>
         <li data-value="all">All</li>
         <li data-value="inbox">Inbox</li>
         <li data-value="sent">Sent</li>

@@ -1,9 +1,13 @@
 .email-folder-list ul {
     grid-area: folders;
+    gap: 0.5rem;
 }
 
-.email-folder-list ul>* {
+.email-folder-list ul>li {
     font-size: 2rem;
     padding: 0.5rem;
     cursor: pointer;
+    max-width: 120px;
+    border-radius: 6px;
+    background-color: green;
 }
