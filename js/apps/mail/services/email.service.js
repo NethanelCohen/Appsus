@@ -44,7 +44,7 @@ function _getCriteriaMails(mails, criteria) {
     lables = lables ? lables : [];
     return mails.filter(mail => {
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
-                mail.body.includes(_makeLowerCase(txt))) &&
+               _makeLowerCase( mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
             mail.isRead === isRead &&
             mail.isStared === isStared &&
