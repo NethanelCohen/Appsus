@@ -5,7 +5,7 @@ export function EmailList({ mails }) {
   if (!mails.length) return <h1> Inbox is empty... </h1>;
   return (
     <section className="mails-list grid">
-      <div className="flex">
+      <div className="mail-header flex">
         <h6>CheckBox</h6>
         <h6>Star</h6>
         <h6>Sender</h6>

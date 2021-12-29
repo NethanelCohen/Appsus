@@ -6,13 +6,18 @@
     border: 1px solid black;
 }
 
-.mails-list>:first-child {
-    width: 75%;
+.mails-list .mail-header {
+    width: 100%;
 }
 
-.mails-list>:first-child,
-.short-mail-view {
-    justify-content: space-around;
+.mails-list>.mail-header :nth-child(-n + 2),
+.short-mail-view :nth-child(-n + 2) {
+    flex-grow: 0.1;
+}
+
+.mails-list>.mail-header :not( :nth-child(-n + 2)),
+.short-mail-view :not( :nth-child(-n + 2)) {
+    flex-grow: 1;
 }
 
 .mails-list .short-mail-view {
