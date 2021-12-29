@@ -30,12 +30,12 @@ export class EmailPreview extends React.Component {
     if (Date.now() - timestamp < 1000*60*60*24) date = 'Today at ' + new Date(timestamp).toLocaleTimeString("en-US");
     else if (Date.now() - timestamp < 1000*60*60*24*2) date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString("en-US");
     return date;
-}
+  };
 
   render() {
     const { mail } = this.props;
     const { isClicked } = this.state;
-    const date = this.handleDateCheck(mail.sentAt)
+    const date = this.handleDateCheck(mail.sentAt);
     return (
       <div
         className="mail-preview-container flex"
@@ -43,12 +43,15 @@ export class EmailPreview extends React.Component {
         {!isClicked && (
           <div className="short-mail-view flex">
             <h6>CheckBox</h6>
-            <h6 className="star">&#9733;</h6>
+            <h6
+              className={'star off'}
+              onClick={(ev) => this.props.setColorStar(ev)}>
+              &#9733;
+            </h6>
             <h6>{mail.subject}</h6>
             <h6>{mail.to}</h6>
             <h6>{mail.body}</h6>
             <h6>{date}</h6>
-
           </div>
         )}
         {isClicked && (

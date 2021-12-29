@@ -7,34 +7,10 @@
 @import './cmps/app-footer.css';
 @import './cmps/email-list.css';
 @import './cmps/email-preview.css';
+@import './cmps/folders.css';
 @import './cmps/danger-button.css';
 @import './cmps/user-msg.css';
 @font-face {
     font-family: 'poppin';
     src: url(/assets/fonts/FuzzyBubbles/FuzzyBubbles-Regular.ttf);
-}
-
-.app {
-    height: 100vh;
-}
-
-main {
-    flex-grow: 1;
-}
-
-.main-container {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    /* background-image: url('../bg.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-attachment: fixed; */
-    align-items: center;
-    border-bottom: 1px solid black;
-    padding-bottom: 10rem;
-}
-
-.main-container>section {
-    width: 60%;
 }
