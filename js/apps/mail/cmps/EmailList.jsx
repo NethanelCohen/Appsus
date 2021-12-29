@@ -1,13 +1,19 @@
 import { EmailPreview } from '../cmps/EmailPreview.jsx';
 
-export function EmailList({ mails, loadMails}) {
-  console.log(mails);
+export function EmailList({ mails, loadMails }) {
+  function setColorStar({ target }) {
+    target.className === 'star off'
+      ? (target.className = 'star on')
+      : (target.className = 'star off');
+  }
   if (!mails.length) return <h1> Inbox is empty... </h1>;
   return (
     <section className="mails-list grid">
       <div className="mail-header flex">
         <h6>CheckBox</h6>
-        <h6>Star</h6>
+        <h6 className={'star off'} onClick={(ev) => setColorStar(ev)}>
+          &#9733;
+        </h6>
         <h6>Sender</h6>
         <h6>Subject</h6>
         <h6>Date</h6>
