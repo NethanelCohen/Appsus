@@ -16,18 +16,43 @@ const loggedinUser = {
     fullname: 'Netanel Netanel'
 }
 
-const criteria = {
-    status: 'inbox/sent/trash/draft',
-    txt: 'puki',
-    isStared: true,
-    lables: ['important', 'romantic']
-}
+// const criteria = {
+//     status: 'inbox/sent/trash/draft',
+//     txt: 'puki',
+//     isRead: false,
+//     isStared: true,
+//     lables: ['important', 'romantic']
+// }
 
-
-function query() {
+function query(criteria = null) {
     const mails = storageService.loadFromStorage(KEY);
-    return Promise.resolve(mails);
+    if (!criteria) return Promise.resolve(mails);
+    const criteriaMails = _getCriteriaMails(mails, criteria);
+    console.log("criteriaMails: ", criteriaMails);
+    return Promise.resolve(criteriaMails);
 }
+
+function _makeLowerCase(value) {
+    console.log(value.toString().toLowerCase());
+    return value.toString().toLowerCase();
+  }
+
+function _getCriteriaMails(mails, criteria) {
+    let { status, txt, isRead, isStared, lables } = criteria;
+    status = status ? status : 'inbox';
+    txt === txt ? _makeLowerCase(txt) : '';
+    isRead = isRead ? isRead : false;
+    isStared = isStared ? isStared : false;
+    lables = lables ? lables : [];
+    return mails.filter(mail => {
+        return (mail.subject.includes(txt) ||
+            mail.body.includes(txt)) &&
+            mail.status === status &&
+            mail.isRead === isRead &&
+            mail.isStared === isStared &&
+            mail.lables.toString().includes(lables.toString())
+        })
+    }
 
 function getMailById(mailId) {
     const mails = storageService.loadFromStorage(KEY);
@@ -44,12 +69,15 @@ function remove(mailId) {
     return Promise.resolve(mails)
 }
 
-function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, to = 'example@example.com') {
+function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, isStared = false, lables = [], status = 'inbox', to = 'example@example.com') {
     return {
         id: utilService.makeId(),
         subject,
         body,
         isRead,
+        isStared,
+        lables,
+        status,
         sentAt: Date.now(),
         to
     }
@@ -59,47 +87,62 @@ function _createMails() {
     let mails = storageService.loadFromStorage(KEY) || [];
     if (!mails || !mails.length) {
         mails = [{
-                id: utilService.makeId(),
-                subject: 'Mail 1',
-                body: 'Here the body should go in',
-                isRead: false,
-                sentAt: Date.now(),
-                to: 'example@example.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Mail 2',
-                body: 'Here the body should go in',
-                isRead: false,
-                sentAt: Date.now(),
-                to: 'example@example.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Mail 3',
-                body: 'Here the body should go in',
-                isRead: false,
-                sentAt: Date.now(),
-                to: 'example@example.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Mail 4',
-                body: 'Here the body should go in',
-                isRead: false,
-                sentAt: Date.now(),
-                to: 'example@example.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Mail 5',
-                body: 'Here the body should go in',
-                isRead: false,
-                sentAt: Date.now(),
-                to: 'example@example.com'
-            }
+            id: utilService.makeId(),
+            subject: 'Mail 1',
+            body: 'Here the body should go in',
+            isRead: false,
+            isStared: false,
+            lables: ['important'],
+            status: 'inbox',
+            sentAt: Date.now(),
+            to: 'example@example.com'
+        },
+        {
+            id: utilService.makeId(),
+            subject: 'Mail 2',
+            body: 'Here the body should go in',
+            isRead: false,
+            isStared: false,
+            lables: [],
+            status: 'inbox',
+            sentAt: Date.now(),
+            to: 'example@example.com'
+        },
+        {
+            id: utilService.makeId(),
+            subject: 'Mail 3',
+            body: 'Here the body should go in',
+            isRead: false,
+            isStared: false,
+            lables: [],
+            status: 'inbox',
+            sentAt: Date.now(),
+            to: 'example@example.com'
+        },
+        {
+            id: utilService.makeId(),
+            subject: 'Mail 4',
+            body: 'Here the body should go in',
+            isRead: false,
+            isStared: false,
+            lables: [],
+            status: 'inbox',
+            sentAt: Date.now(),
+            to: 'example@example.com'
+        },
+        {
+            id: utilService.makeId(),
+            subject: 'Mail 5',
+            body: 'Here the body should go in',
+            isRead: false,
+            isStared: false,
+            lables: [],
+            status: 'inbox',
+            sentAt: Date.now(),
+            to: 'example@example.com'
+        }
         ]
-        mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.to))
+        mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.isStared, mail.lables, mail.status, mail.to))
         _saveMailsToStorage(mails)
     }
 }

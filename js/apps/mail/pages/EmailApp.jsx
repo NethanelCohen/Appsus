@@ -4,7 +4,10 @@ import {EmailList} from '../cmps/EmailList.jsx'
 export class EmailApp extends React.Component {
 
     state = {
-        mails: []
+        mails: [],
+        criteria: {
+            txt: 'Mail 1'
+        }
     }
 
     componentDidMount() {
@@ -12,7 +15,7 @@ export class EmailApp extends React.Component {
     }
 
     loadMails = () => {
-        const mails = emailService.query().then(mails => {
+        const mails = emailService.query(this.state.criteria).then(mails => {
             this.setState({mails})
         })
     }
