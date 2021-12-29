@@ -54,8 +54,8 @@
 
 @media (min-width: 768px) {
     .button-danger-front {
-        font-size: 1.75rem;
-        padding: 12px 42px;
+        font-size: 1.5rem;
+        padding: 6px
     }
 }
 

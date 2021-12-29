@@ -2,5 +2,43 @@
     background-color: greenyellow;
     cursor: pointer;
     width: 100%;
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.mail-preview-container:last-of-type {
+    margin-bottom: 1rem;
+}
+
+.mail-preview-container .long-mail-view {
+    padding: 1rem;
+    min-width: 100%;
+    justify-content: left;
+    gap: 1rem;
+    grid-template-rows: 50px 25px 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: ' subject . buttons '/*/*/
+    ' to . .'/*/*/
+    ' mail-body mail-body mail-body';
+}
+
+.mail-preview-container .long-mail-btn {
+    justify-content: space-around;
+    width: 100%;
+    grid-area: buttons;
+    max-height: 50px;
+    justify-self: flex-end;
+}
+
+.subject {
+    grid-area: subject;
+}
+
+.to {
+    grid-area: to;
+}
+
+.mail-body {
+    grid-area: mail-body;
+    padding-bottom: 1rem;
 }
