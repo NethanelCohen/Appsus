@@ -1,10 +1,10 @@
 .mails-list {
-    margin-top: 2rem;
     grid-template-rows: 1fr;
     font-size: 2rem;
     gap: 1rem;
     border: 1px solid black;
-    grid-area: mail;
+    grid-area: mails;
+    margin-inline-end: 2rem;
 }
 
 .mails-list .mail-header {

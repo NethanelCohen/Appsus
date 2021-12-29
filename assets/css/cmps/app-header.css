@@ -37,3 +37,10 @@
 .logo-container {
     gap: 1rem;
 }
+
+.search-filter {}
+
+.search-filter input {
+    font-size: 2rem;
+    padding: 0.5rem;
+}
