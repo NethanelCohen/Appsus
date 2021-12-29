@@ -7,7 +7,8 @@ export class EmailApp extends React.Component {
     }
 
     componentDidMount() {
-        // console.log("emailService.query(): ", emailService.query());
+        emailService.query()
+            .then(mails => this.setState({ watchers: mails }))
     }
 
     // loadMails = () => {
