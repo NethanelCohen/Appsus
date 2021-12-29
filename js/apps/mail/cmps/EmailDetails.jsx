@@ -6,10 +6,9 @@ import {emailService} from '../services/email.service.js';
 
 export function EmailDetails({mail}) {
 
-    // function goBackToList() {
-        // <Link to="/mail" />
-    // }
-
+    function goBackToList() {
+        this.props.history.push('/mail');
+    }
 
     function deleteMail() {
         emailService.remove(mail.id).then(goBackToList())
