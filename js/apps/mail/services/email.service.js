@@ -57,13 +57,12 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
 }
 
 function _createMails() {
-    console.log('storage');
     var mails = storageService.loadFromStorage(KEY) || [];
     if (!mails || !mails.length) {
         mails = [
             {
                 id: utilService.makeId(),
-                subject: 'This is a mail 1',
+                subject: 'Mail 1',
                 body: 'Here the body should go in',
                 isRead: false,
                 sentAt: Date.now(),
@@ -71,7 +70,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'This is a mail 2',
+                subject: 'Mail 2',
                 body: 'Here the body should go in',
                 isRead: false,
                 sentAt: Date.now(),
@@ -79,7 +78,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'This is a mail 3',
+                subject: 'Mail 3',
                 body: 'Here the body should go in',
                 isRead: false,
                 sentAt: Date.now(),
@@ -87,7 +86,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'This is a mail 4',
+                subject: 'Mail 4',
                 body: 'Here the body should go in',
                 isRead: false,
                 sentAt: Date.now(),
@@ -95,7 +94,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'This is a mail 5',
+                subject: 'Mail 5',
                 body: 'Here the body should go in',
                 isRead: false,
                 sentAt: Date.now(),
@@ -104,7 +103,6 @@ function _createMails() {
         ]
         mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.to))
         _saveMailsToStorage(mails)
-        console.log('saved');
     }
 }
 

@@ -1,4 +1,5 @@
-import {emailService} from '../services/email.service.js'
+import {emailService} from '../services/email.service.js';
+import {EmailList} from '../cmps/EmailList.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -7,20 +8,23 @@ export class EmailApp extends React.Component {
     }
 
     componentDidMount() {
-        const mails = emailService.query()
-        console.log("mails: ", mails);
+        this.loadMails()
     }
 
-    // loadMails = () => {
-    //     emailService.query().then(mails => {
-    //         this.setState({mails})
-    //     })
-    // }
-
+    loadMails = () => {
+        const mails = emailService.query().then(mails => {
+            this.setState({mails})
+        })
+    }
 
     render() {
+        const {mails} = this.state;
+        if (!mails.length) return <h1>The inbox is empty</h1>
+        console.log("mails: ", mails);
         return (
-            <h1>Starting project</h1>
+            <section>
+                <EmailList mails={mails} />
+            </section>
         )
     }
 }
