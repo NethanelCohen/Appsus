@@ -9,13 +9,18 @@ export class EmailPreview extends React.Component {
     isMouseOver: false
   };
 
+  handleOpenMail = () => {
+      const mail = this.props;
+      emailService.mailIsRead(mail.id).then(this.setState({ isClicked: false }))
+  }
+
   extandMailView = () => {
+    const {id} = this.props.mail;
+    console.log("id: ", id);
+    console.log(this.props.mail.isRead);
     const { isClicked } = this.state;
-    this.props.mail.isRead = true;
-    !isClicked
-      ? this.setState({ isClicked: true })
-      : this.setState({ isClicked: false });
-  };
+    emailService.mailIsRead(id).then(!isClicked ? this.setState({ isClicked: true }) : this.setState({ isClicked: false }))
+  }
 
   replyToMail = () => {
     console.log('Reply to mail');
@@ -42,12 +47,13 @@ export class EmailPreview extends React.Component {
     const { isClicked } = this.state;
     const {isMouseOver} = this.state;
     const date = this.handleDateCheck(mail.sentAt);
+    const isMailRead = mail.isRead ? 'white' : 'greenyellow';
     return (
       <div
         className="mail-preview-container flex"
         onClick={this.extandMailView} onMouseOver={() => this.handleMouse('on')} onMouseLeave={() => this.handleMouse('off')}>
         {!isClicked && (
-          <div className="short-mail-view flex">
+          <div style={{backgroundColor: `${isMailRead}`}} className="short-mail-view flex">
             <h6>CheckBox</h6>
             <h6
               className={'star off'}
@@ -59,7 +65,7 @@ export class EmailPreview extends React.Component {
             <h6>{mail.body}</h6>
             {isMouseOver && <div className="hover-mail-btn flex">
               <Link to={`/mail/${mail.id}`}>
-                <button>❏</button>
+                <button onClick={this.handleOpenMail}>❏</button>
               </Link>
               <button onClick={this.replyToMail}>reply</button>
               <DangerButton func={this.deleteMail} txt="Delete" />
@@ -67,11 +73,10 @@ export class EmailPreview extends React.Component {
             <h6>{date}</h6>
           </div>
         )}
-        {isClicked && (
-          <div className="long-mail-view grid">
+        {isClicked && <div style={{fontSize: `${isMailRead}`}} className="long-mail-view grid">
             <div className="long-mail-btn flex">
               <Link to={`/mail/${mail.id}`}>
-                <button>❏</button>
+                <button onClick={this.handleOpenMail}>❏</button>
               </Link>
               <button onClick={this.replyToMail}>reply</button>
               <DangerButton func={this.deleteMail} txt="Delete" />
@@ -80,8 +85,7 @@ export class EmailPreview extends React.Component {
             <h6 className="to">{mail.to}</h6>
             <h6>{date}</h6>
             <h6 className="mail-body">{mail.body}</h6>
-          </div>
-        )}
+          </div>}
       </div>
     );
   }

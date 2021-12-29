@@ -6,6 +6,7 @@ export const emailService = {
     getMailById,
     remove,
     createMail,
+    mailIsRead
 }
 
 const KEY = 'mails_DB'
@@ -31,14 +32,14 @@ function _getCriteriaMails(mails, criteria) {
     let { status, txt, isRead, isStared, lables } = criteria;
     status = status ? status : 'inbox';
     txt = txt ? _makeLowerCase(txt) : '';
-    isRead = isRead ? isRead : false;
+    // isRead = isRead ? isRead : false;
     isStared = isStared ? isStared : false;
     lables = lables ? lables : [];
     return mails.filter(mail => {
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
                 _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
-            mail.isRead === isRead &&
+            // mail.isRead === isRead &&
             mail.isStared === isStared &&
             mail.lables.toString().includes(lables.toString())
     })
@@ -46,17 +47,24 @@ function _getCriteriaMails(mails, criteria) {
 
 function getMailById(mailId) {
     const mails = storageService.loadFromStorage(KEY);
-    let mail = mails.find(mail => {
+    const mail = mails.find(mail => {
         return mailId === mail.id
     })
     return Promise.resolve(mail)
+}
+
+function mailIsRead(mailId) {
+    const mails = storageService.loadFromStorage(KEY)
+    const mail = getMailById(mailId).then(mail.isRead = true);
+    _saveMailsToStorage(mails)
+    return Promise.resolve(mail);
 }
 
 function remove(mailId) {
     let mails = storageService.loadFromStorage(KEY)
     mails = mails.filter(mail => mail.id !== mailId)
     storageService.saveToStorage(KEY, mails)
-    return Promise.resolve(mails)
+    return Promise.resolve(mails);
 }
 
 function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, isStared = false, lables = [], status = 'inbox', sentAt, to = 'example@example.com') {
@@ -80,9 +88,9 @@ function _createMails() {
             id: utilService.makeId(),
             subject: 'Mail 1',
             body: 'Here the body should go in',
-            isRead: false,
+            isRead: true,
             isStared: false,
-            lables: ['important'],
+            lables: [],
             status: 'trash',
             sentAt: Date.now(),
             to: 'example@example.com'
