@@ -1,4 +1,4 @@
-import { emailService } from "../services/email.service.js"
+import {emailService} from '../services/email.service.js'
 
 export class EmailApp extends React.Component {
 
@@ -7,7 +7,8 @@ export class EmailApp extends React.Component {
     }
 
     componentDidMount() {
-        // console.log("emailService.query(): ", emailService.query());
+        const mails = emailService.query()
+        console.log("mails: ", mails);
     }
 
     // loadMails = () => {

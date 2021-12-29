@@ -58,9 +58,9 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
 
 function _createMails() {
     console.log('storage');
-    const mails = storageService.loadFromStorage(KEY)
+    var mails = storageService.loadFromStorage(KEY) || [];
     if (!mails || !mails.length) {
-        var mails = [
+        mails = [
             {
                 id: utilService.makeId(),
                 subject: 'This is a mail 1',
