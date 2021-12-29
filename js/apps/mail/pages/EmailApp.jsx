@@ -27,7 +27,10 @@ export class EmailApp extends React.Component {
     const { mails } = this.state;
     if (!mails.length) return <h1>The inbox is empty</h1>;
     return (
-        <div className="email-list-container grid">
+      <div className="email-list-container grid">
+        <div className="search-filter">
+          <input placeholder="Search mail"></input>
+        </div>
         <Folders />
         <EmailList mails={mails} loadMails={this.loadMails} />
       </div>

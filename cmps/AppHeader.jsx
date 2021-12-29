@@ -9,9 +9,7 @@ export function AppHeader() {
           <img src="./assets/img/icons8-gmail-48.png" alt="" />
         </div>
       </NavLink>
-      <div className="search-filter">
-        <input placeholder="Search mail"></input>
-      </div>
+      
       <nav className="main-nav flex">
         <NavLink activeClassName="header-active" to="/Mail">
           Mail
