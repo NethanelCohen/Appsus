@@ -1,0 +1,32 @@
+@import './basics/base.css';
+@import './pages/home.css';
+@import './pages/about.css';
+@import './cmps/app-header.css';
+@import './cmps/app-footer.css';
+@import './cmps/danger-button.css';
+@import './cmps/user-msg.css';
+
+/* @font-face {
+    font-family: 'poppin';
+    src: url(/assets/);
+} */
+
+.app {
+    height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.main-container {
+    height: 100%;
+    margin: auto;
+    /* background-image: url('../bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed; */
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10rem;
+}

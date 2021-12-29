@@ -15,4 +15,3 @@ function emit(eventName, data) {
 export const eventBusService = { on, emit }
 
 window.myBus = eventBusService
-
