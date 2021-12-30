@@ -46,3 +46,9 @@
     grid-area: mail-body;
     padding-bottom: 1rem;
 }
+
+.hover-mail-btn {
+    position: absolute;
+    gap: 0.5rem;
+    right: 4rem;
+}
