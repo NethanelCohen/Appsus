@@ -6,8 +6,7 @@ export const emailService = {
     getMailById,
     remove,
     createMail,
-    mailIsRead,
-
+    isMailRead
 }
 
 const KEY = 'mails_DB'
@@ -55,15 +54,25 @@ function getMailById(mailId) {
 }
 
 /* display bold text when mail is unread */
-function mailIsRead(mailId) {
+function isMailRead(mailId, state) {
     let mails = storageService.loadFromStorage(KEY)
     var readedMail = mails.find(mail => {
         return mail.id === mailId
     })
-    readedMail.isRead = true;
+    readedMail.isRead = state;
     _saveMailsToStorage(mails)
     return Promise.resolve();
 }
+
+// function mailIsUnread(mailId) {
+//     let mails = storageService.loadFromStorage(KEY)
+//     var readedMail = mails.find(mail => {
+//         return mail.id === mailId
+//     })
+//     readedMail.isRead = false;
+//     _saveMailsToStorage(mails)
+//     return Promise.resolve();
+// }
 
 function remove(mailId) {
     let mails = storageService.loadFromStorage(KEY);

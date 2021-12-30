@@ -11,11 +11,10 @@ export class EmailPreview extends React.Component {
 
   handleOpenMail = () => {
     const mail = this.props;
-    emailService.mailIsRead(mail.id).then(this.setState({ isClicked: false }));
-  };
+    emailService.isMailRead(mail.id).then(this.setState({ isClicked: false }))
+  }
 
   extandMailView = (e) => {
-    // debugger;
     const { isClicked } = this.state;
     if (e.target.className.includes('star')) {
      ()=>this.props.setColorStar(e);
@@ -25,7 +24,7 @@ export class EmailPreview extends React.Component {
     if (!id) return;
   
     emailService
-      .mailIsRead(id)
+      .isMailRead(id)
       .then(
         !isClicked
           ? this.setState({ isClicked: true }, this.props.loadMails)
@@ -50,7 +49,7 @@ export class EmailPreview extends React.Component {
     else if (Date.now() - timestamp < 1000 * 60 * 60 * 24 * 2)
       date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString('en-US');
     return date;
-  };
+  }
 
   handleMouse = (state) => {
     state === 'on'
@@ -107,6 +106,7 @@ export class EmailPreview extends React.Component {
               <Link to={`/mail/${mail.id}`}>
                 <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
               </Link>
+              <StyledButton func={this.handleUnreadClick} txt="unread" bgc="#8cd5ee" />
               <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
               <StyledButton
                 func={this.deleteMail}
