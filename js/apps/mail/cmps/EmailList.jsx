@@ -11,10 +11,6 @@ export function EmailList({ mails, loadMails }) {
   return (
     <section className="mails-list grid">
       <div className="mail-header flex">
-        <h6>CheckBox</h6>
-        <h6 className={'star off'} onClick={(ev) => setColorStar(ev)}>
-          &#9733;
-        </h6>
         <h6>Subject</h6>
         <h6>Sender</h6>
         <h6>Body</h6>

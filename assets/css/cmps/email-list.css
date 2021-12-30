@@ -14,34 +14,32 @@
     border-bottom: 1px solid black;
 }
 
-.mails-list .mail-header :first-of-type {
-    max-width: 123px;
+.mails-list .mail-header :first-child {
+    padding-inline-start: 75px;
 }
 
 .mails-list .mail-header :nth-child(2) {
-    padding-left: 0.3rem;
+    padding-inline-start: 140px;
 }
 
-.mails-list>.mail-header :nth-child(-n + 2),
+.mails-list .mail-header :nth-child(3) {
+    padding-inline-start: 255px;
+}
+
+.mails-list .mail-header :last-child {
+    padding-inline-start: 270px;
+}
+
+.short-mail-view {
+    align-items: center;
+}
+
 .short-mail-view :nth-child(-n + 2) {
     flex-grow: 0.1;
 }
 
-.mails-list>.mail-header :nth-child(3) {
-    flex-grow: 0.2;
-}
-
-.mails-list>.mail-header :nth-child(5) {
-    margin-inline-start: 1.8rem;
-}
-
-.mails-list>.mail-header :not( :nth-child(-n + 3)),
 .short-mail-view :not( :nth-child(-n + 2)) {
     flex-grow: 1;
-}
-
-.mails-list>.mail-header :last-child {
-    text-align: center;
 }
 
 .mails-list .short-mail-view :last-of-type {
@@ -52,4 +50,9 @@
     padding: 1rem;
     width: 100%;
     gap: 1rem;
+    align-content: center;
+}
+
+.mails-list .short-mail-view input {
+    height: 1rem;
 }
