@@ -50,7 +50,7 @@ export class EmailDetails extends React.Component {
       ' ' +
       new Date(mail.sentAt).toLocaleTimeString('en-US');
     return (
-      <section className="mail-details">
+      <section className="mail-details flex column">
         <div className="mail-inner-btn">
           <Link to={'/mail'}>
             <StyledButton  txt="⏎" bgc="grey" />
