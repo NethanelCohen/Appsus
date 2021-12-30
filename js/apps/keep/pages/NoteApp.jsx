@@ -1,4 +1,5 @@
 import { NotesList } from '../cmps/NotesList.jsx';
+import { noteService } from '../services/note.service.js';
 
 export class NoteApp extends React.Component {
   state = {
@@ -11,9 +12,11 @@ export class NoteApp extends React.Component {
     this.loadNotes()
   }
 
-  // loadNotes = () => {
-
-  // }
+  loadNotes = () => {
+    noteService.query().then(notes => {
+      this.setState({notes})
+    });
+  }
 
 
   render() {
@@ -53,7 +56,7 @@ export class NoteApp extends React.Component {
           </div>
         </div>
 
-        {/* <NotesList/> */}
+        <NotesList notes={notes} loadNotes={this.loadNotes}/>
       </div>
       
     );
