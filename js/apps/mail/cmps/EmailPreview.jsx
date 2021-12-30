@@ -1,5 +1,5 @@
 import { emailService } from '../services/email.service.js';
-import { DangerButton } from '../../../../cmps/DangerButton.jsx';
+import { StyledButton } from '../../../../cmps/StyledButton.jsx';
 
 const { Link } = ReactRouterDOM;
 
@@ -67,10 +67,10 @@ export class EmailPreview extends React.Component {
             <h6>{mail.body}</h6>
             {isMouseOver && <div className="hover-mail-btn flex">
               <Link to={`/mail/${mail.id}`}>
-                <button onClick={this.handleOpenMail}>❏</button>
+              <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
               </Link>
-              <button onClick={this.replyToMail}>reply</button>
-              <DangerButton func={this.deleteMail} txt="Delete" />
+              <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
+              <StyledButton func={this.deleteMail} txt="Delete" bgc="hsl(345deg 100% 47%)" />
             </div>}
             <h6>{date}</h6>
           </div>
@@ -78,10 +78,10 @@ export class EmailPreview extends React.Component {
         {isClicked && <div style={{ fontSize: `${isMailRead}` }} className="long-mail-view grid">
           <div className="long-mail-btn flex">
             <Link to={`/mail/${mail.id}`}>
-              <button onClick={this.handleOpenMail}>❏</button>
+            <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
             </Link>
-            <button onClick={this.replyToMail}>reply</button>
-            <DangerButton func={this.deleteMail} txt="Delete" />
+             <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
+            <StyledButton func={this.deleteMail} txt="Delete" bgc="hsl(345deg 100% 47%)"/>
           </div>
           <h4 className="subject">{mail.subject}</h4>
           <h6 className="to">{mail.to}</h6>

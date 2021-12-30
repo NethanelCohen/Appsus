@@ -5,6 +5,11 @@
     border-bottom: 1px solid black;
 }
 
+.empty-messege {
+    grid-area: empty;
+    text-align: center;
+}
+
 .mail-preview-container:last-of-type {
     margin-bottom: 1rem;
 }
@@ -40,4 +45,10 @@
 .mail-body {
     grid-area: mail-body;
     padding-bottom: 1rem;
+}
+
+.hover-mail-btn {
+    position: absolute;
+    gap: 0.5rem;
+    right: 4rem;
 }

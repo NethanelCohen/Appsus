@@ -29,7 +29,7 @@ loadMails = () => {
 };
 render() {
   const { mails } = this.state;
-  if (!mails.length) return <h1>The inbox is empty</h1>;
+  // if (!mails.length) return <h1>The inbox is empty</h1>;
   return (
     <div className="email-list-container grid">
       <div className="search-filter">

@@ -1,4 +1,4 @@
-.button-danger {
+.styled-button {
     position: relative;
     border: none;
     background: transparent;
@@ -10,12 +10,12 @@
     transition: filter 250ms;
 }
 
-.button-danger:hover {
+.styled-button:hover {
     transform: translateY(-6px);
     transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
-.button-danger-shadow {
+.styled-button-shadow {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,17 +28,7 @@
     transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
-.button-danger-edge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: linear-gradient( to left, hsl(340deg 100% 16%) 0%, hsl(340deg 100% 32%) 8%, hsl(340deg 100% 32%) 92%, hsl(340deg 100% 16%) 100%);
-}
-
-.button-danger-front {
+.styled-button-front {
     display: block;
     position: relative;
     padding: 12px 27px;
@@ -46,43 +36,42 @@
     font-size: 1.1rem;
     font-weight: bold;
     color: #fff;
-    background: hsl(345deg 100% 47%);
     will-change: transform;
     transform: translateY(-4px);
     transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 @media (min-width: 768px) {
-    .button-danger-front {
+    .styled-button-front {
         font-size: 1.5rem;
         padding: 6px
     }
 }
 
-.button-danger:hover {
+.styled-button:hover {
     filter: brightness(110%);
 }
 
-.button-danger:hover .button-danger-front {
+.styled-button:hover .styled-button-front {
     transform: translateY(-6px);
     transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
-.button-danger:active .button-danger-front {
+.styled-button:active .styled-button-front {
     transform: translateY(-2px);
     transition: transform 34ms;
 }
 
-.button-danger:hover .button-danger-shadow {
+.styled-button:hover .styled-button-shadow {
     transform: translateY(4px);
     transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
-.button-danger:active .button-danger-shadow {
+.styled-button:active .styled-button-shadow {
     transform: translateY(1px);
     transition: transform 34ms;
 }
 
-.button-danger:focus:not(:focus-visible) {
+.styled-button:focus:not(:focus-visible) {
     outline: none;
 }
