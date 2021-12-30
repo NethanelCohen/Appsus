@@ -1,26 +1,30 @@
-.notes-container {
+.note-app-container {
     font-size: 3rem;
     margin-top: 2rem;
-    align-content: center;
+    align-items: center;
 }
 
-.notes-container .add-note {
-    justify-self: center;
-    padding: 2rem;
+.note-app-container .add-note {
     width: 80%;
+    min-height: 3rem;
     border: 3px solid black;
     gap: 2rem;
+    padding-inline-end: 1rem;
+    border-radius: 2rem;
 }
 
-.notes-container .add-note input {
+.note-app-container .add-note input {
     padding: 1rem;
-    font-size: 3rem;
-    width: 80%;
+    font-size: 2rem;
+    width: 75%;
+    margin-inline-start: 1rem;
+    height: 1rem;
     border: none;
     text-align: center;
+    align-self: center;
 }
 
-.notes-container .add-note input:focus {
+.note-app-container .add-note input:focus {
     outline: none;
 }
 
@@ -28,6 +32,6 @@
 .img-note-image,
 .img-note-youtube,
 .img-note-list {
-    width: 100px;
-    height: 100px;
+    width: 20px;
+    height: 20px;
 }

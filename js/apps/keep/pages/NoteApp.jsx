@@ -1,3 +1,5 @@
+import { NotesList } from '../cmps/NotesList.jsx';
+
 export class NoteApp extends React.Component {
   state = {
     notes: [],
@@ -5,7 +7,7 @@ export class NoteApp extends React.Component {
   render() {
     const { notes } = this.state;
     return (
-      <div className="notes-container grid">
+      <div className="note-app-container flex column">
         <div className="add-note flex">
           <input placeholder="What's on your mind..."></input>
           <div>
@@ -37,7 +39,10 @@ export class NoteApp extends React.Component {
             />
           </div>
         </div>
+
+        {/* <NotesList/> */}
       </div>
+      
     );
   }
 }
