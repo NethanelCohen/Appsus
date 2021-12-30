@@ -25,6 +25,7 @@
 
 .mail-details .mail-description {
     grid-area: description;
+    gap: 1rem
 }
 
 .mail-details .mail-body {

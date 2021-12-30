@@ -63,7 +63,7 @@ export class EmailDetails extends React.Component {
           />
         </div>
         <h1 className="mail-subject">{mail.subject}</h1>
-        <div className="mail-description">
+        <div className="mail-description flex column">
           <h4 className="mail-from" >{mail.to}</h4>
           <h4 className="mail-date">{date}</h4>
           {repliedClicked && <EmailReply />}
