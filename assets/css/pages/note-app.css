@@ -28,10 +28,10 @@
     outline: none;
 }
 
-.img-note-txt,
-.img-note-image,
-.img-note-video,
-.img-note-list {
+.note-txt,
+.note-image,
+.note-video,
+.note-list {
     width: 20px;
     height: 20px;
     color: blue;

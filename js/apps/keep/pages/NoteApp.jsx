@@ -39,10 +39,20 @@ export class NoteApp extends React.Component {
     noteService.createNote(newNote).then(notes => this.setState({notes}))
   }
 
+  handleTypeClick = () => {
+    this.setState({ isNoteClicked: true })
+  }
+
+  handleNoteType = ({className}) => {
+      this.setState((prevState) => ({ newNote: { ...prevState.newNote, type: className}}));
+      this.handleTypeClick()
+  }
+
 
   render() {
     const { notes } = this.state;
     const { isNoteClicked } = this.state
+    const {type} = this.state.newNote;
     if (!notes) return <h1> No notes </h1>
     return (
       <div className="note-app-container flex column">
@@ -55,31 +65,32 @@ export class NoteApp extends React.Component {
               <button>keep</button>
               <button onClick={this.handleClick}>✘</button>
             </form>
+              <p>Type: {type}</p>
           </div>}
-          <div onClick={() => console.log('txt Note')}>
+          <div onClick={(ev) => this.handleNoteType(ev.target)}>
             <img
-              className="img-note-txt"
+              className="note-txt"
               src="../../../assets/img/font-solid.svg"
               alt=""
             />
           </div>
-          <div onClick={() => console.log('image Note')}>
+          <div onClick={(ev) => this.handleNoteType(ev.target)}>
             <img
-              className="img-note-image"
+              className="note-image"
               src="../../../assets/img/image-regular.svg"
               alt=""
             />
           </div>
-          <div onClick={() => console.log('video Note')}>
+          <div onClick={(ev) => this.handleNoteType(ev.target)}>
             <img
-              className="img-note-video"
+              className="note-video"
               src="../../../assets/img/youtube-brands.svg"
               alt=""
             />
           </div>
-          <div onClick={() => console.log('list Note')}>
+          <div onClick={(ev) => this.handleNoteType(ev.target)}>
             <img
-              className="img-note-list"
+              className="note-list"
               src="../../../assets/img/list-solid.svg"
               alt=""
             />
