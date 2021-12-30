@@ -11,7 +11,7 @@ export class EmailPreview extends React.Component {
 
   handleOpenMail = () => {
     const mail = this.props;
-    emailService.isMailRead(mail.id).then(this.setState({ isClicked: false }))
+    emailService.isMailRead(mail.id, true).then(this.setState({ isClicked: false }))
   }
 
   extandMailView = () => {
