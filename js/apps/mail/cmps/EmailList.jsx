@@ -1,6 +1,7 @@
 import { EmailPreview } from '../cmps/EmailPreview.jsx';
 
 export function EmailList({ mails, loadMails }) {
+  console.log('mails in list', mails);
   function setColorStar({ target }) {
     target.className === 'star off'
       ? (target.className = 'star on')
