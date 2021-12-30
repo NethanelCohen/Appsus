@@ -42,7 +42,6 @@ a {
 
 .star {
     font-size: 1.5rem;
-    align-self: baseline;
 }
 
 .star.on {

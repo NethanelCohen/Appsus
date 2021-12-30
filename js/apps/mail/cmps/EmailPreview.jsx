@@ -19,7 +19,8 @@ export class EmailPreview extends React.Component {
   extandMailView = (e) => {
     const { isClicked } = this.state;
     if (e.target.className.includes('star')) return;
-    if (e.target.innerText === 'unread') return;
+    else if (e.target.innerText === 'unread') return;
+    else if (e.target.type === 'checkbox') return;
     const { id } = this.props.mail;
     if (!id) return;
 
@@ -79,7 +80,7 @@ export class EmailPreview extends React.Component {
           <div
             style={{ backgroundColor: `${isMailRead}` }}
             className="short-mail-view flex">
-            <h6>CheckBox</h6>
+            <input type="checkbox"/>
             <h6
               className={'star off'}
               onClick={(ev) => this.props.setColorStar(ev)}>
