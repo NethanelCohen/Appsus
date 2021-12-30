@@ -6,7 +6,9 @@ export const emailService = {
     getMailById,
     remove,
     createMail,
-    mailIsRead
+    mailIsRead,
+    mailMovedToTrash
+
 }
 
 const KEY = 'mails_DB'
@@ -62,8 +64,17 @@ function mailIsRead(mailId) {
     return Promise.resolve();
 }
 
+function mailMovedToTrash(mailId) {
+    console.log('mailId:', mailId);
+    const mails = storageService.loadFromStorage(KEY)
+    getMailById(mailId).then(mail => mail.status = 'trash');
+    _saveMailsToStorage(mails)
+    return Promise.resolve();
+}
+
 function remove(mailId) {
     let mails = storageService.loadFromStorage(KEY)
+    // getMailById(mailId).then(mail => mail.status = 'trash')
     mails = mails.filter(mail => mail.id !== mailId)
     storageService.saveToStorage(KEY, mails)
     return Promise.resolve(mails);
@@ -134,10 +145,10 @@ function _createMails() {
             id: utilService.makeId(),
             subject: 'Mail 5',
             body: 'Here the body should go in',
-            isRead: false,
+            isRead: true,
             isStared: false,
             lables: [],
-            status: 'inbox',
+            status: 'sent',
             sentAt: Date.now() - 10250000000,
             to: 'example@example.com'
         }

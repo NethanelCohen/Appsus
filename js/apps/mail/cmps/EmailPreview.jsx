@@ -10,12 +10,14 @@ export class EmailPreview extends React.Component {
   };
 
   handleOpenMail = () => {
-      const mail = this.props;
-      emailService.mailIsRead(mail.id).then(this.setState({ isClicked: false }))
+    const mail = this.props;
+    emailService.mailIsRead(mail.id).then(this.setState({ isClicked: false }))
   }
 
   extandMailView = () => {
-    const {id} = this.props.mail;
+    console.log();
+    const { id } = this.props.mail;
+    if(!id) return
     console.log("id: ", id);
     console.log(this.props.mail.isRead);
     const { isClicked } = this.state;
@@ -29,23 +31,25 @@ export class EmailPreview extends React.Component {
   deleteMail = () => {
     const { mail } = this.props;
     emailService.remove(mail.id).then(this.props.loadMails);
-  };
+    // if (mail.status === 'trash')
+    // else emailService.mailMovedToTrash(mail.id).then(this.props.loadMails)
+  }
 
   handleDateCheck = (timestamp) => {
     var date = new Date(timestamp).toLocaleDateString("en-US")
-    if (Date.now() - timestamp < 1000*60*60*24) date = 'Today at ' + new Date(timestamp).toLocaleTimeString("en-US");
-    else if (Date.now() - timestamp < 1000*60*60*24*2) date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString("en-US");
+    if (Date.now() - timestamp < 1000 * 60 * 60 * 24) date = 'Today at ' + new Date(timestamp).toLocaleTimeString("en-US");
+    else if (Date.now() - timestamp < 1000 * 60 * 60 * 24 * 2) date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString("en-US");
     return date;
   };
 
   handleMouse = (state) => {
-      state === 'on' ? this.setState({isMouseOver: true}) : this.setState({isMouseOver: false});
+    state === 'on' ? this.setState({ isMouseOver: true }) : this.setState({ isMouseOver: false });
   }
 
   render() {
     const { mail } = this.props;
     const { isClicked } = this.state;
-    const {isMouseOver} = this.state;
+    const { isMouseOver } = this.state;
     const date = this.handleDateCheck(mail.sentAt);
     const isMailRead = mail.isRead ? 'white' : 'greenyellow';
     return (
@@ -53,7 +57,7 @@ export class EmailPreview extends React.Component {
         className="mail-preview-container flex"
         onClick={this.extandMailView} onMouseOver={() => this.handleMouse('on')} onMouseLeave={() => this.handleMouse('off')}>
         {!isClicked && (
-          <div style={{backgroundColor: `${isMailRead}`}} className="short-mail-view flex">
+          <div style={{ backgroundColor: `${isMailRead}` }} className="short-mail-view flex">
             <h6>CheckBox</h6>
             <h6
               className={'star off'}
@@ -73,19 +77,19 @@ export class EmailPreview extends React.Component {
             <h6>{date}</h6>
           </div>
         )}
-        {isClicked && <div style={{fontSize: `${isMailRead}`}} className="long-mail-view grid">
-            <div className="long-mail-btn flex">
-              <Link to={`/mail/${mail.id}`}>
-                <button onClick={this.handleOpenMail}>❏</button>
-              </Link>
-              <button onClick={this.replyToMail}>reply</button>
-              <DangerButton func={this.deleteMail} txt="Delete" />
-            </div>
-            <h4 className="subject">{mail.subject}</h4>
-            <h6 className="to">{mail.to}</h6>
-            <h6>{date}</h6>
-            <h6 className="mail-body">{mail.body}</h6>
-          </div>}
+        {isClicked && <div style={{ fontSize: `${isMailRead}` }} className="long-mail-view grid">
+          <div className="long-mail-btn flex">
+            <Link to={`/mail/${mail.id}`}>
+              <button onClick={this.handleOpenMail}>❏</button>
+            </Link>
+            <button onClick={this.replyToMail}>reply</button>
+            <DangerButton func={this.deleteMail} txt="Delete" />
+          </div>
+          <h4 className="subject">{mail.subject}</h4>
+          <h6 className="to">{mail.to}</h6>
+          <h6>{date}</h6>
+          <h6 className="mail-body">{mail.body}</h6>
+        </div>}
       </div>
     );
   }

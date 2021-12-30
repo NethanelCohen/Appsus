@@ -1,7 +1,7 @@
-export function Folders() {
+export function Folders({handleCriteriaStatus}) {
   return (
     <section className="email-folder-list">
-      <ul className="flex column" onClick={() => console.log(event.target.dataset.value)}>
+      <ul className="flex column" onClick={() => handleCriteriaStatus(event.target.dataset.value)}>
         <li data-value="inbox">Inbox</li>
         <li data-value="sent">Sent</li>
         <li data-value="trash">Trash</li>
