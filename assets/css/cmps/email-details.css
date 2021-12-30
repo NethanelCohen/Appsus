@@ -1,14 +1,16 @@
 .mail-details {
     padding-top: 1rem;
-    margin: 2rem;
-    grid-template-rows: 20px 1fr 1fr 1fr;
+    margin: auto;
+    margin-top: 3rem;
+    min-height: 70vh;
+    width: 80%;
+    grid-template-rows: 20px 1fr;
     grid-template-columns: 0.2fr 1fr 0.2fr;
-    row-gap: 10rem;
+    row-gap: 6rem;
     text-align: center;
     border: 3px solid black;
     grid-template-areas: 'description subject buttons'/* / */
     '. body . '/* / */
-    '. txt . '/* / */
 }
 
 .mail-inner-btn {
@@ -25,6 +27,7 @@
 
 .mail-details .mail-description {
     grid-area: description;
+    gap: 1rem
 }
 
 .mail-details .mail-body {

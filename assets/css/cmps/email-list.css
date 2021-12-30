@@ -19,15 +19,19 @@
 }
 
 .mails-list .mail-header :nth-child(2) {
-    padding-inline-start: 140px;
+    text-align: center;
+    flex-grow: 0.2;
 }
 
 .mails-list .mail-header :nth-child(3) {
-    padding-inline-start: 255px;
+    text-align: center;
+    padding-inline-end: 2rem;
+    flex-grow: 0.5;
 }
 
 .mails-list .mail-header :last-child {
-    padding-inline-start: 270px;
+    text-align: right;
+    flex-grow: 0.2;
 }
 
 .short-mail-view {
