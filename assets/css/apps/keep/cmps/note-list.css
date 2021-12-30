@@ -1,9 +1,13 @@
 .note-list {
-    column-width: 200px;
-    column-span: all;
-    border: 1px solid black;
+    columns: auto 250px;
     width: 90%;
     margin-top: 1rem;
-    gap: 1rem;
     font-size: 2rem;
+    min-height: 500px;
+    gap: 2px;
+}
+
+.note-list>* {
+    padding: 6px;
+    break-inside: avoid
 }
