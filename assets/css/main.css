@@ -16,5 +16,5 @@
 @import '../../assets/css/apps/keep/cmps/note-preview.css';
 @font-face {
     font-family: 'poppin';
-    src: url(/assets/fonts/FuzzyBubbles/FuzzyBubbles-Regular.ttf);
+    src: url(../fonts/FuzzyBubbles/FuzzyBubbles-Regular.ttf);
 }
