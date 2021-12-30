@@ -40,6 +40,10 @@
     flex-grow: 1;
 }
 
+.mails-list>.mail-header :last-child {
+    text-align: center;
+}
+
 .mails-list .short-mail-view :last-of-type {
     max-width: 150px;
 }
