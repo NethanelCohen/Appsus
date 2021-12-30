@@ -44,14 +44,13 @@ render() {
   const { mails } = this.state;
   const {isReplyClicked} = this.state;
   const loggedinUser = emailService.getUserDetails();
-  console.log("loggedinUser: ", loggedinUser);
   return (
     <div className="email-list-container grid">
       <div className="search-filter">
         <input placeholder="Search mail" onChange={(ev) => this.handleCriteriaTxt(ev.target.value)}></input>
       </div>
       <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" />
-      {isReplyClicked && <EmailReply loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
+      {isReplyClicked && <EmailReply loadMails={this.loadMails} loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
       <Folders handleCriteriaStatus={this.handleCriteriaStatus} />
       <EmailList mails={mails} loadMails={this.loadMails} />
     </div>
