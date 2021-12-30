@@ -32,9 +32,9 @@ button,
 input,
 a,
 .star,
-.img-note-font,
+.img-note-txt,
 .img-note-image,
-.img-note-youtube,
+.img-note-video,
 .img-note-list {
     cursor: pointer;
 }
