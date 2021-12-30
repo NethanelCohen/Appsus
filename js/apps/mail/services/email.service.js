@@ -64,16 +64,6 @@ function isMailRead(mailId, state) {
     return Promise.resolve();
 }
 
-// function mailIsUnread(mailId) {
-//     let mails = storageService.loadFromStorage(KEY)
-//     var readedMail = mails.find(mail => {
-//         return mail.id === mailId
-//     })
-//     readedMail.isRead = false;
-//     _saveMailsToStorage(mails)
-//     return Promise.resolve();
-// }
-
 function remove(mailId) {
     let mails = storageService.loadFromStorage(KEY);
     var removedMail = mails.find(mail => {

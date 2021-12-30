@@ -33,6 +33,12 @@ export class EmailPreview extends React.Component {
       console.log(e.target)
   };
 
+  handleUnreadClick = () => {
+    const {mail} = this.props;
+    emailService.isMailRead(mail.id, false)
+    .then(this.props.loadMails)
+  }
+
   replyToMail = () => {
     console.log('Reply to mail');
   };
