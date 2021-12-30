@@ -64,17 +64,17 @@ export class EmailDetails extends React.Component {
         </div>
         <h1 className="mail-subject">{mail.subject}</h1>
         <div className="mail-description">
-          <h4 className="mail-to" >{mail.to}</h4>
+          <h4 className="mail-from" >{mail.to}</h4>
           <h4 className="mail-date">{date}</h4>
           {repliedClicked && <EmailReply />}
         </div>
         <h2 className="mail-body">{mail.body}</h2>
-        <p className="mail-txt">
+        {/* <p className="mail-txt">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo
           architecto consequatur cumque atque explicabo autem odio vero illum.
           Cumque mollitia nihil exercitationem rem magni perspiciatis nesciunt
           dolorum delectus qui eveniet.
-        </p>
+        </p> */}
         {repliedClicked && (
           <EmailReply replyToMail={this.replyToMail} mail={this.state.mail} />
         )}

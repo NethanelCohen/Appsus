@@ -1,10 +1,12 @@
 .mail-details {
-    margin-top: 2rem;
+    padding-top: 1rem;
+    margin: 2rem;
     grid-template-rows: 20px 1fr 1fr 1fr;
-    grid-template-columns: 0.2fr 1fr 1fr;
-    gap: 2rem;
-    grid-template-areas: '. subject buttons'/* / */
-    '. description . '/* / */
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    row-gap: 10rem;
+    text-align: center;
+    border: 3px solid black;
+    grid-template-areas: 'description subject buttons'/* / */
     '. body . '/* / */
     '. txt . '/* / */
 }
@@ -18,6 +20,7 @@
 
 .mail-subject {
     grid-area: subject;
+    font-size: 3rem;
 }
 
 .mail-description {
@@ -26,9 +29,5 @@
 
 .mail-body {
     grid-area: body;
-}
-
-.mail-txt {
-    grid-area: txt;
     padding-bottom: 2rem;
 }

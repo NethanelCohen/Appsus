@@ -1,4 +1,4 @@
-export function StyledButton({ txt, func,bgc }) {
+export function StyledButton({ txt, func, bgc }) {
   return (
     <button className="styled-button" onClick={func} role="button">
       <span className="styled-button-shadow"></span>

@@ -1,7 +1,6 @@
 .email-folder-list ul {
     grid-area: folders;
     gap: 0.5rem;
-    padding-inline-start: 1rem;
 }
 
 .email-folder-list ul>li {
