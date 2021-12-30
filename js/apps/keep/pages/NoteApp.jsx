@@ -1,4 +1,3 @@
-import { storageService } from '../../../services/storage.service.js';
 import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/NoteList.jsx'
 
@@ -14,7 +13,6 @@ export class NoteApp extends React.Component {
       }
     }
   };
-
 
   componentDidMount() {
     this.loadNotes()
