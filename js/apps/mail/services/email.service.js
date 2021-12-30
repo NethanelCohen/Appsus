@@ -7,7 +7,6 @@ export const emailService = {
     remove,
     createMail,
     mailIsRead,
-    mailMovedToTrash
 
 }
 
@@ -57,27 +56,23 @@ function getMailById(mailId) {
 
 /* display bold text when mail is unread */
 function mailIsRead(mailId) {
-    console.log(mailId);
     const mails = storageService.loadFromStorage(KEY)
     getMailById(mailId).then(mail => mail.isRead = true);
     _saveMailsToStorage(mails)
     return Promise.resolve();
 }
 
-function mailMovedToTrash(mailId) {
-    console.log('mailId:', mailId);
-    const mails = storageService.loadFromStorage(KEY)
-    getMailById(mailId).then(mail => mail.status = 'trash');
+function remove(mailId) {
+    let mails = storageService.loadFromStorage(KEY);
+    var removedMail = mails.find(mail => {
+        return mail.id === mailId
+    })
+    if (removedMail.status === 'trash') {
+        mails = mails.filter(mail => mail.id !== removedMail.id)
+    }
+    else removedMail.status = 'trash';
     _saveMailsToStorage(mails)
     return Promise.resolve();
-}
-
-function remove(mailId) {
-    let mails = storageService.loadFromStorage(KEY)
-    // getMailById(mailId).then(mail => mail.status = 'trash')
-    mails = mails.filter(mail => mail.id !== mailId)
-    storageService.saveToStorage(KEY, mails)
-    return Promise.resolve(mails);
 }
 
 function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, isStared = false, lables = [], status = 'inbox', sentAt, to = 'example@example.com') {
@@ -101,10 +96,10 @@ function _createMails() {
             id: utilService.makeId(),
             subject: 'Mail 1',
             body: 'Here the body should go in',
-            isRead: true,
+            isRead: false,
             isStared: false,
             lables: [],
-            status: 'trash',
+            status: 'inbox',
             sentAt: Date.now(),
             to: 'example@example.com'
         },
@@ -145,10 +140,10 @@ function _createMails() {
             id: utilService.makeId(),
             subject: 'Mail 5',
             body: 'Here the body should go in',
-            isRead: true,
+            isRead: false,
             isStared: false,
             lables: [],
-            status: 'sent',
+            status: 'inbox',
             sentAt: Date.now() - 10250000000,
             to: 'example@example.com'
         }

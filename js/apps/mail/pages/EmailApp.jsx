@@ -19,11 +19,11 @@ export class EmailApp extends React.Component {
   }
 
   handleCriteriaStatus = (newStatus) => {
-    this.setState((prevState) => ({ criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
+    this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
   }
 
 loadMails = () => {
-  const mails = emailService.query(this.state.criteria).then((mails) => {
+    emailService.query(this.state.criteria).then((mails) => {
     this.setState({ mails });
   });
 };

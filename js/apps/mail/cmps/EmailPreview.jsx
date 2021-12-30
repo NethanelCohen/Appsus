@@ -30,9 +30,7 @@ export class EmailPreview extends React.Component {
 
   deleteMail = () => {
     const { mail } = this.props;
-    emailService.remove(mail.id).then(this.props.loadMails);
-    // if (mail.status === 'trash')
-    // else emailService.mailMovedToTrash(mail.id).then(this.props.loadMails)
+    emailService.remove(mail.id).then(this.props.loadMails)
   }
 
   handleDateCheck = (timestamp) => {
