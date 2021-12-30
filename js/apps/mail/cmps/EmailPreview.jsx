@@ -11,17 +11,18 @@ export class EmailPreview extends React.Component {
 
   handleOpenMail = () => {
     const mail = this.props;
-    emailService.isMailRead(mail.id, true).then(this.setState({ isClicked: false }))
-  }
+    emailService
+      .isMailRead(mail.id, true)
+      .then(this.setState({ isClicked: false }));
+  };
 
   extandMailView = (e) => {
     const { isClicked } = this.state;
-    console.log(e.target.innerText);
-    if (e.target.className.includes('star')) return
-   if (e.target.innerText === 'unread') return 
+    if (e.target.className.includes('star')) return;
+    if (e.target.innerText === 'unread') return;
     const { id } = this.props.mail;
     if (!id) return;
-  
+
     emailService
       .isMailRead(id, true)
       .then(
@@ -29,13 +30,13 @@ export class EmailPreview extends React.Component {
           ? this.setState({ isClicked: true }, this.props.loadMails)
           : this.setState({ isClicked: false }, this.props.loadMails)
       );
-      console.log(e.target)
+    console.log(e.target);
   };
 
   handleUnreadClick = () => {
-    const {id} = this.props.mail;
-    emailService.isMailRead(id, false).then(this.props.loadMails)
-  }
+    const { id } = this.props.mail;
+    emailService.isMailRead(id, false).then(this.props.loadMails);
+  };
 
   replyToMail = () => {
     console.log('Reply to mail');
@@ -53,7 +54,7 @@ export class EmailPreview extends React.Component {
     else if (Date.now() - timestamp < 1000 * 60 * 60 * 24 * 2)
       date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString('en-US');
     return date;
-  }
+  };
 
   handleMouse = (state) => {
     state === 'on'
@@ -63,7 +64,7 @@ export class EmailPreview extends React.Component {
 
   render() {
     const { mail } = this.props;
-    let {to} = mail;
+    let { to } = mail;
     const { isClicked } = this.state;
     const { isMouseOver } = this.state;
     const date = this.handleDateCheck(mail.sentAt);
@@ -92,7 +93,11 @@ export class EmailPreview extends React.Component {
                 <Link to={`/mail/${mail.id}`}>
                   <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
                 </Link>
-                <StyledButton func={this.handleUnreadClick} txt="unread" bgc="#8cd5ee" />
+                <StyledButton
+                  func={this.handleUnreadClick}
+                  txt="unread"
+                  bgc="#8cd5ee"
+                />
                 <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
                 <StyledButton
                   func={this.deleteMail}
@@ -121,8 +126,11 @@ export class EmailPreview extends React.Component {
               />
             </div>
             <h4 className="subject">{mail.subject}</h4>
-            <h6 className="to"> {to.substring(0, to.indexOf('@'))}: {mail.to}</h6>
-            <h6>{date}</h6>
+            <h6 className="to">
+              {' '}
+              {to.substring(0, to.indexOf('@'))}: {mail.to}
+            </h6>
+            <h6 className="date">{date}</h6>
             <h6 className="mail-body">{mail.body}</h6>
           </div>
         )}

@@ -8,18 +8,18 @@
 }
 
 .mails-list .mail-header {
+    max-height: 4.2rem;
     width: 100%;
     padding: 1rem;
     border-bottom: 1px solid black;
-    gap: 0.5rem;
 }
 
 .mails-list .mail-header :first-of-type {
     max-width: 123px;
 }
 
-.mails-list .mail-header :nth-child(3) {
-    max-width: 400px;
+.mails-list .mail-header :nth-child(2) {
+    padding-left: 0.3rem;
 }
 
 .mails-list>.mail-header :nth-child(-n + 2),
@@ -27,13 +27,25 @@
     flex-grow: 0.1;
 }
 
-.mails-list>.mail-header :not( :nth-child(-n + 2)),
+.mails-list>.mail-header :nth-child(3) {
+    flex-grow: 0.2;
+}
+
+.mails-list>.mail-header :nth-child(5) {
+    margin-inline-start: 1.8rem;
+}
+
+.mails-list>.mail-header :not( :nth-child(-n + 3)),
 .short-mail-view :not( :nth-child(-n + 2)) {
     flex-grow: 1;
 }
 
+.mails-list>.mail-header :last-child {
+    text-align: center;
+}
+
 .mails-list .short-mail-view :last-of-type {
-    max-width: 200px;
+    max-width: 150px;
 }
 
 .mails-list .short-mail-view {
