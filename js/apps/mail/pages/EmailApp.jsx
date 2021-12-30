@@ -36,8 +36,7 @@ loadMails = () => {
 };
 
 replyClicked = () => {
-  console.log('Reply clicked');
-  this.setState({isReplyClicked: true});
+  this.state.isReplyClicked ? this.setState({isReplyClicked: false}) : this.setState({isReplyClicked: true})
 }
 
 
@@ -52,7 +51,7 @@ render() {
         <input placeholder="Search mail" onChange={(ev) => this.handleCriteriaTxt(ev.target.value)}></input>
       </div>
       <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" />
-      {isReplyClicked && <EmailReply loggedinUser={loggedinUser}/>}
+      {isReplyClicked && <EmailReply loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
       <Folders handleCriteriaStatus={this.handleCriteriaStatus} />
       <EmailList mails={mails} loadMails={this.loadMails} />
     </div>
