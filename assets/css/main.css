@@ -12,6 +12,7 @@
 @import './cmps/folders.css';
 @import './cmps/danger-button.css';
 @import './cmps/user-msg.css';
+@import '../../assets/css/apps/keep/cmps/note-list.css';
 @font-face {
     font-family: 'poppin';
     src: url(/assets/fonts/FuzzyBubbles/FuzzyBubbles-Regular.ttf);

@@ -33,7 +33,6 @@ export class NoteApp extends React.Component {
             />
           </div>
           <div>
-            
             <img
               className="img-note-image"
               src="../../../assets/img/image-regular.svg"
@@ -55,10 +54,8 @@ export class NoteApp extends React.Component {
             />
           </div>
         </div>
-
         <NotesList notes={notes} loadNotes={this.loadNotes}/>
       </div>
-      
     );
   }
 }
