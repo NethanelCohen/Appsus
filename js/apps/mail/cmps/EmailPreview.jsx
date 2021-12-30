@@ -18,7 +18,7 @@ export class EmailPreview extends React.Component {
     const { id } = this.props.mail;
     if(!id) return
     const { isClicked } = this.state;
-    emailService.mailIsRead(id).then(this.props.loadMails)
+    emailService.mailIsRead(id).then(!isClicked ? this.setState({ isClicked: true }, this.props.loadMails) : this.setState({ isClicked: false }, this.props.loadMails))
   }
 
   replyToMail = () => {
