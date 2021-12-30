@@ -11,9 +11,9 @@ export class NotePreview extends React.Component {
   
   render() {
     const {note} = this.props;
-    console.log("note: ", note);
+    console.log("note: ", note.id);
 
-    return <div key={note.id} style={{backgroundColor: `${note.backgroundColor}`}}>
+    return <div className="note flex column" style={{backgroundColor: `${note.backgroundColor}`}}>
         <h4>{note.info.title}</h4>
         <h6>{note.info.body}</h6>
     </div>;

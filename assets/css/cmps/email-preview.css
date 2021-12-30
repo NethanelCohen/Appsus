@@ -46,6 +46,7 @@
 .mail-preview-container .long-mail-view .mail-body {
     grid-area: mail-body;
     padding-bottom: 1rem;
+    overflow: hidden;
 }
 
 .mail-preview-container .long-mail-view .date {
