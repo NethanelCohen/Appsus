@@ -3,7 +3,19 @@ import { NotesList } from '../cmps/NotesList.jsx';
 export class NoteApp extends React.Component {
   state = {
     notes: [],
+    isNoteClicked: false
   };
+
+
+  componentDidMount() {
+    this.loadNotes()
+  }
+
+  // loadNotes = () => {
+
+  // }
+
+
   render() {
     const { notes } = this.state;
     return (
