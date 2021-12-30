@@ -9,9 +9,11 @@ export class EmailReply extends React.Component {
 
     }
 
-    // onGoBack() {
-    //     this.props.history.push('/mail')
-    // }
+    handleChange = ({target}) => {
+        const field = target.name
+        console.log("field: ", field);
+
+    }
 
     handleSendMail = (to, subject, body) => {
         let mails = storageService.loadFromStorage('mails_DB');
@@ -27,14 +29,15 @@ export class EmailReply extends React.Component {
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', outline: '2px solid #1a73e8', backgroundColor: 'white', fontWeight: '800', width: '1000px', height: '700px' }} className="reply-to-mail">
                 <button onClick={this.props.replyClicked}>x</button>
                 {/* <h4>reply to: {this.props.mail.id}</h4> */}
+                <form onSubmit={() => this.handleSendMail}></form>
                 <h4>New Message</h4>
                 <label htmlFor="sendTo">To: </label>
-                <input type='email' name='sendTo'/>
+                <input type='email' name='sendTo' onChange={() => this.handleChange}/>
                 <label htmlFor="sendBy">From: </label>
-                <input type='email' name='sendBy' placeholder={loggedinUser.email}/>
+                <input onChange={(ev) => this.handleChange} type='email' name='sendBy' placeholder={loggedinUser.email}/>
                 <p style={{fontSize: '12px'}} >Created at: {new Date().toTimeString()}</p>
                 <h6>Add your reply here</h6>
-                <button onClick={() => this.handleSendMail('nati', 'hello', 'body')}>send</button>
+                <button>send</button>
             </div>
         )
     }
