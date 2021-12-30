@@ -3,7 +3,3 @@
     border: 3px solid black;
     margin-top: 0.5rem;
 }
-
-.note>* {
-    max-width: 200px;
-}
