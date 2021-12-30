@@ -11,13 +11,13 @@ export function AppHeader() {
       </NavLink>
       
       <nav className="main-nav flex">
-        <NavLink activeClassName="header-active" to="/Mail">
+        <NavLink activeClassName="header-active" to="/mail">
           Mail
         </NavLink>
-        <NavLink activeClassName="header-active" to="/Keep">
-          Miss Keep
+        <NavLink activeClassName="header-active" to="/note">
+          Note
         </NavLink>
-        <NavLink activeClassName="header-active" to="/About">
+        <NavLink activeClassName="header-active" to="/about">
           About
         </NavLink>
       </nav>

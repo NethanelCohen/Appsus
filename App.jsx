@@ -1,5 +1,5 @@
 import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
-import { KeepApp } from "./js/apps/keep/pages/KeepApp.jsx";
+import { NoteApp } from "./js/apps/keep/pages/NoteApp.jsx";
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
 import { EmailDetails } from "./js/apps/mail/cmps/EmailDetails.jsx";
@@ -24,7 +24,7 @@ export function App() {
           <Route component={EmailDetails} path="/mail/:mailId" />
             <Route component={About} path="/about" />
             <Route component={EmailApp} path="/mail" />
-            <Route component={KeepApp} path="/Keep" />
+            <Route component={NoteApp} path="/note" />
             <Route component={Home} path="/" />
           </Switch>
         </main>

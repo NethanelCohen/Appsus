@@ -1,0 +1,33 @@
+.notes-container {
+    font-size: 3rem;
+    margin-top: 2rem;
+    align-content: center;
+}
+
+.notes-container .add-note {
+    justify-self: center;
+    padding: 2rem;
+    width: 80%;
+    border: 3px solid black;
+    gap: 2rem;
+}
+
+.notes-container .add-note input {
+    padding: 1rem;
+    font-size: 3rem;
+    width: 80%;
+    border: none;
+    text-align: center;
+}
+
+.notes-container .add-note input:focus {
+    outline: none;
+}
+
+.img-note-font,
+.img-note-image,
+.img-note-youtube,
+.img-note-list {
+    width: 100px;
+    height: 100px;
+}
