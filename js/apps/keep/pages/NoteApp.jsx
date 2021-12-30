@@ -18,15 +18,31 @@ export class NoteApp extends React.Component {
     });
   }
 
+  handleClick = () => {
+    const {isNoteClicked} = this.state;
+    !isNoteClicked ? this.setState({isNoteClicked: true}) : this.setState({isNoteClicked: false})
+  }
+
+  handleNoteAdd = () => {
+
+  }
+
 
   render() {
     const { notes } = this.state;
-    console.log("notes: ", notes);
+    const {isNoteClicked} = this.state
     if (!notes) return <h1> No notes </h1>
     return (
       <div className="note-app-container flex column">
         <div className="add-note flex">
-          <input placeholder="What's on your mind..."></input>
+          <button style={{opacity: '0', width: '100%'}} onClick={this.handleClick}></button>
+            {isNoteClicked && <div style={{textAlign: 'start'}} className='new-note'>
+            <form onSubmit={this.handleNoteAdd}>
+              <input style={{width: '100%', textAlign: 'start'}} placeholder='Title'/>
+              <input placeholder='Keep your thoughts here'/>
+              <button>keep</button>
+            </form>
+            </div>}
           <div onClick={()=>console.log('txt Note')}>
             <img
               className="img-note-txt"
