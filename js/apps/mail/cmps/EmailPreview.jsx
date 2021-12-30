@@ -24,7 +24,7 @@ export class EmailPreview extends React.Component {
     if (!id) return;
   
     emailService
-      .isMailRead(id)
+      .isMailRead(id, true)
       .then(
         !isClicked
           ? this.setState({ isClicked: true }, this.props.loadMails)
