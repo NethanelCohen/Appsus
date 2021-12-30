@@ -39,7 +39,7 @@ render() {
       <div className="search-filter">
         <input placeholder="Search mail" onChange={(ev) => this.handleCriteriaTxt(ev.target.value)}></input>
       </div>
-      <StyledButton func={()=>console.log('ComposeButton')} txt="Compose" bgc="blue" />
+      <StyledButton func={()=>console.log('ComposeButton')} txt="Compose" bgc="#03a9f4" />
       <Folders handleCriteriaStatus={this.handleCriteriaStatus} />
       <EmailList mails={mails} loadMails={this.loadMails} />
     </div>

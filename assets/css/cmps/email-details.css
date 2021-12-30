@@ -18,16 +18,16 @@
     gap: 1rem;
 }
 
-.mail-subject {
+.mail-details .mail-subject {
     grid-area: subject;
     font-size: 3rem;
 }
 
-.mail-description {
+.mail-details .mail-description {
     grid-area: description;
 }
 
-.mail-body {
+.mail-details .mail-body {
     grid-area: body;
     padding-bottom: 2rem;
 }
