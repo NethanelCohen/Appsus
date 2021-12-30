@@ -5,6 +5,11 @@
     border-bottom: 1px solid black;
 }
 
+.empty-messege {
+    grid-area: empty;
+    text-align: center;
+}
+
 .mail-preview-container:last-of-type {
     margin-bottom: 1rem;
 }

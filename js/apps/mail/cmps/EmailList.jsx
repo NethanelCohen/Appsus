@@ -7,7 +7,7 @@ export function EmailList({ mails, loadMails }) {
       ? (target.className = 'star on')
       : (target.className = 'star off');
   }
-  if (!mails.length) return <h1> Inbox is empty... </h1>;
+  if (!mails.length) return <h1 className="empty-messege"> Folder is empty... </h1>;
   return (
     <section className="mails-list grid">
       <div className="mail-header flex">
@@ -19,7 +19,7 @@ export function EmailList({ mails, loadMails }) {
         <h6>Subject</h6>
         <h6>Date</h6>
       </div>
-      {mails.map((mail) => (
+      { mails.map((mail) => (
         <EmailPreview key={mail.id} mail={mail} loadMails={loadMails} setColorStar={setColorStar} />
       ))}
     </section>
