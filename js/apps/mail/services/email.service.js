@@ -37,14 +37,12 @@ function _getCriteriaMails(mails, criteria) {
     let { status, txt, isRead, isStared, lables } = criteria;
     status = status ? status : 'inbox';
     txt = txt ? _makeLowerCase(txt) : '';
-    // isRead = isRead ? isRead : false;
     isStared = isStared ? isStared : false;
     lables = lables ? lables : [];
     return mails.filter(mail => {
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
             _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
-            // mail.isRead === isRead &&
             mail.isStared === isStared &&
             mail.lables.toString().includes(lables.toString())
     })
@@ -58,7 +56,6 @@ function getMailById(mailId) {
     return Promise.resolve(mail)
 }
 
-/* display bold text when mail is unread */
 function isMailRead(mailId, state) {
     let mails = storageService.loadFromStorage(KEY)
     var readedMail = mails.find(mail => {
@@ -91,7 +88,7 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
         isStared,
         lables,
         status,
-        sentAt: new Date().toLocaleDateString(),
+        sentAt,
         to
     }
 }
@@ -107,7 +104,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now(),
+            sentAt: new Date().getTime(),
             to: 'example@example.com'
         },
         {
@@ -118,7 +115,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now() - 86400001,
+            sentAt: new Date().getTime() - 86400001,
             to: 'example@example.com'
         },
         {
@@ -129,7 +126,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now() - 1000400000,
+            sentAt: new Date().getTime() - 1000400000,
             to: 'example@example.com'
         },
         {
@@ -140,7 +137,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now() - 10004250000,
+            sentAt: new Date().getTime() - 10004250000,
             to: 'example@example.com'
         },
         {
@@ -151,7 +148,7 @@ function _createMails() {
             isStared: false,
             lables: [],
             status: 'inbox',
-            sentAt: Date.now() - 10250000000,
+            sentAt: new Date().getTime() - 10250000000,
             to: 'example@example.com'
         }
         ]
