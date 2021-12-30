@@ -1,4 +1,4 @@
-import { NotesList } from '../cmps/NotesList.jsx';
+import { NoteList } from '../cmps/NoteList.jsx';
 
 export class NoteApp extends React.Component {
   state = {
@@ -7,9 +7,9 @@ export class NoteApp extends React.Component {
   };
 
 
-  componentDidMount() {
-    this.loadNotes()
-  }
+  // componentDidMount() {
+  //   this.loadNotes()
+  // }
 
   // loadNotes = () => {
 
@@ -52,7 +52,7 @@ export class NoteApp extends React.Component {
           </div>
         </div>
 
-        <NotesList notes={notes} />
+        <NoteList notes={notes} />
       </div>
     );
   }

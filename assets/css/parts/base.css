@@ -31,7 +31,11 @@ main {
 button,
 input,
 a,
-.star {
+.star,
+.img-note-font,
+.img-note-image,
+.img-note-youtube,
+.img-note-list {
     cursor: pointer;
 }
 
