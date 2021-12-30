@@ -6,7 +6,7 @@ export function NoteList({ notes, loadNotes }) {
   return (
     <section className="note-list">
       { notes.map((note) => (
-        <NotePreview note={note} loadNotes={loadNotes} />
+        <NotePreview note={note} key={note.id} loadNotes={loadNotes} />
       ))}
     </section>
   );
