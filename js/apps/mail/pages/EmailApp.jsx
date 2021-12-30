@@ -23,6 +23,10 @@ export class EmailApp extends React.Component {
     this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
   }
 
+  handleCriteriaTxt = (newTxt) => {
+    this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, txt: newTxt} }), () => this.loadMails())
+  }
+
 loadMails = () => {
     emailService.query(this.state.criteria).then((mails) => {
     this.setState({ mails });
@@ -33,7 +37,7 @@ render() {
   return (
     <div className="email-list-container grid">
       <div className="search-filter">
-        <input placeholder="Search mail"></input>
+        <input placeholder="Search mail" onChange={(ev) => this.handleCriteriaTxt(ev.target.value)}></input>
       </div>
       <StyledButton func={()=>console.log('ComposeButton')} txt="Compose" bgc="blue" />
       <Folders handleCriteriaStatus={this.handleCriteriaStatus} />

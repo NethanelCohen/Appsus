@@ -16,10 +16,9 @@ export class EmailPreview extends React.Component {
 
   extandMailView = (e) => {
     const { isClicked } = this.state;
-    if (e.target.className.includes('star')) {
-     ()=>this.props.setColorStar(e);
-     return
-   }
+    console.log(e.target.innerText);
+    if (e.target.className.includes('star')) return
+   if (e.target.innerText === 'unread') return 
     const { id } = this.props.mail;
     if (!id) return;
   
@@ -34,8 +33,8 @@ export class EmailPreview extends React.Component {
   };
 
   handleUnreadClick = () => {
-    const {mail} = this.props;
-    emailService.isMailRead(mail.id, false).then(this.props.loadMails)
+    const {id} = this.props.mail;
+    emailService.isMailRead(id, false).then(this.props.loadMails)
   }
 
   replyToMail = () => {
@@ -64,6 +63,7 @@ export class EmailPreview extends React.Component {
 
   render() {
     const { mail } = this.props;
+    let {to} = mail;
     const { isClicked } = this.state;
     const { isMouseOver } = this.state;
     const date = this.handleDateCheck(mail.sentAt);
@@ -92,6 +92,7 @@ export class EmailPreview extends React.Component {
                 <Link to={`/mail/${mail.id}`}>
                   <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
                 </Link>
+                <StyledButton func={this.handleUnreadClick} txt="unread" bgc="#8cd5ee" />
                 <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
                 <StyledButton
                   func={this.deleteMail}
@@ -111,7 +112,7 @@ export class EmailPreview extends React.Component {
               <Link to={`/mail/${mail.id}`}>
                 <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
               </Link>
-              <StyledButton func={this.handleUnreadClick} txt="unread" bgc="#8cd5ee" />
+              <StyledButton txt="unread" bgc="#8cd5ee" />
               <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
               <StyledButton
                 func={this.deleteMail}
@@ -120,7 +121,7 @@ export class EmailPreview extends React.Component {
               />
             </div>
             <h4 className="subject">{mail.subject}</h4>
-            <h6 className="to">{mail.to}</h6>
+            <h6 className="to"> {to.substring(0, to.indexOf('@'))}: {mail.to}</h6>
             <h6>{date}</h6>
             <h6 className="mail-body">{mail.body}</h6>
           </div>
