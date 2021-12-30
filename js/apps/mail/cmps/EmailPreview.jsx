@@ -36,6 +36,7 @@ export class EmailPreview extends React.Component {
   handleUnreadClick = () => {
     const { id } = this.props.mail;
     emailService.isMailRead(id, false).then(this.props.loadMails);
+    if (this.state.isClicked = true) this.setState({isClicked: false});
   };
 
   replyToMail = () => {
@@ -117,7 +118,11 @@ export class EmailPreview extends React.Component {
               <Link to={`/mail/${mail.id}`}>
                 <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
               </Link>
-              <StyledButton txt="unread" bgc="#8cd5ee" />
+              <StyledButton
+                  func={this.handleUnreadClick}
+                  txt="unread"
+                  bgc="#8cd5ee"
+                />
               <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
               <StyledButton
                 func={this.deleteMail}
