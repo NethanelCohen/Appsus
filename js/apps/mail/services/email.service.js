@@ -6,15 +6,20 @@ export const emailService = {
     getMailById,
     remove,
     createMail,
-    isMailRead
+    isMailRead,
+    getUserDetails,
+}
+
+const loggedinUser = {
+    email: 'nati@appsus.com',
+    fullname: 'Netanel Netanel'
 }
 
 const KEY = 'mails_DB'
 _createMails()
 
-const loggedinUser = {
-    email: 'nati@appsus.com',
-    fullname: 'Netanel Netanel'
+function getUserDetails() {
+    return loggedinUser;
 }
 
 function query(criteria = null) {
@@ -37,7 +42,7 @@ function _getCriteriaMails(mails, criteria) {
     lables = lables ? lables : [];
     return mails.filter(mail => {
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
-                _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
+            _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
             // mail.isRead === isRead &&
             mail.isStared === isStared &&
