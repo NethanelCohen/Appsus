@@ -1,9 +1,18 @@
 export const utilService = {
     makeId,
-    getRandomColor
+    getRandomColor,
+    handleDateCheck
 }
 
 
+function handleDateCheck(timestamp) {
+    let date = new Date(timestamp).toLocaleDateString('he-IL');
+    if (Date.now() - timestamp < 1000 * 60 * 60 * 24)
+      date = 'Today at ' + new Date(timestamp).toLocaleTimeString('he-IL');
+    else if (Date.now() - timestamp < 1000 * 60 * 60 * 24 * 2)
+      date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString('he-IL');
+    return date;
+  };
 
 function makeId(length = 5) {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

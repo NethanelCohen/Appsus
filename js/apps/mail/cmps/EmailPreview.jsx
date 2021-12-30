@@ -1,5 +1,6 @@
 import { emailService } from '../services/email.service.js';
 import { StyledButton } from '../../../../cmps/StyledButton.jsx';
+import { utilService } from '../../../services/util.services.js';
 
 const { Link } = ReactRouterDOM;
 
@@ -49,15 +50,6 @@ export class EmailPreview extends React.Component {
     emailService.remove(mail.id).then(this.props.loadMails);
   };
 
-  handleDateCheck = (timestamp) => {
-    var date = new Date(timestamp).toLocaleDateString('en-US');
-    if (Date.now() - timestamp < 1000 * 60 * 60 * 24)
-      date = 'Today at ' + new Date(timestamp).toLocaleTimeString('en-US');
-    else if (Date.now() - timestamp < 1000 * 60 * 60 * 24 * 2)
-      date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString('en-US');
-    return date;
-  };
-
   handleMouse = (state) => {
     state === 'on'
       ? this.setState({ isMouseOver: true })
@@ -69,8 +61,7 @@ export class EmailPreview extends React.Component {
     let { to } = mail;
     const { isClicked } = this.state;
     const { isMouseOver } = this.state;
-    const date = this.handleDateCheck(mail.sentAt);
-    console.log(date)
+    const date = utilService.handleDateCheck(mail.sentAt);
     const isMailRead = mail.isRead ? 'white' : '#f18d8bf2';
     return (
       <div
