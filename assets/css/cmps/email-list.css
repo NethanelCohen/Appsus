@@ -31,7 +31,7 @@
 
 .mails-list .mail-header :last-child {
     text-align: right;
-    flex-grow: 0.3;
+    flex-grow: 0.2;
 }
 
 .short-mail-view {
