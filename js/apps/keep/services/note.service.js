@@ -55,8 +55,9 @@ function query() {
 }
 
 
-function createNote({type, info: {body, title}, backgroundColor}) {
-    return {
+function createNote({type, info: {body, title}, backgroundColor = utilService.getRandomColor()}) {
+    let notes = storageService.loadFromStorage(KEY) || [];
+    const newNote = {
         id: utilService.makeId(),
         type,
         info: {
@@ -65,6 +66,9 @@ function createNote({type, info: {body, title}, backgroundColor}) {
         },
         backgroundColor
     }
+    notes = [newNote, ...notes];
+    _saveNoteToStorage(notes);
+    return Promise.resolve(notes);
 }
 
 
@@ -104,7 +108,6 @@ function _createNotes() {
             }
         ]
         notes = notes.map(note => createNote(note));
-        _saveNoteToStorage(notes);
     }
 }
 
