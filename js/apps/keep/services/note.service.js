@@ -46,13 +46,16 @@ const notes = [
     }
 ]
 
+_createNotes()
+
 function query() {
     const notes = storageService.loadFromStorage(KEY);
+    console.log("notes: ", notes);
     return Promise.resolve(notes);
 }
 
 
-function createNote(type, body, title, backgroundColor) {
+function createNote({type, info: {body, title}, backgroundColor}) {
     return {
         id: utilService.makeId(),
         type,
@@ -60,14 +63,12 @@ function createNote(type, body, title, backgroundColor) {
             body,
             title,
         },
-        style: {
-            backgroundColor
-        }
+        backgroundColor
     }
 }
 
 
-function createNotes() {
+function _createNotes() {
     let notes = storageService.loadFromStorage(KEY);
     if (!notes || !notes.length) {
         notes = [
@@ -78,9 +79,8 @@ function createNotes() {
                     body: 'Insert note text here',
                     title: 'First note',
                 },
-                style: {
-                    backgroundColor: '#f7d794'
-                }
+                backgroundColor: '#f7d794'
+
             },
             {
                 id: utilService.makeId(),
@@ -89,9 +89,8 @@ function createNotes() {
                     body: 'Insert note text here',
                     title: 'Second note',
                 },
-                style: {
-                    backgroundColor: '#63cdda'
-                }
+                backgroundColor: '#63cdda'
+
             },
             {
                 id: utilService.makeId(),
@@ -100,12 +99,11 @@ function createNotes() {
                     body: 'Insert note text here',
                     title: 'Third note',
                 },
-                style: {
-                    backgroundColor: '#f8a5c2'
-                }
+                backgroundColor: '#f8a5c2'
+
             }
         ]
-        notes = notes.map(note => createNote(note.id, note.info.body, note.info.title, note.info.style))
+        notes = notes.map(note => createNote(note));
         _saveNoteToStorage(notes);
     }
 }
