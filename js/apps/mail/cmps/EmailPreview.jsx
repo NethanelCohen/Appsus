@@ -11,14 +11,20 @@ export class EmailPreview extends React.Component {
 
   handleOpenMail = () => {
     const mail = this.props;
-    emailService.mailIsRead(mail.id).then(this.setState({ isClicked: false }))
+    emailService.isMailRead(mail.id).then(this.setState({ isClicked: false }))
   }
 
   extandMailView = () => {
     const { id } = this.props.mail;
     if(!id) return
     const { isClicked } = this.state;
-    emailService.mailIsRead(id).then(!isClicked ? this.setState({ isClicked: true }, this.props.loadMails) : this.setState({ isClicked: false }, this.props.loadMails))
+    emailService.isMailRead(id, true).then(!isClicked ? this.setState({ isClicked: true }, this.props.loadMails) : this.setState({ isClicked: false }, this.props.loadMails))
+  }
+
+  handleUnreadClick = () => {
+    const {mail} = this.props;
+    const { isClicked } = this.state;
+    emailService.isMailRead(id, false).then(!isClicked ? this.setState({ isClicked: true }) : this.setState({ isClicked: false }))
   }
 
   replyToMail = () => {
@@ -35,7 +41,7 @@ export class EmailPreview extends React.Component {
     if (Date.now() - timestamp < 1000 * 60 * 60 * 24) date = 'Today at ' + new Date(timestamp).toLocaleTimeString("en-US");
     else if (Date.now() - timestamp < 1000 * 60 * 60 * 24 * 2) date = 'Yesterday at ' + new Date(timestamp).toLocaleTimeString("en-US");
     return date;
-  };
+  }
 
   handleMouse = (state) => {
     state === 'on' ? this.setState({ isMouseOver: true }) : this.setState({ isMouseOver: false });
@@ -66,6 +72,7 @@ export class EmailPreview extends React.Component {
               <Link to={`/mail/${mail.id}`}>
               <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
               </Link>
+              <StyledButton func={this.handleUnreadClick} txt="unread" bgc="#8cd5ee" />
               <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
               <StyledButton func={this.deleteMail} txt="Delete" bgc="hsl(345deg 100% 47%)" />
             </div>}
@@ -77,6 +84,7 @@ export class EmailPreview extends React.Component {
             <Link to={`/mail/${mail.id}`}>
             <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
             </Link>
+             <StyledButton func={this.handleUnreadClick} txt="unread" bgc="#8cd5ee" />
              <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
             <StyledButton func={this.deleteMail} txt="Delete" bgc="hsl(345deg 100% 47%)"/>
           </div>
