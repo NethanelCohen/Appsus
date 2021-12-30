@@ -19,11 +19,7 @@
 }
 
 .mails-list .mail-header :nth-child(3) {
-    margin-inline-start: 2rem;
-}
-
-.mails-list .mail-header :nth-last-of-type(-n+2) {
-    margin-inline-start: 7rem;
+    max-width: 400px;
 }
 
 .mails-list>.mail-header :nth-child(-n + 2),
@@ -34,6 +30,10 @@
 .mails-list>.mail-header :not( :nth-child(-n + 2)),
 .short-mail-view :not( :nth-child(-n + 2)) {
     flex-grow: 1;
+}
+
+.mails-list .short-mail-view :last-of-type {
+    max-width: 200px;
 }
 
 .mails-list .short-mail-view {
