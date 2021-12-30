@@ -1,4 +1,4 @@
-import { NoteList } from '../cmps/NotesList.jsx';
+import { NoteList } from '../cmps/NoteList.jsx';
 import { noteService } from '../services/note.service.js';
 
 export class NoteApp extends React.Component {
