@@ -56,8 +56,11 @@ function getMailById(mailId) {
 
 /* display bold text when mail is unread */
 function mailIsRead(mailId) {
-    const mails = storageService.loadFromStorage(KEY)
-    getMailById(mailId).then(mail => mail.isRead = true);
+    let mails = storageService.loadFromStorage(KEY)
+    var readedMail = mails.find(mail => {
+        return mail.id === mailId
+    })
+    readedMail.isRead = true;
     _saveMailsToStorage(mails)
     return Promise.resolve();
 }

@@ -15,13 +15,11 @@ export class EmailPreview extends React.Component {
   }
 
   extandMailView = () => {
-    console.log();
     const { id } = this.props.mail;
     if(!id) return
-    console.log("id: ", id);
-    console.log(this.props.mail.isRead);
     const { isClicked } = this.state;
-    emailService.mailIsRead(id).then(!isClicked ? this.setState({ isClicked: true }) : this.setState({ isClicked: false }))
+    emailService.mailIsRead(id).then(this.props.loadMails)
+    // (!isClicked ? this.setState({ isClicked: true }) : this.setState({ isClicked: false }))
   }
 
   replyToMail = () => {
@@ -49,7 +47,7 @@ export class EmailPreview extends React.Component {
     const { isClicked } = this.state;
     const { isMouseOver } = this.state;
     const date = this.handleDateCheck(mail.sentAt);
-    const isMailRead = mail.isRead ? 'white' : 'greenyellow';
+    const isMailRead = mail.isRead ? 'white' : '#f18d8bf2';
     return (
       <div
         className="mail-preview-container flex"
@@ -75,7 +73,7 @@ export class EmailPreview extends React.Component {
             <h6>{date}</h6>
           </div>
         )}
-        {isClicked && <div style={{ fontSize: `${isMailRead}` }} className="long-mail-view grid">
+        {isClicked && <div style={{ backgroundColor: `${isMailRead}` }} className="long-mail-view grid">
           <div className="long-mail-btn flex">
             <Link to={`/mail/${mail.id}`}>
             <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
