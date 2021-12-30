@@ -25,34 +25,34 @@ export class NoteApp extends React.Component {
       <div className="note-app-container flex column">
         <div className="add-note flex">
           <input placeholder="What's on your mind..."></input>
-          <div>
+          <div onClick={()=>console.log('txt Note')}>
             <img
-              className="img-note-font"
+              className="img-note-txt"
               src="../../../assets/img/font-solid.svg"
               alt=""
             />
           </div>
-          <div>
+          <div onClick={()=>console.log('image Note')}>
             <img
               className="img-note-image"
               src="../../../assets/img/image-regular.svg"
               alt=""
             />
           </div>
-          <div>
+          <div onClick={()=>console.log('video Note')}>
             <img
-              className="img-note-youtube"
+              className="img-note-video"
               src="../../../assets/img/youtube-brands.svg"
               alt=""
             />
           </div>
-          <div>
+          <div onClick={()=>console.log('list Note')}>
             <img
               className="img-note-list"
               src="../../../assets/img/list-solid.svg"
               alt=""
             />
-          </div>
+          </div >
         </div>
         <NoteList notes={notes} loadNotes={this.loadNotes}/>
       </div>
