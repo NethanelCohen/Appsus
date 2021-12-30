@@ -91,7 +91,7 @@ function createMail(subject = 'New mail arrived', body = 'This is the body of th
         isStared,
         lables,
         status,
-        sentAt,
+        sentAt: new Date().toLocaleDateString(),
         to
     }
 }
