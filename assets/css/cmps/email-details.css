@@ -1,0 +1,34 @@
+.mail-details {
+    margin-top: 2rem;
+    grid-template-rows: 20px 1fr 1fr 1fr;
+    grid-template-columns: 0.2fr 1fr 1fr;
+    gap: 2rem;
+    grid-template-areas: '. subject buttons'/* / */
+    '. description . '/* / */
+    '. body . '/* / */
+    '. txt . '/* / */
+}
+
+.mail-inner-btn {
+    margin-inline-end: 2rem;
+    grid-area: buttons;
+    justify-self: flex-end;
+    gap: 1rem;
+}
+
+.mail-subject {
+    grid-area: subject;
+}
+
+.mail-description {
+    grid-area: description;
+}
+
+.mail-body {
+    grid-area: body;
+}
+
+.mail-txt {
+    grid-area: txt;
+    padding-bottom: 2rem;
+}

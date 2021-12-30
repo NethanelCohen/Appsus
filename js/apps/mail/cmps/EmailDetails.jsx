@@ -50,8 +50,8 @@ export class EmailDetails extends React.Component {
       ' ' +
       new Date(mail.sentAt).toLocaleTimeString('en-US');
     return (
-      <section className="mail-details flex column">
-        <div className="mail-inner-btn">
+      <section className="mail-details grid">
+        <div className="mail-inner-btn flex">
           <Link to={'/mail'}>
             <StyledButton  txt="⏎" bgc="grey" />
           </Link>
@@ -62,14 +62,14 @@ export class EmailDetails extends React.Component {
             bgc="hsl(345deg 100% 47%)"
           />
         </div>
-        <h1>{mail.subject}</h1>
+        <h1 className="mail-subject">{mail.subject}</h1>
         <div className="mail-description">
-          <h4>{mail.to}</h4>
-          <h4>{date}</h4>
+          <h4 className="mail-to" >{mail.to}</h4>
+          <h4 className="mail-date">{date}</h4>
           {repliedClicked && <EmailReply />}
         </div>
-        <h2>{mail.body}</h2>
-        <p>
+        <h2 className="mail-body">{mail.body}</h2>
+        <p className="mail-txt">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo
           architecto consequatur cumque atque explicabo autem odio vero illum.
           Cumque mollitia nihil exercitationem rem magni perspiciatis nesciunt
