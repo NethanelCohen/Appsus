@@ -122,7 +122,7 @@ export class EmailPreview extends React.Component {
             </div>
             <h4 className="subject">{mail.subject}</h4>
             <h6 className="to"> {to.substring(0, to.indexOf('@'))}: {mail.to}</h6>
-            <h6>{date}</h6>
+            <h6 className="date">{date}</h6>
             <h6 className="mail-body">{mail.body}</h6>
           </div>
         )}

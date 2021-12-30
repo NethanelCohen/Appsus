@@ -17,34 +17,40 @@
 .mail-preview-container .long-mail-view {
     padding: 1rem;
     min-width: 100%;
+    min-height: 300px;
     justify-content: left;
-    gap: 1rem;
-    grid-template-rows: 50px 25px 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: ' subject . buttons '/*/*/
-    ' to . .'/*/*/
+    gap: 2rem;
+    grid-template-rows: 50px 75px 1fr;
+    grid-template-columns: 1fr 1fr 120px;
+    grid-template-areas: ' subject buttons date   '/*/*/
+    ' to . .  '/*/*/
     ' mail-body mail-body mail-body';
 }
 
 .mail-preview-container .long-mail-btn {
     gap: 0.5rem;
-    width: 100%;
+    /* width: 100%; */
     grid-area: buttons;
     max-height: 50px;
     justify-self: flex-end;
 }
 
-.subject {
+.mail-preview-container .long-mail-view .subject {
     grid-area: subject;
 }
 
-.to {
+.mail-preview-container .long-mail-view .to {
     grid-area: to;
 }
 
-.mail-body {
+.mail-preview-container .long-mail-view .mail-body {
     grid-area: mail-body;
     padding-bottom: 1rem;
+}
+
+.mail-preview-container .long-mail-view .date {
+    grid-area: date;
+    justify-self: flex-end;
 }
 
 .hover-mail-btn {
