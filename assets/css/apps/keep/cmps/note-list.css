@@ -1,8 +1,9 @@
 .note-list {
-    column-count: 3;
+    column-width: 200px;
+    column-span: all;
     border: 1px solid black;
     width: 90%;
     margin-top: 1rem;
-    column-gap: 1.5rem;
+    gap: 1rem;
     font-size: 2rem;
 }

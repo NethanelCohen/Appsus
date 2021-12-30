@@ -70,6 +70,7 @@ export class EmailPreview extends React.Component {
     const { isClicked } = this.state;
     const { isMouseOver } = this.state;
     const date = this.handleDateCheck(mail.sentAt);
+    console.log(date)
     const isMailRead = mail.isRead ? 'white' : '#f18d8bf2';
     return (
       <div
