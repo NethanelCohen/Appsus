@@ -26,7 +26,7 @@ export function Folders({handleCriteriaStatus , activeStatus}) {
           Draft
         </li>
         <li
-          className={activeStatus === 'Stared' ? 'active-filter' : ''}
+          className={activeStatus === 'stared' ? 'active-filter' : ''}
           data-value="stared">
           Stared
         </li>
