@@ -77,7 +77,7 @@ export class EmailPreview extends React.Component {
             className="short-mail-view flex">
             <input type="checkbox" />
             <h6
-              className={mail.isStared === true ? 'star on' : 'star off'} ///////////////get starrred state
+              className={mail.isStared === true ? 'star on' : 'star off'} 
               onClick={(ev) => {
                 this.props.setColorStar(ev);
                 emailService.isMailStared(mail.id);
