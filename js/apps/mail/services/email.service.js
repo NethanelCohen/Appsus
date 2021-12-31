@@ -39,11 +39,9 @@ function _makeLowerCase(value) {
     return value.toString().toLowerCase();
 }
 
-function _getStaredMails(mails, criteria) {
-    let { isStared } = criteria
-    isStared = isStared ? isStared : false;
+function _getStaredMails(mails) {
     return mails.filter(mail => {
-        return mail.isStared === isStared
+        return mail.isStared === true
     })
 }
 
@@ -101,16 +99,17 @@ function remove(mailId) {
     return Promise.resolve();
 }
 
-function createMail(subject = 'New mail arrived', body = 'This is the body of the mail', isRead = false, isStared = false, lables = [], status = 'inbox', sentAt, to = 'example@example.com') {
+function createMail(mail) {
+    const { subject, status, body, to } = mail
     return {
         id: utilService.makeId(),
         subject,
         body,
-        isRead,
-        isStared,
-        lables,
+        isRead: true,
+        isStared: false,
+        lables: [],
         status,
-        sentAt,
+        sentAt: new Date().getTime(),
         to
     }
 }

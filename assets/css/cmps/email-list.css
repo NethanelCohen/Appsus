@@ -38,11 +38,20 @@
     align-items: center;
 }
 
-.short-mail-view :nth-child(-n + 2) {
-    flex-grow: 0.1;
+.short-mail-view>* {
+    text-align: left;
 }
 
-.short-mail-view :not( :nth-child(-n + 2)) {
+.short-mail-view> :nth-child(3) {
+    max-width: 115px;
+}
+
+.short-mail-view> :nth-child(4) {
+    width: 330px;
+    text-align: left;
+}
+
+.short-mail-view :not(:nth-child(-n + 2)) {
     flex-grow: 1;
 }
 
