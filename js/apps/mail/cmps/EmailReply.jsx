@@ -36,15 +36,15 @@ export class EmailReply extends React.Component {
 
   handleSendMail = (ev) => {
     ev.preventDefault();
+    debugger
+    const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
+    if (ev.type === 'click' && ((subject) || (body) || (to))) {
+      let mail = this.state.newMail;
+      mail.status = 'draft';
+    }
     const sentMail = emailService.createMail(this.state.newMail);
     storageService.saveToStorage('mails_DB', [sentMail, ...mails]);
-    this.props.replyClicked();
-  };
-  handleClose = () => {
-      let mail = this.state.newMail
-      console.log(...mail)
-    // const sentMail = emailService.createMail(this.state.newMail);
     this.props.replyClicked();
   };
 
@@ -65,7 +65,7 @@ export class EmailReply extends React.Component {
           height: '700px',
         }}
         className="reply-to-mail">
-        <button onClick={this.handleClose}>x</button>
+        <button onClick={this.handleSendMail}>x</button>
         <form onSubmit={(ev) => this.handleSendMail(ev)}>
           <h4>New Message</h4>
           <label htmlFor="sendTo">To: </label>
