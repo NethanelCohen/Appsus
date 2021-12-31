@@ -22,7 +22,7 @@ export class NotePreview extends React.Component {
       const { note } = this.props
       return this.setState({ note, isNoteClicked: false})
     }
-    return this.setState({ editNote, isNoteClicked: true });
+    // return this.setState({ editNote, isNoteClicked: true });
   }
 
   handleNoteClick = () => {
@@ -49,12 +49,12 @@ export class NotePreview extends React.Component {
     notes = notes.filter(note => note.id !== removedNote.id)
     notes = [this.state.note, ...notes];
     storageService.saveToStorage('notes_DB', notes);
+    this.setState({isNoteClicked: false, isUpdating: false});
     this.props.loadNotes();
-    this.setState({isNoteClicked: false});
   }
 
   handleCloseNote = () => {
-    this.setState({isNoteClicked: false});
+    this.setState({isNoteClicked: false, isUpdating: false});
   }
 
   render() {
