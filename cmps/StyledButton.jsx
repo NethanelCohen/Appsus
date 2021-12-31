@@ -1,13 +1,14 @@
-export function StyledButton({ txt, func, bgc }) {
+export function StyledButton({ txt, func, bgc, classname }) {
   return (
-    <button className="styled-button" onClick={func} role="button">
-      <span className="styled-button-shadow"></span>
-      <span className="styled-button-edge"></span>
+    <button
+      className={`styled-button${classname}`}
+      onClick={func}
+      role="button">
       <span
         style={{
           backgroundColor: `${bgc}`,
         }}
-        className="styled-button-front text">
+        className={`styled-button-front text ${classname}`}>
         {txt}
       </span>
     </button>

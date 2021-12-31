@@ -53,10 +53,20 @@ export class EmailDetails extends React.Component {
       <section className="mail-details grid">
         <div className="mail-inner-btn flex">
           <Link to={'/mail'}>
-            <StyledButton  txt="⏎" bgc="grey" />
+            <StyledButton  txt="⏎" bgc="grey" classname="" />
           </Link>
-          <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
-          <StyledButton
+          {!this.props.isReplyClicked && (
+                  <StyledButton 
+                  func={() => this.props.replyClicked()}
+                  classname=""
+                    txt="reply!!"
+                    bgc="green"
+                    loadMails={this.props.loadMails}
+                    loggedinUser={this.props.loggedinUser}
+                    replyClicked={this.props.replyClicked}
+                  />
+                )}
+          <StyledButton classname=""
             func={this.deleteMail}
             txt="Delete"
             bgc="hsl(345deg 100% 47%)"

@@ -34,7 +34,6 @@ export class EmailPreview extends React.Component {
           ? this.setState({ isClicked: true }, this.props.loadMails)
           : this.setState({ isClicked: false }, this.props.loadMails)
       );
-    // console.log(e.target);
   };
 
   handleUnreadClick = () => {
@@ -77,7 +76,7 @@ export class EmailPreview extends React.Component {
             className="short-mail-view flex">
             <input type="checkbox" />
             <h6
-              className={mail.isStared === true ? 'star on' : 'star off'} 
+              className={mail.isStared === true ? 'star on' : 'star off'}
               onClick={(ev) => {
                 this.props.setColorStar(ev);
                 emailService.isMailStared(mail.id);
@@ -87,18 +86,29 @@ export class EmailPreview extends React.Component {
             <h6>{mail.subject}</h6>
             <h6>{mail.to}</h6>
             <h6>{mail.body}</h6>
+             {/* loggedinUser={loggedinUser} replyClicked={this.replyClicked} */}
             {isMouseOver && (
               <div className="hover-mail-btn flex">
-                <Link to={`/mail/${mail.id}`}>
-                  <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
+                <Link to={{pathname:`/mail/${mail.id}`}}>
+                  <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" classname="" />
                 </Link>
-                <StyledButton
+                <StyledButton classname=""
                   func={this.handleUnreadClick}
                   txt="unread"
                   bgc="#8cd5ee"
                 />
-                <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
-                <StyledButton
+                {!this.props.isReplyClicked && (
+                  <StyledButton 
+                  func={() => this.props.replyClicked()}
+                  classname=""
+                    txt="reply"
+                    bgc="green"
+                    loadMails={this.props.loadMails}
+                    loggedinUser={this.props.loggedinUser}
+                    replyClicked={this.props.replyClicked}
+                  />
+                )}
+                <StyledButton classname=""
                   func={this.deleteMail}
                   txt="Delete"
                   bgc="hsl(345deg 100% 47%)"
@@ -114,15 +124,25 @@ export class EmailPreview extends React.Component {
             className="long-mail-view grid">
             <div className="long-mail-btn flex">
               <Link to={`/mail/${mail.id}`}>
-                <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
+                <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" classname="" />
               </Link>
-              <StyledButton
+              <StyledButton classname=""
                 func={this.handleUnreadClick}
                 txt="unread"
                 bgc="#8cd5ee"
               />
-              <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
-              <StyledButton
+              {!this.props.isReplyClicked && (
+                  <StyledButton 
+                  func={() => this.props.replyClicked()}
+                  classname=""
+                    txt="reply"
+                    bgc="green"
+                    loadMails={this.props.loadMails}
+                    loggedinUser={this.props.loggedinUser}
+                    replyClicked={this.props.replyClicked}
+                  />
+                )}
+              <StyledButton classname=""
                 func={this.deleteMail}
                 txt="Delete"
                 bgc="hsl(345deg 100% 47%)"

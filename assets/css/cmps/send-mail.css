@@ -1,0 +1,29 @@
+.reply-to-mail {
+    box-shadow: 0px 3px 16px 0px rgb(50 50 50 / 75%);
+    position: fixed;
+    z-index: 5;
+    background-color: #fff;
+    bottom: 0px;
+    width: 75vw;
+    left: 12%;
+    font-size: 2rem;
+}
+
+.reply-to-mail form input[name=body] {
+    min-height: 300px;
+    border: none;
+    font-size: 1rem;
+    text-align: left;
+    padding: 1rem;
+    margin: 10px;
+}
+
+.reply-to-mail form input[name=body] ::placeholder {
+    color: chartreuse;
+}
+
+.reply-to-mail .close-button {
+    grid-area: close-button;
+    align-self: flex-end;
+    margin: 0.3rem;
+}

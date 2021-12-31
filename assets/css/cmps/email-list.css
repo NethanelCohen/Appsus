@@ -14,7 +14,8 @@
     border-bottom: 1px solid black;
 }
 
-.mails-list .mail-header :first-child {
+
+/* .mails-list .mail-header :first-child {
     padding-inline-start: 75px;
 }
 
@@ -32,7 +33,7 @@
 .mails-list .mail-header :last-child {
     text-align: right;
     flex-grow: 0.2;
-}
+} */
 
 .short-mail-view {
     align-items: center;
@@ -40,6 +41,7 @@
 
 .short-mail-view>* {
     text-align: left;
+    overflow: hidden;
 }
 
 .short-mail-view> :nth-child(3) {
@@ -47,11 +49,17 @@
 }
 
 .short-mail-view> :nth-child(4) {
-    width: 330px;
     text-align: left;
 }
 
-.short-mail-view :not(:nth-child(-n + 2)) {
+.short-mail-view> :nth-child(5) {
+    width: 330px;
+    max-width: 30%;
+    text-align: left;
+}
+
+.short-mail-view :not(:nth-child(-n + 2)),
+.mails-list .mail-header :not(:nth-child(-n + 2)) {
     flex-grow: 1;
 }
 

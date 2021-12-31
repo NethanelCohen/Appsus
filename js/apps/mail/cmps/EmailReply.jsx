@@ -1,7 +1,7 @@
 import { utilService } from '../../../services/util.services.js';
 import { storageService } from '../../../services/storage.service.js';
 import { emailService } from '../services/email.service.js';
-
+import { StyledButton } from '../../../../cmps/StyledButton.jsx';
 export class EmailReply extends React.Component {
   state = {
     newMail: {
@@ -38,62 +38,50 @@ export class EmailReply extends React.Component {
     ev.preventDefault();
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
-    if (ev.type === 'click' && ((subject) || (body) || (to))) {
+    if (ev.type === 'click' && (subject || body || to)) {
       let mail = this.state.newMail;
       mail.status = 'draft';
     }
     const sentMail = emailService.createMail(this.state.newMail);
     storageService.saveToStorage('mails_DB', [sentMail, ...mails]);
     this.props.replyClicked();
-    this.props.loadMails()
+    this.props.loadMails();
   };
 
   render() {
     let { loggedinUser } = this.props;
     return (
-      <div className="send-mail"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          outline: '2px solid black',
-          backgroundColor: '#f1ecec',
-          fontWeight: '800',
-          width: '1000px',
-          height: '700px',
-        }}
-        className="reply-to-mail">
-        <button onClick={this.handleMailWindow}>x</button>
-        <form onSubmit={(ev) => this.handleMailWindow(ev)}>
-          <h4>New Message</h4>
-          <label htmlFor="sendTo">To: </label>
-          <input type="email" name="sendTo" onChange={this.handleChange} />
-          <h6>From: {loggedinUser.email}</h6>
-          <label htmlFor="subject">Subject: </label>
-          <input
+      <div className="reply-to-mail flex column">
+        <StyledButton classname={' close-button'}
+          func={this.handleMailWindow}
+          txt="Close"
+          bgc="hsl(345deg 100% 47%)"
+        />
+        <form
+          className="new-mail grid"
+          onSubmit={(ev) => this.handleMailWindow(ev)}>
+          <h4 className="header">New Message</h4>
+          <label className="send-to-headline" htmlFor="sendTo">
+            To:{' '}
+          </label>
+          <input type="email" name="sendTo" className="send-to-input" onChange={this.handleChange} />
+          <h6 className="from-headline">From: {loggedinUser.email}</h6>
+          <label className="subject-headline" htmlFor="subject">Subject: </label>
+          <input className="subject-input"
             type="text"
             name="subject"
             placeholder={'Enter your text here'}
             onChange={this.handleChange}
           />
-          <p style={{ fontSize: '12px' }}>
+          <p style={{ fontSize: '12px' }} className="created-at">
             Created at: {new Date().toTimeString()}
           </p>
-          <input
-            style={{
-              width: '90%',
-              height: '400px',
-              outline: '1px solid black',
-              backgroundColor: 'white',
-              fontSize: '14px',
-              textAlign: 'left',
-            }}
-            type="text"
-            name="body"
-            onChange={this.handleChange}
-          />
-          <button>send</button>
+          <input type="text" name="body" onChange={this.handleChange} className="body-input" />
+          <StyledButton classname={' send-button'}
+          func={this.handleMailWindow}
+          txt="send"
+          bgc="blue"
+        />
         </form>
       </div>
     );
