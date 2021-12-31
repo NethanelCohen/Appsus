@@ -22,9 +22,10 @@ export class EmailApp extends React.Component {
   }
 
   handleCriteriaStatus = (param) => {
-    // const{isStared}=this.state.criteria
-    // if(param==='stared') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: !isStared} }), () => this.loadMails())
-    this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: param } }), () => this.loadMails())
+    const{isStared}=this.state.criteria
+    // if(param==='stared') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: true},status: '' }), () => this.loadMails())
+    //  this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: false},status: param }), () => this.loadMails())
+      this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: param } }), () => this.loadMails())
   }
  
   handleCriteriaTxt = (newTxt) => {
