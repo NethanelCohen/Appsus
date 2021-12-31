@@ -34,9 +34,8 @@ export class EmailReply extends React.Component {
     // console.log(ev);
   };
 
-  handleSendMail = (ev) => {
+  handleMailWindow = (ev) => {
     ev.preventDefault();
-    debugger
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
     if (ev.type === 'click' && ((subject) || (body) || (to))) {
@@ -46,13 +45,13 @@ export class EmailReply extends React.Component {
     const sentMail = emailService.createMail(this.state.newMail);
     storageService.saveToStorage('mails_DB', [sentMail, ...mails]);
     this.props.replyClicked();
+    this.props.loadMails()
   };
 
   render() {
     let { loggedinUser } = this.props;
-
     return (
-      <div
+      <div className="send-mail"
         style={{
           position: 'absolute',
           top: '50%',
@@ -65,8 +64,8 @@ export class EmailReply extends React.Component {
           height: '700px',
         }}
         className="reply-to-mail">
-        <button onClick={this.handleSendMail}>x</button>
-        <form onSubmit={(ev) => this.handleSendMail(ev)}>
+        <button onClick={this.handleMailWindow}>x</button>
+        <form onSubmit={(ev) => this.handleMailWindow(ev)}>
           <h4>New Message</h4>
           <label htmlFor="sendTo">To: </label>
           <input type="email" name="sendTo" onChange={this.handleChange} />
