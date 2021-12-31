@@ -18,11 +18,13 @@ export class EmailPreview extends React.Component {
   };
 
   extandMailView = (e) => {
-    const { isClicked } = this.state;
-    if (e.target.className.includes('star')) return;
-    else if (e.target.innerText === 'unread') return;
-    else if (e.target.type === 'checkbox') return;
     const { id } = this.props.mail;
+    const { isClicked } = this.state;
+    if (e.target.className.includes('star')) {
+      return;
+    } else if (e.target.innerText === 'unread') return;
+    else if (e.target.type === 'checkbox') return;
+
     if (!id) return;
 
     emailService
@@ -32,13 +34,13 @@ export class EmailPreview extends React.Component {
           ? this.setState({ isClicked: true }, this.props.loadMails)
           : this.setState({ isClicked: false }, this.props.loadMails)
       );
-    console.log(e.target);
+    // console.log(e.target);
   };
 
   handleUnreadClick = () => {
     const { id } = this.props.mail;
     emailService.isMailRead(id, false).then(this.props.loadMails);
-    if (this.state.isClicked = true) this.setState({isClicked: false});
+    if ((this.state.isClicked = true)) this.setState({ isClicked: false });
   };
 
   replyToMail = () => {
@@ -73,10 +75,13 @@ export class EmailPreview extends React.Component {
           <div
             style={{ backgroundColor: `${isMailRead}` }}
             className="short-mail-view flex">
-            <input type="checkbox"/>
+            <input type="checkbox" />
             <h6
-              className={'star off'}
-              onClick={(ev) => this.props.setColorStar(ev)}>
+              className={mail.isStared === true ? 'star on' : 'star off'} ///////////////get starrred state
+              onClick={(ev) => {
+                this.props.setColorStar(ev);
+                emailService.isMailStared(mail.id);
+              }}>
               &#9733;
             </h6>
             <h6>{mail.subject}</h6>
@@ -112,10 +117,10 @@ export class EmailPreview extends React.Component {
                 <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" />
               </Link>
               <StyledButton
-                  func={this.handleUnreadClick}
-                  txt="unread"
-                  bgc="#8cd5ee"
-                />
+                func={this.handleUnreadClick}
+                txt="unread"
+                bgc="#8cd5ee"
+              />
               <StyledButton func={this.replyToMail} txt="reply" bgc="green" />
               <StyledButton
                 func={this.deleteMail}

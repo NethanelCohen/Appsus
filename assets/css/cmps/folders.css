@@ -12,6 +12,10 @@
     border-bottom-right-radius: 2rem;
 }
 
-li:hover {
+li:not( .active-filter):hover {
     background-color: #ff00007d;
+}
+
+.active-filter {
+    background-color: #03a9f4;
 }

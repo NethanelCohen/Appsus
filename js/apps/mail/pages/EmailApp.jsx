@@ -8,7 +8,7 @@ export class EmailApp extends React.Component {
   state = {
     mails: [],
     criteria: {
-      status: '',
+      status: 'inbox',
       txt: '',
       isRead: '',
       isStared: '',
@@ -23,6 +23,7 @@ export class EmailApp extends React.Component {
 
   handleCriteriaStatus = (newStatus) => {
     this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
+    
   }
 
   handleCriteriaTxt = (newTxt) => {
@@ -41,7 +42,7 @@ replyClicked = () => {
 
 
 render() {
-  const { mails } = this.state;
+  const { mails,criteria } = this.state;
   const {isReplyClicked} = this.state;
   const loggedinUser = emailService.getUserDetails();
   return (
@@ -51,7 +52,7 @@ render() {
       </div>
       <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" />
       {isReplyClicked && <EmailReply loadMails={this.loadMails} loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
-      <Folders handleCriteriaStatus={this.handleCriteriaStatus} />
+      <Folders handleCriteriaStatus={this.handleCriteriaStatus } activeStatus={criteria.status} />
       <EmailList mails={mails} loadMails={this.loadMails} />
     </div>
   );
