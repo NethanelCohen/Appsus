@@ -18,7 +18,6 @@ export class ImgNote extends React.Component {
 
     handleChange = ({ name, value }) => {
         const field = name;
-        console.log("field: ", field);
         if (field === 'title' || field === 'url') {
             return this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [field]: value } } }))
         }
@@ -31,7 +30,6 @@ export class ImgNote extends React.Component {
     handleNoteAdd = (ev) => {
         ev.preventDefault();
         const { newNote } = this.state;
-        console.log("newNote: ", newNote);
         noteService.createNote(newNote).then(notes => this.setState({ notes }, this.props.handleClick))
         this.props.loadNotes()
         this.props.handleNoteBackground('white');
