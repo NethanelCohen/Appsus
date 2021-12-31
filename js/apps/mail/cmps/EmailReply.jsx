@@ -34,11 +34,12 @@ export class EmailReply extends React.Component {
     // console.log(ev);
   };
 
-  handleMailWindow = (ev) => {
+  handleMailWindow = (ev,submit) => {
     ev.preventDefault();
+    console.log(submit)
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
-    if (ev.type === 'click' && (subject || body || to)) {
+    if ((!submit)&&ev.type === 'click' && (subject || body || to)) {
       let mail = this.state.newMail;
       mail.status = 'draft';
     }
@@ -51,9 +52,11 @@ export class EmailReply extends React.Component {
   render() {
     let { loggedinUser } = this.props;
     return (
-      <div className="reply-to-mail flex column">
+      <div className="reply-to-mail">
+      
+      
         <StyledButton classname={' close-button'}
-          func={this.handleMailWindow}
+          func={(ev)=>{this.handleMailWindow(ev)}}
           txt="Close"
           bgc="hsl(345deg 100% 47%)"
         />
@@ -64,8 +67,8 @@ export class EmailReply extends React.Component {
           <label className="send-to-headline" htmlFor="sendTo">
             To:{' '}
           </label>
-          <input type="email" name="sendTo" className="send-to-input" onChange={this.handleChange} />
-          <h6 className="from-headline">From: {loggedinUser.email}</h6>
+          <input type="email" name="sendTo" onChange={this.handleChange} />
+          <h6>From: {loggedinUser.email}</h6>
           <label className="subject-headline" htmlFor="subject">Subject: </label>
           <input className="subject-input"
             type="text"
@@ -78,7 +81,8 @@ export class EmailReply extends React.Component {
           </p>
           <input type="text" name="body" onChange={this.handleChange} className="body-input" />
           <StyledButton classname={' send-button'}
-          func={this.handleMailWindow}
+          type="submit"
+          func={(ev)=>{this.handleMailWindow(ev,'submit')}}
           txt="send"
           bgc="blue"
         />

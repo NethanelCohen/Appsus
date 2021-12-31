@@ -27,7 +27,6 @@ function getUserDetails() {
 
 function query(criteria = null) {
     let mails = storageService.loadFromStorage(KEY);
-    console.log(mails)
     if (!criteria) return Promise.resolve(mails);
     if (criteria.status === 'stared') {
         return Promise.resolve(_getStaredMails(mails, criteria))
@@ -102,7 +101,6 @@ function remove(mailId) {
 }
 
 function createMail(mail) {
-    console.log(mail)
     const { subject, status, body, to } = mail
     return {
         id: utilService.makeId(),
