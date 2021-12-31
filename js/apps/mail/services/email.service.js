@@ -28,9 +28,8 @@ function getUserDetails() {
 function query(criteria = null) {
     let mails = storageService.loadFromStorage(KEY);
     if (!criteria) return Promise.resolve(mails);
-    if (criteria.isStared === true) {
-        const staredMails = _getStaredMails(mails, criteria)
-        return Promise.resolve(staredMails)
+    if (criteria.status === 'stared') {
+        return Promise.resolve(_getStaredMails(mails, criteria))
     }
     const criteriaMails = _getCriteriaMails(mails, criteria);
     return Promise.resolve(criteriaMails);
