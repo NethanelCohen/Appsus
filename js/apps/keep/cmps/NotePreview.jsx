@@ -4,25 +4,23 @@
 
 export class NotePreview extends React.Component {
   state = {
-      note: null
+    note: null
   };
-  componentDidMount(){
+  
+  componentDidMount() {
     this.loadNote()
-}
+  }
 
-loadNote = () => {
-    const {note} = this.props
-    this.setState({note})
-}
+  loadNote = () => {
+    const { note } = this.props
+    this.setState({ note })
+  }
 
-
-  
-  
   render() {
-    const {note} = this.props;
-    return <div className="note flex column" style={{backgroundColor: `${note.backgroundColor}`}}>
-        <h4>{note.info.title}</h4>
-        <h6>{note.info.body}</h6>
+    const { note } = this.props;
+    return <div className="note flex column" style={{ backgroundColor: `${note.style.backgroundColor}` }}>
+      <h4>{note.info.title}</h4>
+      <h6>{note.info.body}</h6>
     </div>;
   }
 }
