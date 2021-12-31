@@ -2,6 +2,7 @@
 // this.props.loadNotes
 // this.props.note
 
+import { storageService } from "../services/storage.service.js";
 import { noteService } from "../services/note.service.js";
 
 export class NotePreview extends React.Component {
@@ -19,7 +20,7 @@ export class NotePreview extends React.Component {
   loadNote = (editNote) => {
     if (!editNote) {
       const { note } = this.props
-      return this.setState({ note})
+      return this.setState({ note, isNoteClicked: false})
     }
     return this.setState({ editNote, isNoteClicked: true });
   }
@@ -30,23 +31,30 @@ export class NotePreview extends React.Component {
     this.setState({ isNoteClicked: true, isUpdating: true });
   }
 
+  // handleNoteEdit = (editNote) => {
+  //   this.setState({note: { ...prevState.note, editNote, isNoteClicked: true});
+  //   console.log(this.state.note);
+  // }
+
   onInputChange = ({name, value}, noteId) => {
-    console.log("noteId: ", noteId);
-    console.log("value: ", value);
-    console.log("name: ", name);
-    console.log(this.state.note);
-    // noteService.getNoteById(noteId).then(oldNote => 
-    // let editNote = 
-    // console.log(ev.target.value);
-    // return this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [field]: value } } }))
+      this.setState((prevState) => ({ note: {...prevState.note, info: {...prevState.note.info, [name]: value}}}))
   }
 
   handleNoteDelete = (noteId) => {
     noteService.remove(noteId).then(this.props.loadNotes())
   }
 
-  handleNoteUpdate = (noteId) => {
-    this.setState({isUpdating: true})
+  handleNoteUpdate = (removedNote) => {
+    let notes = storageService.loadFromStorage('notes_DB');
+    notes = notes.filter(note => note.id !== removedNote.id)
+    notes = [this.state.note, ...notes];
+    storageService.saveToStorage('notes_DB', notes);
+    this.props.loadNotes();
+    this.setState({isNoteClicked: false});
+  }
+
+  handleCloseNote = () => {
+    this.setState({isNoteClicked: false});
   }
 
   render() {
@@ -68,15 +76,19 @@ export class NotePreview extends React.Component {
             </div>}
           {(note.type === 'note-txt' || note.type === 'note-image') &&
             <div className="txt-type-note">
-              <input name="title" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={note.info.title} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+              <input name="title" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.info.title} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
             </div>}
-          {note.type === 'note-txt' && <h6>{note.info.body}</h6>}
+          {note.type === 'note-txt' &&
+          <div className="txt-type-note">
+          <input name="body" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.info.body} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+        </div>}
           {note.type === 'note-todos' && <h4>{note.label}</h4>}
           {note.type === 'note-todos' && note.todos.map((todo, idx) => {
             return <li key={idx}>{todo.txt}</li>
           })}
-          <button onClick={() => this.handleNoteDelete(note.id)}>✕</button>
-          <button onClick={() => this.handleNoteUpdate(note.id)}>v</button>
+          <button onClick={() => this.handleNoteDelete(note.id)}>delete</button>
+          <button onClick={() => this.handleNoteUpdate(note)}>save</button>
+          <button onClick={() => this.handleCloseNote()}>close</button>
 
         </div>}
     </div>
