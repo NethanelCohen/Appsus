@@ -23,9 +23,15 @@ function getUserDetails() {
     return loggedinUser;
 }
 
+
+
 function query(criteria = null) {
-    const mails = storageService.loadFromStorage(KEY);
+    let mails = storageService.loadFromStorage(KEY);
     if (!criteria) return Promise.resolve(mails);
+    if (criteria.isStared === true) {
+        const staredMails = _getStaredMails(mails, criteria)
+        return Promise.resolve(staredMails)
+    }
     const criteriaMails = _getCriteriaMails(mails, criteria);
     return Promise.resolve(criteriaMails);
 }
@@ -34,17 +40,23 @@ function _makeLowerCase(value) {
     return value.toString().toLowerCase();
 }
 
-function _getCriteriaMails(mails, criteria) {
-    let { status, txt, isRead, isStared, lables } = criteria;
-    status = status ? status : 'inbox';
-    txt = txt ? _makeLowerCase(txt) : '';
+function _getStaredMails(mails, criteria) {
+    let { isStared } = criteria
     isStared = isStared ? isStared : false;
+    return mails.filter(mail => {
+        return mail.isStared === isStared
+    })
+}
+
+function _getCriteriaMails(mails, criteria) {
+    let { status, txt, isRead, lables } = criteria;
+    status = status ? status : '';
+    txt = txt ? _makeLowerCase(txt) : '';
     lables = lables ? lables : [];
     return mails.filter(mail => {
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
                 _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
-            mail.isStared === isStared &&
             mail.lables.toString().includes(lables.toString())
     })
 }

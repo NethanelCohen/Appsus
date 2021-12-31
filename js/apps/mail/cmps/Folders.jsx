@@ -1,5 +1,5 @@
 
-export function Folders({handleCriteriaStatus , activeStatus}) {
+export function Folders({handleCriteriaStatus , activeStatus,staredStatues}) {
   return (
     <section className="email-folder-list">
       <ul
@@ -26,7 +26,7 @@ export function Folders({handleCriteriaStatus , activeStatus}) {
           Draft
         </li>
         <li
-          className={activeStatus === 'Stared' ? 'active-filter' : ''}
+          className={staredStatues === 'Stared' ? 'active-filter' : ''}
           data-value="stared">
           Stared
         </li>

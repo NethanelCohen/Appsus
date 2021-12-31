@@ -21,9 +21,10 @@ export class EmailApp extends React.Component {
     this.loadMails();
   }
 
-  handleCriteriaStatus = (newStatus) => {
-    if(newStatus==='stared') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: !this.state.criteria.isStared} }), () => this.loadMails())
-    else this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
+  handleCriteriaStatus = (param) => {
+    // const{isStared}=this.state.criteria
+    // if(param==='stared') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: !isStared} }), () => this.loadMails())
+    this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: param } }), () => this.loadMails())
   }
  
   handleCriteriaTxt = (newTxt) => {
@@ -33,6 +34,7 @@ export class EmailApp extends React.Component {
 loadMails = () => {
     emailService.query(this.state.criteria).then((mails) => {
     this.setState({ mails });
+    console.log(this.state.mails,this.state.criteria)
   });
 };
 
@@ -43,7 +45,7 @@ replyClicked = () => {
 
 render() {
   const { mails,criteria } = this.state;
-  const {isReplyClicked,setStaredStatus } = this.state;
+  const {isReplyClicked } = this.state;
   const loggedinUser = emailService.getUserDetails();
   return (
     <div className="email-list-container grid">
@@ -52,7 +54,7 @@ render() {
       </div>
       <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" />
       {isReplyClicked && <EmailReply loadMails={this.loadMails} loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
-      <Folders handleCriteriaStatus={this.handleCriteriaStatus } activeStatus={criteria.status} />
+      <Folders handleCriteriaStatus={this.handleCriteriaStatus } activeStatus={criteria.status}  staredStatues={criteria.isStared}  />
       <EmailList mails={mails} loadMails={this.loadMails} />
     </div>
   );
