@@ -38,8 +38,6 @@ export class TxtNote extends React.Component {
 
 
     render() {
-        const {handleClick} = this.props
-        // const {handleNoteBackground} = this.props
         const {backgroundColor} = this.state.newNote.style
         return (
             <div style={{ textAlign: 'start', backgroundColor: `${backgroundColor}` }} className='new-txt-note'>
