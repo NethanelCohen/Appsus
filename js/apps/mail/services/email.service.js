@@ -27,6 +27,7 @@ function getUserDetails() {
 
 function query(criteria = null) {
     let mails = storageService.loadFromStorage(KEY);
+    console.log(mails)
     if (!criteria) return Promise.resolve(mails);
     if (criteria.status === 'stared') {
         return Promise.resolve(_getStaredMails(mails, criteria))
@@ -51,6 +52,7 @@ function _getCriteriaMails(mails, criteria) {
     txt = txt ? _makeLowerCase(txt) : '';
     lables = lables ? lables : [];
     return mails.filter(mail => {
+
         return (_makeLowerCase(mail.subject).includes(_makeLowerCase(txt)) ||
                 _makeLowerCase(mail.body).includes(_makeLowerCase(txt))) &&
             mail.status === status &&
@@ -100,6 +102,7 @@ function remove(mailId) {
 }
 
 function createMail(mail) {
+    console.log(mail)
     const { subject, status, body, to } = mail
     return {
         id: utilService.makeId(),
@@ -173,7 +176,7 @@ function _createMails() {
                 to: 'example@example.com'
             }
         ]
-        mails = mails.map(mail => createMail(mail.subject, mail.body, mail.isRead, mail.isStared, mail.lables, mail.status, mail.sentAt, mail.to))
+        mails = mails.map(mail => createMail(mail))
         _saveMailsToStorage(mails)
     }
 }
