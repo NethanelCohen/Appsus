@@ -12,10 +12,10 @@
     border-bottom-right-radius: 2rem;
 }
 
-li:not( .active-filter):hover {
+.email-folder-list ul>li:not( .active-filter):hover {
     background-color: #ff00007d;
 }
 
-.active-filter {
+.email-folder-list .active-filter {
     background-color: #03a9f4;
 }

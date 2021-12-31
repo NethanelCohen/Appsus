@@ -21,10 +21,7 @@ export class EmailApp extends React.Component {
     this.loadMails();
   }
 
-  handleCriteriaStatus = (param) => {
-    console.log(param);
-    const{isStared}=this.state.criteria
-    if(param==='stared') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: true},status: param }), () => this.loadMails())
+  handleCriteriaStatus = (param) => {   
       this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: param } }), () => this.loadMails())
   }
  
@@ -35,7 +32,6 @@ export class EmailApp extends React.Component {
 loadMails = () => {
     emailService.query(this.state.criteria).then((mails) => {
     this.setState({ mails });
-    console.log(this.state.mails,this.state.criteria)
   });
 };
 
