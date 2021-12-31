@@ -1,6 +1,6 @@
 
 
-export function Folders({handleCriteriaStatus,activeStatus}) {
+export function Folders({handleCriteriaStatus , activeStatus}) {
   return (
     <section className="email-folder-list">
       <ul className="flex column" onClick={() => handleCriteriaStatus(event.target.dataset.value)}>

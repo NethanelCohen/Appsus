@@ -42,11 +42,11 @@ export class TxtNote extends React.Component {
         return (
             <div style={{ textAlign: 'start', backgroundColor: `${backgroundColor}` }} className='new-txt-note'>
                 <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
-                    <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`}} name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
-                    <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}` }} name='body' placeholder="What's on your mind" onChange={(ev) => { this.handleChange(ev.target) }} />
-                    <input type="color" name='backgroundColor' style={{width: '40px', height:'40px', borderRadius: '50%', border: 'none'}} onChange={(ev) => { this.handleChange(ev.target) }}></input>
+                    <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, borderBottom: '1px solid white'} } name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`,  borderBottom: '1px solid white' }} name='body' placeholder="What's on your mind" onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <input type="color" name='backgroundColor' style={{width: '40px', height:'40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'}} onChange={(ev) => { this.handleChange(ev.target) }}></input>
                     <button>keep</button>
-                    <button onClick={handleClick}>✘</button>
+                    <button onClick={this.props.handleClick}>✘</button>
                 </form>
                 <p>type: text</p>
             </div>
