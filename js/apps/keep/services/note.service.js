@@ -49,7 +49,6 @@ _createNotes()
 
 function query() {
     const notes = storageService.loadFromStorage(KEY);
-    console.log("notes: ", notes);
     return Promise.resolve(notes);
 }
 

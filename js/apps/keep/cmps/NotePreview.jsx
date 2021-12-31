@@ -18,8 +18,6 @@ export class NotePreview extends React.Component {
 
   render() {
     const { note } = this.props;
-    console.log("note: ", note.todos);
-    console.log("note: ", note);
     return <div className="note flex column" style={{ backgroundColor: `${note.style.backgroundColor}` }}>
       {note.type === 'note-image' && <img src={note.info.url} alt="" style={{width: '100%', height: '80%'}} />}
       {(note.type === 'note-txt' || note.type === 'note-image') && <h4>{note.info.title}</h4>}
