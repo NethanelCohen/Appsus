@@ -1,17 +1,18 @@
 import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/NoteList.jsx'
+import { TxtNote } from '../cmps/TxtNote.jsx';
+import { ImgNote } from '../cmps/ImgNote.jsx';
+import { VideoNote } from '../cmps/VideoNote.jsx'
+import { ListNote } from '../cmps/NoteList.jsx'
+
+
 
 export class NoteApp extends React.Component {
   state = {
     notes: [],
     isNoteClicked: false,
-    newNote: {
-      type: 'note-txt',
-      info: {
-        title: '',
-        body: ''
-      }
-    }
+    type: 'note-txt',
+    background: 'white'
   };
 
   componentDidMount() {
@@ -29,75 +30,77 @@ export class NoteApp extends React.Component {
     !isNoteClicked ? this.setState({ isNoteClicked: true }) : this.setState({ isNoteClicked: false })
   }
 
-  handleChange = ({name, value}) => {
-    this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [name]: value } } }))
+  handleNoteBackground = (value) => {
+    this.setState((prevState) => ({...prevState, background: value}));
   }
 
-  handleNoteAdd = (ev) => {
-    ev.preventDefault();
-    const { newNote } = this.state;
-    noteService.createNote(newNote).then(notes => this.setState({notes}))
-  }
+  // handleChange = ({ name, value }) => {
+  //   this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [name]: value } } }))
+  // }
 
-  handleTypeClick = () => {
-    this.setState({ isNoteClicked: true })
-  }
+  // handleNoteAdd = (ev) => {
+  //   ev.preventDefault();
+  //   const { newNote } = this.state;
+  //   noteService.createNote(newNote).then(notes => this.setState({ notes }))
+  // }
 
-  handleNoteType = ({className}) => {
-      this.setState((prevState) => ({ newNote: { ...prevState.newNote, type: className}}));
-      this.handleTypeClick()
+  // handleTypeClick = () => {
+  //   this.setState({ isNoteClicked: true })
+  // }
+
+  handleNoteType = ({ className }) => {
+    console.log("className: ", className);
+
+    this.setState({type: className});
+    // this.setState((prevState) => ({ newNote: { ...prevState.newNote, type: className } }));
   }
 
 
   render() {
-    const { notes } = this.state;
-    const { isNoteClicked } = this.state
-    const {type} = this.state.newNote;
+    const { notes, type, isNoteClicked, background} = this.state;
     if (!notes) return <h1> No notes </h1>
     return (
       <div className="note-app-container flex column">
-        <div className="add-note flex">
-          {!isNoteClicked && <button style={{ opacity: '0', width: '100%' }} onClick={this.handleClick}></button>}
-          {isNoteClicked && <div style={{ textAlign: 'start' }} className='new-note'>
-            <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
-              <input style={{ width: '100%', textAlign: 'start' }} name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
-              <input style={{ width: '100%', textAlign: 'start' }} name='body' placeholder='Keep your thoughts here' onChange={(ev) => { this.handleChange(ev.target) }} />
-              <button>keep</button>
-              <button onClick={this.handleClick}>✘</button>
-            </form>
-              <p>Type: {type}</p>
-          </div>}
-          <div onClick={(ev) => this.handleNoteType(ev.target)}>
-            <img
-              className="note-txt"
-              src="../../../assets/img/font-solid.svg"
-              alt=""
-            />
+        <div style={{backgroundColor: `${background}`}} className="add-note flex">
+        {!isNoteClicked && <button style={{ opacity: '1', backgroundColor: 'none', cursor: 'text', width: '100%' }} onClick={this.handleClick}></button>}
+        {isNoteClicked &&
+            <React.Fragment>
+              {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
+              {type === 'note-image' && <ImgNote handleChange={this.handleChange} handleNoteAdd={this.handleNoteAdd} loadNotes={this.loadNotes} newNote={newNote} handleClick={this.handleClick} />}
+              {type === 'note-list' && <ListNote />}
+              {type === 'note-video' && <VideoNote />}
+            </React.Fragment>}
+            <div onClick={(ev) => this.handleNoteType(ev.target)}>
+              <img
+                className="note-txt"
+                src="../../../assets/img/font-solid.svg"
+                alt=""
+              />
+            </div>
+            <div onClick={(ev) => this.handleNoteType(ev.target)}>
+              <img
+                className="note-image"
+                src="../../../assets/img/image-regular.svg"
+                alt=""
+              />
+            </div>
+            <div onClick={(ev) => this.handleNoteType(ev.target)}>
+              <img
+                className="note-video"
+                src="../../../assets/img/youtube-brands.svg"
+                alt=""
+              />
+            </div>
+            <div onClick={(ev) => this.handleNoteType(ev.target)}>
+              <img
+                className="note-list"
+                src="../../../assets/img/list-solid.svg"
+                alt=""
+              />
+            </div>
           </div>
-          <div onClick={(ev) => this.handleNoteType(ev.target)}>
-            <img
-              className="note-image"
-              src="../../../assets/img/image-regular.svg"
-              alt=""
-            />
-          </div>
-          <div onClick={(ev) => this.handleNoteType(ev.target)}>
-            <img
-              className="note-video"
-              src="../../../assets/img/youtube-brands.svg"
-              alt=""
-            />
-          </div>
-          <div onClick={(ev) => this.handleNoteType(ev.target)}>
-            <img
-              className="note-list"
-              src="../../../assets/img/list-solid.svg"
-              alt=""
-            />
-          </div >
-        </div>
         <NoteList notes={notes} loadNotes={this.loadNotes} />
-      </div>
+      </div >
     );
   }
 }

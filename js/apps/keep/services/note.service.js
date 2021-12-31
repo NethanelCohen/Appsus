@@ -55,7 +55,7 @@ function query() {
 }
 
 
-function createNote({type, info: {body, title}, backgroundColor = utilService.getRandomColor()}) {
+function createNote({type, info: {body, title}, style: {backgroundColor}}) {
     let notes = storageService.loadFromStorage(KEY) || [];
     const newNote = {
         id: utilService.makeId(),
@@ -64,7 +64,9 @@ function createNote({type, info: {body, title}, backgroundColor = utilService.ge
             body,
             title,
         },
-        backgroundColor
+        style: {
+            backgroundColor
+        }
     }
     notes = [newNote, ...notes];
     _saveNoteToStorage(notes);
@@ -83,8 +85,9 @@ function _createNotes() {
                     body: 'Insert note text here',
                     title: 'First note',
                 },
+                style: {
                 backgroundColor: '#f7d794'
-
+                }
             },
             {
                 id: utilService.makeId(),
@@ -93,7 +96,9 @@ function _createNotes() {
                     body: 'Insert note text here',
                     title: 'Second note',
                 },
-                backgroundColor: '#63cdda'
+                style: {
+                    backgroundColor: '#63cdda'
+                }
 
             },
             {
@@ -103,8 +108,9 @@ function _createNotes() {
                     body: 'Insert note text here',
                     title: 'Third note',
                 },
+                style: {
                 backgroundColor: '#f8a5c2'
-
+                }
             }
         ]
         notes = notes.map(note => createNote(note));
