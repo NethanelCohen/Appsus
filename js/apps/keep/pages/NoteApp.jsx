@@ -66,7 +66,7 @@ export class NoteApp extends React.Component {
         {isNoteClicked &&
             <React.Fragment>
               {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
-              {type === 'note-image' && <ImgNote handleChange={this.handleChange} handleNoteAdd={this.handleNoteAdd} loadNotes={this.loadNotes} newNote={newNote} handleClick={this.handleClick} />}
+              {type === 'note-image' && <ImgNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground}  handleClick={this.handleClick} />}
               {type === 'note-list' && <ListNote />}
               {type === 'note-video' && <VideoNote />}
             </React.Fragment>}

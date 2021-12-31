@@ -31,7 +31,7 @@ export class TxtNote extends React.Component {
         ev.preventDefault();
         const { newNote } = this.state;
         console.log("newNote: ", newNote);
-        noteService.createNote(newNote).then(notes => this.setState({ notes }, this.props.handleClick))
+        noteService.createNoteTxt(newNote).then(notes => this.setState({ notes }, this.props.handleClick))
         this.props.loadNotes()
         this.props.handleNoteBackground('white');
     }

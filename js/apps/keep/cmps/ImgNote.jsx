@@ -1,15 +1,58 @@
 
-export function ImgNote({ handleChange, handleNoteAdd, loadNotes, newNote, handleClick }) {
+import { noteService } from '../services/note.service.js';
 
-    return (
-        <div style={{ textAlign: 'start' }} className='new-img-note'>
-            <form onSubmit={(ev) => handleNoteAdd(ev)}>
-                <input style={{ width: '100%', textAlign: 'start', cursor: 'text' }} name='title' placeholder='Title' onChange={(ev) => { handleChange(ev.target) }} />
-                <input style={{ width: '100%', textAlign: 'start', cursor: 'text' }} name='body' placeholder='Keep your thoughts here' onChange={(ev) => { handleChange(ev.target) }} />
-                <button>keep</button>
-                <button onClick={handleClick}>✘</button>
-            </form>
-            <p>type: image</p>
-        </div>
-    )
+export class ImgNote extends React.Component {
+
+    state = {
+        newNote: {
+            type: 'note-image',
+            info: {
+                url: '',
+                title: ''
+            },
+            style: {
+                backgroundColor: 'White'
+            }
+        }
+    }
+
+    handleChange = ({ name, value }) => {
+        const field = name;
+        console.log("field: ", field);
+        if (field === 'title' || field === 'url') {
+            return this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [field]: value } } }))
+        }
+        else if (field === 'backgroundColor') {
+            this.setState((prevState) => ({ newNote: { ...prevState.newNote, style: { ...prevState.newNote.info, [field]: value } } }))
+        }
+        this.props.handleNoteBackground(value)
+    }
+
+    handleNoteAdd = (ev) => {
+        ev.preventDefault();
+        const { newNote } = this.state;
+        console.log("newNote: ", newNote);
+        noteService.createNoteImg(newNote).then(notes => this.setState({ notes }, this.props.handleClick))
+        this.props.loadNotes()
+        this.props.handleNoteBackground('white');
+    }
+
+
+    render() {
+        const {backgroundColor} = this.state.newNote.style
+        const {url} = this.state.newNote.info;
+        return (
+            <div style={{ textAlign: 'start', backgroundColor: `${backgroundColor}` }} className='new-txt-note'>
+                <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
+                    <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, borderBottom: '1px solid white'} } name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, borderBottom: '1px solid white'} } name='url' placeholder='Enter image url...' onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <img src={url} style={{width: '200px', height: '200px', margin: '0 auto'}} />
+                    <input type="color" name='backgroundColor' style={{width: '40px', height:'40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'}} onChange={(ev) => { this.handleChange(ev.target) }}></input>
+                    <button>keep</button>
+                    <button onClick={this.props.handleClick}>✘</button>
+                </form>
+                <p>type: text</p>
+            </div>
+        )
+    }
 }

@@ -4,7 +4,8 @@ import { utilService } from "../../../services/util.services.js";
 
 export const noteService = {
     query,
-    createNote,
+    createNoteTxt,
+    createNoteImg,
 
 }
 
@@ -55,13 +56,31 @@ function query() {
 }
 
 
-function createNote({type, info: {body, title}, style: {backgroundColor}}) {
+function createNoteTxt({type, info: {body, title}, style: {backgroundColor}}) {
     let notes = storageService.loadFromStorage(KEY) || [];
     const newNote = {
         id: utilService.makeId(),
         type,
         info: {
             body,
+            title,
+        },
+        style: {
+            backgroundColor
+        }
+    }
+    notes = [newNote, ...notes];
+    _saveNoteToStorage(notes);
+    return Promise.resolve(notes);
+}
+
+function createNoteImg({type, info: {url, title}, style: {backgroundColor}}) {
+    let notes = storageService.loadFromStorage(KEY) || [];
+    const newNote = {
+        id: utilService.makeId(),
+        type,
+        info: {
+            url,
             title,
         },
         style: {
@@ -113,7 +132,7 @@ function _createNotes() {
                 }
             }
         ]
-        notes = notes.map(note => createNote(note));
+        notes = notes.map(note => createNoteTxt(note));
     }
 }
 
