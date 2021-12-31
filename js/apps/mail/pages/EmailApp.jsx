@@ -11,7 +11,6 @@ export class EmailApp extends React.Component {
       status: 'inbox',
       txt: '',
       isRead: '',
-      isStared: '',
       lables: [],
     },
     isReplyClicked: false
@@ -49,10 +48,10 @@ render() {
       <div className="search-filter">
         <input placeholder="Search mail" onChange={(ev) => this.handleCriteriaTxt(ev.target.value)}></input>
       </div>
-      <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" classname="" />
+      <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" />
       {isReplyClicked && <EmailReply loadMails={this.loadMails} loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
       <Folders handleCriteriaStatus={this.handleCriteriaStatus } activeStatus={criteria.status}  staredStatues={criteria.isStared}  />
-      <EmailList mails={mails} loadMails={this.loadMails} isReplyClicked={isReplyClicked} loggedinUser={loggedinUser} replyClicked={this.replyClicked} />
+      <EmailList mails={mails} loadMails={this.loadMails} />
     </div>
   );
 }
