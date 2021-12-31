@@ -2,8 +2,8 @@ import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/NoteList.jsx'
 import { TxtNote } from '../cmps/TxtNote.jsx';
 import { ImgNote } from '../cmps/ImgNote.jsx';
+import {TodoNote} from '../cmps/TodosNote.jsx'
 import { VideoNote } from '../cmps/VideoNote.jsx'
-import { ListNote } from '../cmps/NoteList.jsx'
 
 
 
@@ -49,8 +49,6 @@ export class NoteApp extends React.Component {
   // }
 
   handleNoteType = ({ className }) => {
-    console.log("className: ", className);
-
     this.setState({type: className});
     // this.setState((prevState) => ({ newNote: { ...prevState.newNote, type: className } }));
   }
@@ -67,7 +65,7 @@ export class NoteApp extends React.Component {
             <React.Fragment>
               {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
               {type === 'note-image' && <ImgNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground}  handleClick={this.handleClick} />}
-              {type === 'note-list' && <ListNote />}
+              {type === 'note-todos' && <TodoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
               {type === 'note-video' && <VideoNote />}
             </React.Fragment>}
             <div onClick={(ev) => this.handleNoteType(ev.target)}>
@@ -93,7 +91,7 @@ export class NoteApp extends React.Component {
             </div>
             <div onClick={(ev) => this.handleNoteType(ev.target)}>
               <img
-                className="note-list"
+                className="note-todos"
                 src="../../../assets/img/list-solid.svg"
                 alt=""
               />

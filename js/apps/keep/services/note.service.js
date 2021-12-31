@@ -4,9 +4,7 @@ import { utilService } from "../../../services/util.services.js";
 
 export const noteService = {
     query,
-    createNoteTxt,
-    createNoteImg,
-
+    createNote,
 }
 
 const KEY = 'notes_DB';
@@ -55,42 +53,49 @@ function query() {
     return Promise.resolve(notes);
 }
 
-
-function createNoteTxt({type, info: {body, title}, style: {backgroundColor}}) {
+function createNote(newNote, type) {
     let notes = storageService.loadFromStorage(KEY) || [];
-    const newNote = {
-        id: utilService.makeId(),
-        type,
-        info: {
-            body,
-            title,
-        },
-        style: {
-            backgroundColor
-        }
-    }
+    newNote = {id: utilService.makeId(), ...newNote};
     notes = [newNote, ...notes];
     _saveNoteToStorage(notes);
     return Promise.resolve(notes);
 }
 
-function createNoteImg({type, info: {url, title}, style: {backgroundColor}}) {
-    let notes = storageService.loadFromStorage(KEY) || [];
-    const newNote = {
-        id: utilService.makeId(),
-        type,
-        info: {
-            url,
-            title,
-        },
-        style: {
-            backgroundColor
-        }
-    }
-    notes = [newNote, ...notes];
-    _saveNoteToStorage(notes);
-    return Promise.resolve(notes);
-}
+// function createNoteTxt({type, info: {body, title}, style: {backgroundColor}}) {
+//     let notes = storageService.loadFromStorage(KEY) || [];
+//     const newNote = {
+//         id: utilService.makeId(),
+//         type,
+//         info: {
+//             body,
+//             title,
+//         },
+//         style: {
+//             backgroundColor
+//         }
+//     }
+//     notes = [newNote, ...notes];
+//     _saveNoteToStorage(notes);
+//     return Promise.resolve(notes);
+// }
+
+// function createNoteImg({type, info: {url, title}, style: {backgroundColor}}) {
+//     let notes = storageService.loadFromStorage(KEY) || [];
+//     const newNote = {
+//         id: utilService.makeId(),
+//         type,
+//         info: {
+//             url,
+//             title,
+//         },
+//         style: {
+//             backgroundColor
+//         }
+//     }
+//     notes = [newNote, ...notes];
+//     _saveNoteToStorage(notes);
+//     return Promise.resolve(notes);
+// }
 
 
 function _createNotes() {
@@ -98,7 +103,6 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: utilService.makeId(),
                 type: 'note-txt',
                 info: {
                     body: 'Insert note text here',
@@ -109,7 +113,6 @@ function _createNotes() {
                 }
             },
             {
-                id: utilService.makeId(),
                 type: 'note-txt',
                 info: {
                     body: 'Insert note text here',
@@ -121,7 +124,6 @@ function _createNotes() {
 
             },
             {
-                id: utilService.makeId(),
                 type: 'note-txt',
                 info: {
                     body: 'Insert note text here',
@@ -132,10 +134,9 @@ function _createNotes() {
                 }
             }
         ]
-        notes = notes.map(note => createNoteTxt(note));
+        notes = notes.map(note => createNote(note));
     }
 }
-
 
 function _saveNoteToStorage(notes) {
     storageService.saveToStorage(KEY, notes)
