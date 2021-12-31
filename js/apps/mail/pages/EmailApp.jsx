@@ -22,7 +22,7 @@ export class EmailApp extends React.Component {
   }
 
   handleCriteriaStatus = (newStatus) => {
-    if(newStatus==='starred') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: true} }), () => this.loadMails())
+    if(newStatus==='stared') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: !this.state.criteria.isStared} }), () => this.loadMails())
     else this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
   }
  
