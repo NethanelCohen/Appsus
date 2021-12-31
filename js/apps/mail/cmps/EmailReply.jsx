@@ -36,7 +36,6 @@ export class EmailReply extends React.Component {
 
   handleMailWindow = (ev,submit) => {
     ev.preventDefault();
-    console.log(submit)
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
     if ((!submit)&&ev.type === 'click' && (subject || body || to)) {
