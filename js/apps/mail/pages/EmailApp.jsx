@@ -22,10 +22,10 @@ export class EmailApp extends React.Component {
   }
 
   handleCriteriaStatus = (newStatus) => {
-    this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
-    
+    if(newStatus==='starred') this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, isStared: true} }), () => this.loadMails())
+    else this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: newStatus } }), () => this.loadMails())
   }
-
+ 
   handleCriteriaTxt = (newTxt) => {
     this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, txt: newTxt} }), () => this.loadMails())
   }
@@ -43,7 +43,7 @@ replyClicked = () => {
 
 render() {
   const { mails,criteria } = this.state;
-  const {isReplyClicked} = this.state;
+  const {isReplyClicked,setStaredStatus } = this.state;
   const loggedinUser = emailService.getUserDetails();
   return (
     <div className="email-list-container grid">
