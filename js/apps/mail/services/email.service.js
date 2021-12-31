@@ -110,7 +110,7 @@ function createMail(mail) {
         lables: [],
         status,
         sentAt: new Date().getTime(),
-        to
+        to: to || ''
     }
 }
 
