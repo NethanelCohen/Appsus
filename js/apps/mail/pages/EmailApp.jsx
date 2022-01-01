@@ -48,10 +48,10 @@ render() {
       <div className="search-filter">
         <input placeholder="Search mail" onChange={(ev) => this.handleCriteriaTxt(ev.target.value)}></input>
       </div>
-      <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" />
+      <StyledButton func={() => this.replyClicked()} txt="Compose" bgc="#03a9f4" classname=""/>
       {isReplyClicked && <EmailReply loadMails={this.loadMails} loggedinUser={loggedinUser} replyClicked={this.replyClicked}/>}
       <Folders handleCriteriaStatus={this.handleCriteriaStatus } activeStatus={criteria.status}  staredStatues={criteria.isStared}  />
-      <EmailList mails={mails} loadMails={this.loadMails} />
+      <EmailList mails={mails} loadMails={this.loadMails} isReplyClicked={isReplyClicked} loggedinUser={loggedinUser} replyClicked={this.replyClicked} />
     </div>
   );
 }

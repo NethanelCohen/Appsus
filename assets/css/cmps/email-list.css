@@ -14,14 +14,13 @@
     border-bottom: 1px solid black;
 }
 
-
-/* .mails-list .mail-header :first-child {
+.mails-list .mail-header :first-child {
     padding-inline-start: 75px;
 }
 
 .mails-list .mail-header :nth-child(2) {
     text-align: center;
-    flex-grow: 0.2;
+    flex-grow: 0.1;
 }
 
 .mails-list .mail-header :nth-child(3) {
@@ -33,7 +32,7 @@
 .mails-list .mail-header :last-child {
     text-align: right;
     flex-grow: 0.2;
-} */
+}
 
 .short-mail-view {
     align-items: center;
