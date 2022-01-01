@@ -72,9 +72,9 @@ export class EmailPreview extends React.Component {
             onClick={this.extandMailView}
             onMouseOver={() => this.handleMouse('on')}
             onMouseLeave={() => this.handleMouse('off')}>
-            <td>
+            {/* <td>
               <input type="checkbox" />
-            </td>
+            </td> */}
             <td
               className={mail.isStared === true ? 'star on' : 'star off'}
               onClick={(ev) => {
@@ -87,7 +87,6 @@ export class EmailPreview extends React.Component {
             <td>{mail.to}</td>
             <td  style={{
               innerHeight:'50px',
-              outerWidth:'100px',
             }}>{mail.body}</td>
             {!isMouseOver && <td>{date}</td>}
             {isMouseOver && (
@@ -132,9 +131,9 @@ export class EmailPreview extends React.Component {
             onClick={this.extandMailView}
             style={{ backgroundColor: `${isMailRead}` }}
             className="long-mail-view">
-            <td>
+            {/* <td>
               <input type="checkbox" />
-            </td>
+            </td> */}
             <td className="subject">{mail.subject}</td>
             <td className="to">
               {' '}

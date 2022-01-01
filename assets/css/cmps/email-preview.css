@@ -41,25 +41,9 @@ tr {
     justify-self: flex-end;
 }
 
-
-/* .mail-preview-container .long-mail-view .subject {
-    grid-area: subject;
+.long-mail-view> :first-child {
+    padding-inline-start: 1rem;
 }
-
-.mail-preview-container .long-mail-view .to {
-    grid-area: to;
-}
-
-.mail-preview-container .long-mail-view .mail-body {
-    grid-area: mail-body;
-    padding-bottom: 1rem;
-    overflow: hidden;
-}
-
-.mail-preview-container .long-mail-view .date {
-    grid-area: date;
-    justify-self: flex-end;
-} */
 
 .hover-mail-btn {
     position: absolute;

@@ -38,7 +38,6 @@ export class EmailReply extends React.Component {
 
   handleMailWindow = (ev, submit) => {
     ev.preventDefault();
-    console.log(ev.target);
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
     if (!submit && ev.type === 'click' && (subject || body || to)) {
@@ -53,9 +52,9 @@ export class EmailReply extends React.Component {
 
   render() {
     let { loggedinUser } = this.props;
-    const today = new Date()
-    const time = today.toLocaleTimeString('it-IT')
-      
+    const today = new Date();
+    const time = today.toLocaleTimeString('it-IT');
+
     return (
       <div className="reply-to-mail flex column">
         <form
@@ -73,7 +72,9 @@ export class EmailReply extends React.Component {
           <label className="send-to-headline" htmlFor="sendTo">
             To:{' '}
           </label>
-          <input autoComplete="off"
+          <input
+            autoComplete="off"
+            required 
             className="send-to"
             ref={this.inputRef}
             type="email"
@@ -86,7 +87,8 @@ export class EmailReply extends React.Component {
           <label className="subject-headline" htmlFor="subject">
             Subject:{' '}
           </label>
-          <input autoComplete="off"
+          <input
+            autoComplete="off"
             className="subject-input"
             id="subject"
             type="text"
@@ -94,10 +96,9 @@ export class EmailReply extends React.Component {
             placeholder={'Enter Subject'}
             onChange={this.handleChange}
           />
-          <p  className="created-at">
-            Created at: {time}
-          </p>
-          <input autoComplete="off"
+          <p className="created-at">Created at: {time}</p>
+          <input
+            autoComplete="off"
             type="text"
             name="body"
             onChange={this.handleChange}
