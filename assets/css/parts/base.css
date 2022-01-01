@@ -7,7 +7,8 @@
 
 body {
     margin-top: 1em;
-    background-color: white;
+    background-color: #eef2ff;
+    color: #04293A;
 }
 
 img {
@@ -58,4 +59,5 @@ a {
 
 ::placeholder {
     border: none;
+    color: #04293A;
 }

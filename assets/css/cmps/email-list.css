@@ -5,13 +5,16 @@
     grid-area: mails;
     margin-inline-end: 2rem;
     border-collapse: collapse;
+    border-right: 1px solid #5584AC;
+    border-left: 1px solid #5584AC;
+    border-top: 1px solid #5584AC;
 }
 
 .mails-list>* {
     text-align: left;
     font-size: 1rem;
     vertical-align: baseline;
-    padding: 1rem
+    padding: 1rem;
 }
 
 

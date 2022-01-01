@@ -66,7 +66,7 @@ export class EmailReply extends React.Component {
               this.handleMailWindow(ev);
             }}
             txt="Close"
-            bgc="hsl(345deg 100% 47%)"
+            bgc="#FF5959"
           />
           <h4 className="header">New Message</h4>
           <label className="send-to-headline" htmlFor="sendTo">
@@ -111,7 +111,7 @@ export class EmailReply extends React.Component {
               this.handleMailWindow(ev, 'submit');
             }}
             txt="send"
-            bgc="blue"
+            bgc="#CDDEFF"
           />
         </form>
       </div>

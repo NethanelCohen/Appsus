@@ -59,15 +59,17 @@ export class EmailPreview extends React.Component {
     const { isClicked } = this.state;
     const { isMouseOver } = this.state;
     const date = utilService.handleDateCheck(mail.sentAt);
-    const isMailRead = mail.isRead ? 'white' : '#f18d8bf2';
+    const isMailRead = mail.isRead ? '#eef2ff' : '#f18d8bf2';
     return (
       <React.Fragment>
         {!isClicked && (
+          
           <tr
             className="mail-preview-container short-mail-view"
             style={{
               backgroundColor: `${isMailRead}`,
               borderColor: `${isMailRead}`,
+              borderBottom: "1px solid #5584AC"
             }}
             onClick={this.extandMailView}
             onMouseOver={() => this.handleMouse('on')}
@@ -85,9 +87,12 @@ export class EmailPreview extends React.Component {
             </td>
             <td>{mail.subject}</td>
             <td>{mail.to}</td>
-            <td  style={{
-              innerHeight:'50px',
-            }}>{mail.body}</td>
+            <td
+              style={{
+                innerHeight: '50px',
+              }}>
+              {mail.body}
+            </td>
             {!isMouseOver && <td>{date}</td>}
             {isMouseOver && (
               <td className="hover-mail-btn flex">
@@ -125,6 +130,7 @@ export class EmailPreview extends React.Component {
               </td>
             )}
           </tr>
+          
         )}
         {isClicked && (
           <tr

@@ -1,16 +1,15 @@
 .app-header {
     padding-inline-start: 1rem;
     padding-bottom: 1rem;
-    color: #00171f;
+    color: #04293A;
     font-size: 1.5rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #04293A;
     justify-content: space-between;
     align-items: center;
 }
 
 .app-header .main-nav {
     gap: 1rem;
-    color: #00171f;
     font-weight: bold;
 }
 
@@ -19,8 +18,7 @@
 }
 
 .main-nav .header-active {
-    color: #FF0000;
-    border: 3px solid black;
+    color: #FF5959;
 }
 
 .main-nav a {
@@ -28,6 +26,7 @@
     border-radius: 6px;
     font-size: 2rem;
     min-height: 80px;
+    color: #04293A;
 }
 
 .main-nav a:hover {
