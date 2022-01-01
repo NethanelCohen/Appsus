@@ -66,8 +66,8 @@ export class NotePreview extends React.Component {
   render() {
     const { note } = this.props;
     const { isNoteClicked } = this.state
-    return (<div onClick={this.handleNoteClick} className="note flex column" style={{ cursor: 'pointer', backgroundColor: `${note.style.backgroundColor}` }}>
-      {note.type === 'note-image' && <img src={note.info.url} alt="" style={{ width: '100%', height: '80%' }} />}
+    return (<div onClick={this.handleNoteClick} className="note flex column" style={{backgroundColor: `${note.style.backgroundColor}` }}>
+      {note.type === 'note-image' && <img src={note.info.url} alt="" style={{width: '100%', height: '80%' }} />}
       {(note.type === 'note-txt' || note.type === 'note-image') && <h4>{note.info.title}</h4>}
       {note.type === 'note-txt' && <h6>{note.info.body}</h6>}
       {note.type === 'note-todos' && <h4>{note.label}</h4>}
@@ -75,7 +75,7 @@ export class NotePreview extends React.Component {
         return <li key={idx}>{todo.txt}</li>
       })}
       {isNoteClicked &&
-        <div className="pop-out-note" style={{ width: '50%', height: '50%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: `${note.style.backgroundColor}` }} >
+        <div className="pop-out-note" style={{ backgroundColor: `${note.style.backgroundColor}` }} >
           {note.type === 'note-image' &&
             <div className="image-type-note">
               <input name='url' type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={note.info.url} />
@@ -83,27 +83,40 @@ export class NotePreview extends React.Component {
             </div>}
           {(note.type === 'note-txt' || note.type === 'note-image') &&
             <div className="txt-title-type-note">
-              <input name="title" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.info.title} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+              <textarea value={this.state.note.info.title} rows={3} name="title" type="text"
+              style={{ cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} 
+              onChange={(ev) => this.onInputChange(ev.target, note.id)}>
+                </textarea>
             </div>}
           {note.type === 'note-txt' &&
           <div className="txt-body-type-note">
-          <input name="body" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.info.body} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+            <textarea value={this.state.note.info.body} rows={8} name="body" type="text"
+              style={{ cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} 
+              onChange={(ev) => this.onInputChange(ev.target, note.id)}>
+                </textarea>
         </div>}
           {note.type === 'note-todos' && 
           <div className="todo-label-note">
-          <input name="label" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.label} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+            <textarea value={this.state.note.label} rows={2} name="label" type="text"
+              style={{ cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} 
+              onChange={(ev) => this.onInputChange(ev.target, note.id)}>
+                </textarea>
         </div>}
           {note.type === 'note-todos' && 
           <div className="todo-li-note">
-          <input name="todo" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.todos.txt} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+            <textarea value={this.state.note.todos.txt} rows={2} name="label" type="text"
+              style={{ cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} 
+              onChange={(ev) => this.onInputChange(ev.target, note.id)}>
+                </textarea>
         </div>}
           {/* {note.todos.map((todo, idx) => {
             return <li key={idx}>{todo.txt}</li>
           })} */}
-          <button onClick={() => this.handleNoteDelete(note.id)}>delete</button>
-          <button onClick={() => this.handleNoteUpdate(note)}>save</button>
-          <button onClick={() => this.handleCloseNote()}>close</button>
-
+          <div className="pop-out-btns">
+            <img src="../../../assets/img/delete.png" alt="delete" style={{backgroundColor: `${note.style.backgroundColor}`}} onClick={() => this.handleNoteDelete(note.id)} />
+            <img src="../../../assets/img/diskette.png" alt="save" style={{backgroundColor: `${note.style.backgroundColor}`}} onClick={() => this.handleNoteUpdate(note)} />
+            <img src="../../../assets/img/cancel.png" alt="save" style={{backgroundColor: `${note.style.backgroundColor}`}} onClick={() => this.handleCloseNote()} />
+          </div>
         </div>}
     </div>
     )

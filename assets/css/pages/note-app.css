@@ -2,12 +2,13 @@
     font-size: 3rem;
     margin-top: 2rem;
     align-items: center;
+    font-family: 'Roboto';
 }
 
 .note-app-container .add-note {
-    width: 80%;
+    width: 50%;
     min-height: 3rem;
-    border: 3px solid black;
+    border: 2px solid black;
     gap: 2rem;
     padding-inline-end: 1rem;
     border-radius: 2rem;
@@ -15,13 +16,16 @@
 
 .note-app-container .add-note input {
     padding: 1rem;
-    font-size: 1.7rem;
-    width: 75%;
+    font-size: 15px;
+    font-family: 'Roboto';
     margin-inline-start: 1rem;
-    height: 1rem;
+    height: .8rem;
     border: none;
-    text-align: center;
+    text-align: start;
     align-self: center;
+    cursor: text;
+    color: #202124;
+
 }
 
 .note-app-container .add-note input:focus {
@@ -36,4 +40,23 @@
     height: 20px;
     color: blue;
     fill: blue;
+}
+
+.note-type-btn {
+    position: absolute;
+    top: 20%;
+    right:10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-type-btn img {
+    width: 25px;
+    height: 25px;
+    transition: ease-in-out;
+}
+
+.note-type-btn>*:hover {
+    cursor: pointer;
+    color: chartreuse;
 }
