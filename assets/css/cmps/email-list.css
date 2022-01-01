@@ -2,9 +2,9 @@
     grid-template-rows: 1fr;
     font-size: 2px;
     gap: 1rem;
-    border: 1px solid black;
     grid-area: mails;
     margin-inline-end: 2rem;
+    border-collapse: collapse;
 }
 
 .mails-list>* {
@@ -12,14 +12,15 @@
     font-size: 1rem;
 }
 
-.mails-list .mail-header {
+
+/* .mails-list .mail-header {
     max-height: 4.2rem;
     width: 100%;
     padding: 1rem;
     border-bottom: 1px solid black;
     align-items: center;
     justify-content: space-around;
-}
+} */
 
 
 /* 

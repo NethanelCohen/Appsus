@@ -11,13 +11,11 @@ export class EmailReply extends React.Component {
       to: '',
     },
   };
-  inputRef = React.createRef()
+  inputRef = React.createRef();
 
   componentDidMount() {
-    this.inputRef.current.focus()
+    this.inputRef.current.focus();
   }
-  
-
 
   handleChange = (ev) => {
     const field = ev.target.name;
@@ -27,26 +25,23 @@ export class EmailReply extends React.Component {
       this.setState((prevState) => ({
         newMail: { ...prevState.newMail, to: value },
       }));
-      //   console.log(this.state.newMail);
     } else if (field === 'subject') {
       this.setState((prevState) => ({
         newMail: { ...prevState.newMail, subject: value },
       }));
-      //   console.log(this.state.newMail, value);
     } else {
       this.setState((prevState) => ({
         newMail: { ...prevState.newMail, body: value, status: 'sent' },
       }));
     }
-    // console.log(ev);
   };
 
-  handleMailWindow = (ev,submit) => {
+  handleMailWindow = (ev, submit) => {
     ev.preventDefault();
-    console.log(this.props)
+    console.log(ev.target);
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
-    if ((!submit)&&ev.type === 'click' && (subject || body || to)) {
+    if (!submit && ev.type === 'click' && (subject || body || to)) {
       let mail = this.state.newMail;
       mail.status = 'draft';
     }
@@ -57,44 +52,66 @@ export class EmailReply extends React.Component {
   };
 
   render() {
-    console.log(this.props)
     let { loggedinUser } = this.props;
-    
+    const today = new Date()
+    const time = today.toLocaleTimeString('it-IT')
+      
     return (
-      <div className="reply-to-mail">
-      
-      
-        <StyledButton classname={' close-button'}
-          func={(ev)=>{this.handleMailWindow(ev)}}
-          txt="Close"
-          bgc="hsl(345deg 100% 47%)"
-        />
+      <div className="reply-to-mail flex column">
         <form
           className="new-mail grid"
           onSubmit={(ev) => this.handleMailWindow(ev)}>
+          <StyledButton
+            classname={' close-button'}
+            func={(ev) => {
+              this.handleMailWindow(ev);
+            }}
+            txt="Close"
+            bgc="hsl(345deg 100% 47%)"
+          />
           <h4 className="header">New Message</h4>
           <label className="send-to-headline" htmlFor="sendTo">
             To:{' '}
           </label>
-          <input ref={this.inputRef} type="email" name="sendTo" onChange={this.handleChange} id="sendTo" />
+          <input autoComplete="off"
+            className="send-to"
+            ref={this.inputRef}
+            type="email"
+            name="sendTo"
+            placeholder={'Enter Receiver Mail'}
+            onChange={this.handleChange}
+            id="sendTo"
+          />
           {/* <h6>From: {loggedinUser.email}</h6> */}
-          <label className="subject-headline" htmlFor="subject">Subject: </label>
-          <input className="subject-input" id="subject"
+          <label className="subject-headline" htmlFor="subject">
+            Subject:{' '}
+          </label>
+          <input autoComplete="off"
+            className="subject-input"
+            id="subject"
             type="text"
             name="subject"
-            placeholder={'Enter your text here'}
+            placeholder={'Enter Subject'}
             onChange={this.handleChange}
           />
-          <p style={{ fontSize: '12px' }} className="created-at">
-            Created at: {new Date().toTimeString()}
+          <p  className="created-at">
+            Created at: {time}
           </p>
-          <input type="text" name="body" onChange={this.handleChange} className="body-input" />
-          <StyledButton classname={' send-button'}
-          type="submit"
-          func={(ev)=>{this.handleMailWindow(ev,'submit')}}
-          txt="send"
-          bgc="blue"
-        />
+          <input autoComplete="off"
+            type="text"
+            name="body"
+            onChange={this.handleChange}
+            className="body-input"
+          />
+          <StyledButton
+            classname={' send-button'}
+            type="submit"
+            func={(ev) => {
+              this.handleMailWindow(ev, 'submit');
+            }}
+            txt="send"
+            bgc="blue"
+          />
         </form>
       </div>
     );

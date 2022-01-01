@@ -4,26 +4,88 @@
     z-index: 5;
     background-color: #fff;
     bottom: 0px;
-    width: 75vw;
-    left: 12%;
+    width: 50vw;
+    left: 25%;
+}
+
+.reply-to-mail form>input {
+    border-radius: 6px;
+}
+
+.reply-to-mail form>input:focus {
+    outline: none;
+}
+
+.reply-to-mail form input {
+    border: none;
+    padding: 6px;
+}
+
+.reply-to-mail form input::placeholder {
+    background-color: none;
+}
+
+.reply-to-mail .new-mail {
+    align-items: center;
+    padding: 1rem;
+    gap: 0.5rem;
+    grid-template-columns: 50px 25px 1fr 1fr 100px;
+    grid-template-areas: 'created-at  created-at header header close-button'/* / */
+    'send-to-headline send-to send-to send-to send-to '/* / */
+    ' subject-headline subject-headline subject-input subject-input subject-input '/* / */
+    'body-input body-input body-input body-input body-input'/* / */
+    '. . send send .';
+    /* / */
+}
+
+.reply-to-mail .new-mail>* {
+    font-size: 1.2rem;
+}
+
+.reply-to-mail .new-mail .header {
+    grid-area: header;
+    text-align: center;
+    padding: 1rem;
+    font-size: 3rem;
+}
+
+.reply-to-mail .new-mail .send-to-headline {
+    grid-area: send-to-headline;
+}
+
+.reply-to-mail .new-mail .send-to {
+    grid-area: send-to;
+}
+
+.reply-to-mail .new-mail .subject-headline {
+    grid-area: subject-headline;
+}
+
+.reply-to-mail .new-mail .subject-input {
+    grid-area: subject-input;
+    background-color: none;
+}
+
+.reply-to-mail .new-mail .created-at {
+    grid-area: created-at;
+    align-self: baseline;
     font-size: 1rem;
 }
 
-.reply-to-mail form input[name=body] {
-    min-height: 300px;
-    border: none;
+.reply-to-mail .new-mail .body-input {
+    grid-area: body-input;
+    border: 1px solid black;
+    min-height: 250px;
     font-size: 1rem;
     text-align: left;
     padding: 1rem;
-    margin: 10px;
 }
 
-.reply-to-mail form input[name=body] ::placeholder {
-    color: chartreuse;
+.reply-to-mail .new-mail .send-button {
+    grid-area: send;
 }
 
 .reply-to-mail .close-button {
     grid-area: close-button;
-    align-self: flex-end;
-    margin: 0.3rem;
+    align-self: baseline;
 }
