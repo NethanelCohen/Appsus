@@ -42,9 +42,7 @@ export class EmailPreview extends React.Component {
     if ((this.state.isClicked = true)) this.setState({ isClicked: false });
   };
 
-  replyToMail = () => {
-    console.log('Reply to mail');
-  };
+
 
   deleteMail = () => {
     const { mail } = this.props;

@@ -1,6 +1,7 @@
 import { emailService } from '../services/email.service.js';
 import { StyledButton } from '../../../../cmps/StyledButton.jsx';
-import { EmailReply } from '../cmps/EmailReply.jsx';
+// import { EmailReply } from '../cmps/EmailReply.jsx';
+import { storageService } from '../../../services/storage.service.js';
 
 const { Link } = ReactRouterDOM;
 
@@ -8,8 +9,11 @@ export class EmailDetails extends React.Component {
   state = {
     mail: null,
     repliedClicked: false,
+    subject: '',
+    body: '',
+    status: '',
+    to: '',
   };
-
   componentDidMount() {
     this.loadMail();
   }
@@ -19,6 +23,37 @@ export class EmailDetails extends React.Component {
       this.loadMail();
     }
   }
+  handleChange = (ev) => {
+    const field = ev.target.name;
+    let value = ev.target.value;
+
+    if (field === 'sendTo') {
+      this.setState((prevState) => ({
+        mail: { ...prevState.mail, to: value },
+      }));
+    } else if (field === 'subject') {
+      this.setState((prevState) => ({
+        mail: { ...prevState.mail, subject: value },
+      }));
+    } else {
+      this.setState((prevState) => ({
+        mail: { ...prevState.mail, body: value, status: 'sent' },
+      }));
+    }
+  };
+
+  handleMailWindow = (ev, submit) => {
+    ev.preventDefault();
+    const { subject, body, to } = this.state.mail;
+    let mails = storageService.loadFromStorage('mails_DB');
+    if (!submit && ev.type === 'click' && (subject || body || to)) {
+      let mail = this.state.mail;
+      mail.status = 'draft';
+    }
+    const sentMail = emailService.createMail(this.state.mail);
+    storageService.saveToStorage('mails_DB', [sentMail, ...mails]);
+    this.replyToMail();
+  };
 
   loadMail = () => {
     const { mailId } = this.props.match.params;
@@ -28,8 +63,14 @@ export class EmailDetails extends React.Component {
       this.setState({ mail });
     });
   };
+  loggedinUser = () => {
+    const user = emailService.getUserDetails();
+    console.log(user);
+  };
 
   replyToMail = () => {
+    // debugger
+    console.log(this.state, this.props);
     const { repliedClicked } = this.state;
     !repliedClicked
       ? this.setState({ repliedClicked: true })
@@ -42,53 +83,61 @@ export class EmailDetails extends React.Component {
   };
 
   render() {
-    const { mail } = this.state;
-    const { repliedClicked } = this.state;
-    if (!mail) return <h1>There is no mail!</h1>;
-    const date =
-      new Date(mail.sentAt).toLocaleDateString('en-US') +
-      ' ' +
-      new Date(mail.sentAt).toLocaleTimeString('en-US');
+    // const { mail } = this.state;
+    // const { repliedClicked } = this.state;
+    // if (!mail) return <h1>There is no mail!</h1>;
+    // const date =
+    //   new Date(mail.sentAt).toLocaleDateString('en-US') +
+    //   ' ' +
+    //   new Date(mail.sentAt).toLocaleTimeString('en-US');
     return (
-      <section className="mail-details grid">
-        <div className="mail-inner-btn flex">
-          <Link to={'/mail'}>
-            <StyledButton  txt="⏎" bgc="grey" classname="" />
-          </Link>
-          {!this.props.isReplyClicked && (
-                  <StyledButton 
-                  func={() => this.props.replyClicked()}
-                  classname=""
-                    txt="reply!!"
-                    bgc="green"
-                    loadMails={this.props.loadMails}
-                    loggedinUser={this.props.loggedinUser}
-                    replyClicked={this.props.replyClicked}
-                  />
-                )}
-          <StyledButton classname=""
-            func={this.deleteMail}
-            txt="Delete"
-            bgc="hsl(345deg 100% 47%)"
+      <div className="mail-details">
+        <form
+          className="new-mail grid"
+          onSubmit={(ev) => this.handleMailWindow(ev)}>
+          <h4 className="header">New Message</h4>
+          <label className="send-to-headline" htmlFor="sendTo">
+            To:{' '}
+          </label>
+          <input
+            ref={this.inputRef}
+            type="email"
+            name="sendTo"
+            onChange={this.handleChange}
+            id="sendTo"
           />
-        </div>
-        <h1 className="mail-subject">{mail.subject}</h1>
-        <div className="mail-description flex column">
-          <h4 className="mail-from" >{mail.to}</h4>
-          <h4 className="mail-date">{date}</h4>
-          {repliedClicked && <EmailReply />}
-        </div>
-        <h2 className="mail-body">{mail.body}</h2>
-        {/* <p className="mail-txt">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo
-          architecto consequatur cumque atque explicabo autem odio vero illum.
-          Cumque mollitia nihil exercitationem rem magni perspiciatis nesciunt
-          dolorum delectus qui eveniet.
-        </p> */}
-        {repliedClicked && (
-          <EmailReply replyToMail={this.replyToMail} mail={this.state.mail} />
-        )}
-      </section>
+          <h6>From: {() => this.loggedinUser().mail}</h6>
+          <label className="subject-headline" htmlFor="subject">
+            Subject:{' '}
+          </label>
+          <input
+            className="subject-input"
+            id="subject"
+            type="text"
+            name="subject"
+            placeholder={'Enter your text here'}
+            onChange={this.handleChange}
+          />
+          <p style={{ fontSize: '12px' }} className="created-at">
+            Created at: {new Date().toTimeString()}
+          </p>
+          <input
+            type="text"
+            name="body"
+            onChange={this.handleChange}
+            className="body-input"
+          />
+          <StyledButton
+            classname={' send-button'}
+            type="submit"
+            func={(ev) => {
+              this.handleMailWindow(ev, 'submit');
+            }}
+            txt="send"
+            bgc="blue"
+          />
+        </form>
+      </div>
     );
   }
 }
