@@ -37,10 +37,10 @@ export class TodoNote extends React.Component {
             todos[todos.length-1].txt = value; 
             this.setState({todos: todos})
         }
-        else if (field === 'backgroundColor') {
-            this.setState((prevState) => ({ newNote: { ...prevState.newNote, style: { ...prevState.newNote.info, [field]: value } } }))
-        }
-        this.props.handleNoteBackground(value)
+        // else if (field === 'backgroundColor') {
+        //     this.setState((prevState) => ({ newNote: { ...prevState.newNote, style: { ...prevState.newNote.info, [field]: value } } }))
+        // }
+        // this.props.handleNoteBackground(value)
     }
 
     handleNoteAdd = (ev) => {

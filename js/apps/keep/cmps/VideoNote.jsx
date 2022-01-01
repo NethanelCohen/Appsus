@@ -1,4 +1,3 @@
-import ReactPlayer from 'react-player/youtube'
 import { noteService } from '../services/note.service.js';
 
 export class VideoNote extends React.Component {
@@ -48,7 +47,6 @@ export class VideoNote extends React.Component {
                 <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
                     <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, borderBottom: '1px solid white'} } name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
                     <input style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, borderBottom: '1px solid white' }} name='url' placeholder='Enter image url...' onChange={(ev) => { this.handleChange(ev.target) }} />
-                    <ReactPlayer url={youtubeId} controls={true} />
                     <input type="color" name='backgroundColor' style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)' }} onChange={(ev) => { this.handleChange(ev.target) }}></input>
                     <button>keep</button>
                 </form>

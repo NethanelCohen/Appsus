@@ -1,7 +1,3 @@
-// import { TxtNote } from './TxtNote';
-// this.props.loadNotes
-// this.props.note
-
 import { storageService } from "../services/storage.service.js";
 import { noteService } from "../services/note.service.js";
 
@@ -37,7 +33,17 @@ export class NotePreview extends React.Component {
   // }
 
   onInputChange = ({name, value}, noteId) => {
-      this.setState((prevState) => ({ note: {...prevState.note, info: {...prevState.note.info, [name]: value}}}))
+    console.log("name: ", name);
+    console.log("value: ", value);
+    if (name === 'title' || name === 'body' || name === 'url') {
+      return this.setState((prevState) => ({ note: {...prevState.note, info: {...prevState.note.info, [name]: value}}}))
+    } 
+    if (name === 'label') {
+      return this.setState((prevState) => ({ note: {...prevState.note, label: value }}));
+    }
+    // if (name === 'todo') {
+    //   return this.setState((prevState) => ({ note: {...prevState.note, todos: {...prevState.note.todos, [name]: value }}}));
+    // } 
   }
 
   handleNoteDelete = (noteId) => {
@@ -72,20 +78,28 @@ export class NotePreview extends React.Component {
         <div className="pop-out-note" style={{ width: '50%', height: '50%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: `${note.style.backgroundColor}` }} >
           {note.type === 'note-image' &&
             <div className="image-type-note">
+              <input name='url' type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={note.info.url} />
               <img src={note.info.url} style={{ width: '100%', height: '80%' }} />
             </div>}
           {(note.type === 'note-txt' || note.type === 'note-image') &&
-            <div className="txt-type-note">
+            <div className="txt-title-type-note">
               <input name="title" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.info.title} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
             </div>}
           {note.type === 'note-txt' &&
-          <div className="txt-type-note">
+          <div className="txt-body-type-note">
           <input name="body" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.info.body} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
         </div>}
-          {note.type === 'note-todos' && <h4>{note.label}</h4>}
-          {note.type === 'note-todos' && note.todos.map((todo, idx) => {
+          {note.type === 'note-todos' && 
+          <div className="todo-label-note">
+          <input name="label" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.label} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+        </div>}
+          {note.type === 'note-todos' && 
+          <div className="todo-li-note">
+          <input name="todo" type="text" onChange={(ev) => this.onInputChange(ev.target, note.id)} value={this.state.note.todos.txt} style={{ border: 'none', cursor: 'text', backgroundColor: `${note.style.backgroundColor}` }} />
+        </div>}
+          {/* {note.todos.map((todo, idx) => {
             return <li key={idx}>{todo.txt}</li>
-          })}
+          })} */}
           <button onClick={() => this.handleNoteDelete(note.id)}>delete</button>
           <button onClick={() => this.handleNoteUpdate(note)}>save</button>
           <button onClick={() => this.handleCloseNote()}>close</button>
