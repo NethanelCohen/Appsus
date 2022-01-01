@@ -1,6 +1,7 @@
 import { emailService } from '../services/email.service.js';
 import { StyledButton } from '../../../../cmps/StyledButton.jsx';
 import { utilService } from '../../../services/util.services.js';
+import { DynamicImage } from '../../../../cmps/DynamicImage.jsx';
 
 const { Link } = ReactRouterDOM;
 
@@ -22,7 +23,7 @@ export class EmailPreview extends React.Component {
     const { isClicked } = this.state;
     if (e.target.className.includes('star')) {
       return;
-    } else if (e.target.innerText === 'unread') return;
+    } else if (e.target.nodeName === 'IMG') return;
     else if (e.target.type === 'checkbox') return;
 
     if (!id) return;
@@ -37,6 +38,7 @@ export class EmailPreview extends React.Component {
   };
 
   handleUnreadClick = () => {
+    // debugger
     const { id } = this.props.mail;
     emailService.isMailRead(id, false).then(this.props.loadMails);
     if ((this.state.isClicked = true)) this.setState({ isClicked: false });
@@ -63,13 +65,12 @@ export class EmailPreview extends React.Component {
     return (
       <React.Fragment>
         {!isClicked && (
-          
           <tr
             className="mail-preview-container short-mail-view"
             style={{
               backgroundColor: `${isMailRead}`,
               borderColor: `${isMailRead}`,
-              borderBottom: "1px solid #5584AC"
+              borderBottom: '1px solid #5584AC',
             }}
             onClick={this.extandMailView}
             onMouseOver={() => this.handleMouse('on')}
@@ -97,40 +98,36 @@ export class EmailPreview extends React.Component {
             {isMouseOver && (
               <td className="hover-mail-btn flex">
                 <Link to={{ pathname: `/mail/${mail.id}` }}>
-                  <StyledButton
+                  <DynamicImage
                     func={this.handleOpenMail}
-                    txt="❏"
-                    bgc="grey"
-                    classname=""
+                    txt=""
+                    src="../../../assets/img/mail-open.png"
+                    classname=" open-mail"
                   />
                 </Link>
-                <StyledButton
-                  classname=""
+                <DynamicImage
                   func={this.handleUnreadClick}
-                  txt="unread"
-                  bgc="#8cd5ee"
+                  txt=""
+                  src="../../../assets/img/unread.png"
+                  classname=" unread-mail"
                 />
                 {!this.props.isReplyClicked && (
-                  <StyledButton
+                  <DynamicImage
                     func={() => this.props.replyClicked()}
-                    classname=""
-                    txt="reply"
-                    bgc="green"
-                    loadMails={this.props.loadMails}
-                    loggedinUser={this.props.loggedinUser}
-                    replyClicked={this.props.replyClicked}
+                    txt=""
+                    src="../../../assets/img/reply-mail.png"
+                    classname=" reply"
                   />
                 )}
-                <StyledButton
-                  classname=""
+                <DynamicImage
                   func={this.deleteMail}
-                  txt="Delete"
-                  bgc="hsl(345deg 100% 47%)"
+                  txt=""
+                  src="../../../assets/img/delete.png"
+                  classname=" delete"
                 />
               </td>
             )}
           </tr>
-          
         )}
         {isClicked && (
           <tr
@@ -148,36 +145,34 @@ export class EmailPreview extends React.Component {
             <td className="date">{date}</td>
             <td className="mail-body">{mail.body}</td>
             <td className="long-mail-btn flex">
-              <Link to={`/mail/${mail.id}`}>
-                <StyledButton
+              <Link to={`/mail/${mail.id}`} className="expand">
+                <DynamicImage
                   func={this.handleOpenMail}
-                  txt="❏"
-                  bgc="grey"
-                  classname=""
+                  txt=""
+                  src="../../../assets/img/mail-open.png"
+                  classname=" open-mail"
                 />
               </Link>
-              <StyledButton
-                classname=""
+              <DynamicImage
                 func={this.handleUnreadClick}
-                txt="unread"
-                bgc="#8cd5ee"
+                txt=""
+                src="../../../assets/img/unread.png"
+                classname=" unread-mail"
               />
+
               {!this.props.isReplyClicked && (
-                <StyledButton
+                <DynamicImage
                   func={() => this.props.replyClicked()}
-                  classname=""
-                  txt="reply"
-                  bgc="green"
-                  loadMails={this.props.loadMails}
-                  loggedinUser={this.props.loggedinUser}
-                  replyClicked={this.props.replyClicked}
+                  txt=""
+                  src="../../../assets/img/reply-mail.png"
+                  classname=" reply"
                 />
               )}
-              <StyledButton
-                classname=""
+              <DynamicImage
                 func={this.deleteMail}
-                txt="Delete"
-                bgc="hsl(345deg 100% 47%)"
+                txt=""
+                src="../../../assets/img/delete.png"
+                classname=" delete"
               />
             </td>
           </tr>

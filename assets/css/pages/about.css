@@ -1,10 +1,25 @@
 .about-container {
     margin-top: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    font-size: 2rem;
+    padding-block-end: 5rem;
+    text-align: center;
 }
 
 .about-container h1 {
-    font-size: 7rem;
     color: #FF5959;
     text-shadow: 5px 5px #676FA3;
     text-align: center;
+}
+
+.about-container .user-images {
+    gap: 2rem;
+    max-width: 400px;
+}
+
+.about-container .user-images>div {
+    gap: 1rem;
+    width: 200px;
 }

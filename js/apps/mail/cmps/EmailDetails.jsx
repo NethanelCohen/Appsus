@@ -1,7 +1,7 @@
 import { emailService } from '../services/email.service.js';
 import { StyledButton } from '../../../../cmps/StyledButton.jsx';
 import { EmailReply } from '../cmps/EmailReply.jsx';
-
+import { DynamicImage } from '../../../../cmps/DynamicImage.jsx';
 const { Link } = ReactRouterDOM;
 
 export class EmailDetails extends React.Component {
@@ -12,7 +12,7 @@ export class EmailDetails extends React.Component {
 
   componentDidMount() {
     this.loadMail();
-    console.log(this.props)
+    console.log(this.props);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -54,38 +54,34 @@ export class EmailDetails extends React.Component {
       <section className="mail-details grid">
         <div className="mail-inner-btn flex">
           <Link to={'/mail'}>
-            <StyledButton  txt="⏎" bgc="grey" classname="" />
+            <DynamicImage
+              txt=""
+              src="../../../assets/img/mail-open.png"
+              classname=" open-mail"
+            />
           </Link>
           {!repliedClicked && (
-                  <StyledButton 
-                  func={() => this.replyToMail()}
-                  classname=""
-                    txt="reply!!"
-                    bgc="green"
-                    // loadMails={this.props.loadMails}
-                    // loggedinUser={()=>emailService.loggedinUser()}
-                    // replyClicked={repliedClicked}
-                  />
-                )}
-          <StyledButton classname=""
+            <DynamicImage
+              func={() => this.props.replyClicked()}
+              txt=""
+              src="../../../assets/img/reply-mail.png"
+              classname=" reply"
+            />
+          )}
+          <DynamicImage
             func={this.deleteMail}
-            txt="Delete"
-            bgc="hsl(345deg 100% 47%)"
+            txt=""
+            src="../../../assets/img/delete.png"
+            classname=" delete"
           />
         </div>
         <h1 className="mail-subject">{mail.subject}</h1>
         <div className="mail-description flex column">
-          <h4 className="mail-from" >{mail.to}</h4>
+          <h4 className="mail-from">{mail.to}</h4>
           <h4 className="mail-date">{date}</h4>
           {repliedClicked && <EmailReply />}
         </div>
         <h2 className="mail-body">{mail.body}</h2>
-        {/* <p className="mail-txt">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo
-          architecto consequatur cumque atque explicabo autem odio vero illum.
-          Cumque mollitia nihil exercitationem rem magni perspiciatis nesciunt
-          dolorum delectus qui eveniet.
-        </p> */}
         {repliedClicked && (
           <EmailReply replyToMail={this.replyToMail} mail={this.state.mail} />
         )}

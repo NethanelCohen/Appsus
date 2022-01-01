@@ -11,6 +11,7 @@
 @import './cmps/email-preview.css';
 @import './cmps/folders.css';
 @import './cmps/styled-button.css';
+@import './cmps/dynamic-img.css';
 @import './cmps/user-msg.css';
 @import './cmps/send-mail.css';
 @import '../../assets/css/apps/keep/cmps/note-list.css';
