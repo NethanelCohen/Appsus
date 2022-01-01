@@ -4,7 +4,7 @@
 }
 
 .email-folder-list ul>li {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 0.5rem;
     cursor: pointer;
     max-width: 200px;
@@ -13,9 +13,9 @@
 }
 
 .email-folder-list ul>li:not( .active-filter):hover {
-    background-color: #ff00007d;
+    background-color: #CDDEFF;
 }
 
 .email-folder-list .active-filter {
-    background-color: #03a9f4;
+    background-color: #FF5959;
 }

@@ -1,7 +1,7 @@
 
 export function Folders({handleCriteriaStatus , activeStatus}) {
   return (
-    <section className="email-folder-list">
+    <aside className="email-folder-list">
       <ul
         className="flex column"
         onClick={() => handleCriteriaStatus(event.target.dataset.value)}>
@@ -31,6 +31,6 @@ export function Folders({handleCriteriaStatus , activeStatus}) {
           Starred
         </li>
       </ul>
-    </section>
+    </aside>
   );
 }

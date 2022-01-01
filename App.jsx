@@ -4,7 +4,6 @@ import { Home } from './pages/Home.jsx';
 import { About } from './pages/About.jsx';
 import { EmailDetails } from "./js/apps/mail/cmps/EmailDetails.jsx";
 
-
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { AppFooter } from './cmps/AppFooter.jsx';
 import { UserMsg } from './cmps/UserMsg.jsx';

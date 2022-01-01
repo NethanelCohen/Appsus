@@ -8,7 +8,8 @@
     grid-template-columns: 0.2fr 1fr 0.2fr;
     row-gap: 6rem;
     text-align: center;
-    border: 3px solid black;
+    border-radius: 1rem;
+    border: 3px solid #676FA3;
     grid-template-areas: 'description subject buttons'/* / */
     '. body . '
     /* / */
@@ -24,6 +25,7 @@
 }
 
 .mail-details .mail-description {
+    margin-inline-start: 0.5rem;
     grid-area: description;
     gap: 1rem
 }

@@ -4,22 +4,22 @@
     font-size: 3rem;
     grid-template-columns: 130px 0.9fr;
     grid-template-rows: 100px 1px 1fr;
-    gap: 2rem;
+    gap: 1rem;
     grid-template-areas: ' folders search'/* / */
     '. empty' '  . mails'
 }
 
 .search-filter {
     text-align: center;
-    border-radius: 30px;
-    border: 3px solid black;
+    border-bottom: 2px solid #676fa3;
     grid-area: search;
-    width: 90%;
+    width: 50%;
     justify-self: center;
     max-height: 75%;
 }
 
 .search-filter>input {
+    background-color: #eef2ff;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;

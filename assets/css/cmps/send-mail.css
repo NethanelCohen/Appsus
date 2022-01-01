@@ -26,6 +26,7 @@
 }
 
 .reply-to-mail .new-mail {
+    background-color: #F5F5F5;
     align-items: center;
     padding: 1rem;
     gap: 0.5rem;

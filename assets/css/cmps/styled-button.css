@@ -34,7 +34,7 @@
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
+    color: black;
     will-change: transform;
     transform: translateY(-4px);
     transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
