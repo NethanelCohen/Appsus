@@ -5,7 +5,12 @@
     height: 5rem;
     outline: 1px solid black;
     align-items: center;
-    justify-content: space-around;
+}
+
+.mail-preview-container td,
+tr {
+    overflow: hidden;
+    padding: 1rem;
 }
 
 .empty-messege {
@@ -13,14 +18,8 @@
     text-align: center;
 }
 
-.mail-preview-container:last-of-type {
-    margin-bottom: 1rem;
-}
-
 .long-mail-view {
     padding: 1rem;
-    /* min-width: 100%; */
-    overflow: visible;
     height: 300px;
     justify-content: left;
     outline: 1px solid black;

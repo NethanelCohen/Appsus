@@ -85,7 +85,10 @@ export class EmailPreview extends React.Component {
             </td>
             <td>{mail.subject}</td>
             <td>{mail.to}</td>
-            <td>{mail.body}</td>
+            <td  style={{
+              innerHeight:'50px',
+              outerWidth:'100px',
+            }}>{mail.body}</td>
             {!isMouseOver && <td>{date}</td>}
             {isMouseOver && (
               <td className="hover-mail-btn flex">
