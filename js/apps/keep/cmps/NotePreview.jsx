@@ -1,5 +1,6 @@
 import { storageService } from "../../../services/storage.service.js";
 import { noteService } from "../services/note.service.js";
+import {eventBusService} from '../../../services/event-bus.service.js'
 
 export class NotePreview extends React.Component {
 
@@ -13,6 +14,7 @@ export class NotePreview extends React.Component {
   componentDidMount() {
     this.loadNote()
   }
+
 
   loadNote = (editNote) => {
     if (!editNote) {
@@ -65,6 +67,15 @@ export class NotePreview extends React.Component {
     this.props.loadNotes();
   }
 
+  handleComposeNote = () => {
+    // eventBusService.emit('compose-note', this.state.note);
+    let url = window.location.href;
+    url = url.replace('note', '');
+    this.props.history.push('/mail')
+    // console.log(url);
+  
+  }
+
   handleCloseNote = () => {
     this.setState({ isNoteClicked: false, isUpdating: false });
   }
@@ -95,7 +106,8 @@ export class NotePreview extends React.Component {
         <div className="pop-out-btns">
           <img src="../../../assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
           <img src="../../../assets/img/diskette.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteUpdate(note)} />
-          <img src="../../../assets/img/cancel.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
+          <img src="../../../assets/img/cancel.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
+          <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} />
         </div>
       }
       {isNoteClicked &&
@@ -147,7 +159,8 @@ export class NotePreview extends React.Component {
           <div className="pop-out-btns">
             <img src="../../../assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
             <img src="../../../assets/img/diskette.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteUpdate(note)} />
-            <img src="../../../assets/img/cancel.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
+            <img src="../../../assets/img/cancel.png" alt="cancel" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
+            <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} />
           </div>
         </div>}
     </div>

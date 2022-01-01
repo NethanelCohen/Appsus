@@ -1,7 +1,9 @@
 import { utilService } from '../../../services/util.services.js';
 import { storageService } from '../../../services/storage.service.js';
+import {eventBusService} from '../../../event-bus.service.js'
 import { emailService } from '../services/email.service.js';
 import { StyledButton } from '../../../../cmps/StyledButton.jsx';
+
 export class EmailReply extends React.Component {
   state = {
     newMail: {
@@ -15,6 +17,8 @@ export class EmailReply extends React.Component {
 
   componentDidMount() {
     this.inputRef.current.focus();
+    this.removeEventBus = eventBusService.on('compose-note', (note) =>
+    console.log(note))
   }
 
   handleChange = (ev) => {
