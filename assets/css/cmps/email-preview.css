@@ -19,6 +19,7 @@ tr {
 }
 
 .long-mail-view {
+    text-align: center;
     padding: 1rem;
     height: 300px;
     justify-content: left;
@@ -37,8 +38,7 @@ tr {
     gap: 0.5rem;
     width: 100%;
     grid-area: buttons;
-    max-height: 50px;
-    justify-self: flex-end;
+    /* max-height: 50px; */
 }
 
 .long-mail-view> :first-child {
@@ -48,6 +48,9 @@ tr {
 .hover-mail-btn {
     position: absolute;
     gap: 0.5rem;
-    margin-top: 1rem;
     right: 13rem;
+}
+
+.long-mail-btn {
+    background-color: black;
 }

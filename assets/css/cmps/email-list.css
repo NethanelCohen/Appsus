@@ -10,6 +10,8 @@
 .mails-list>* {
     text-align: left;
     font-size: 1rem;
+    vertical-align: baseline;
+    padding: 1rem
 }
 
 
