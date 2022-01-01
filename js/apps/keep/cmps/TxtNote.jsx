@@ -44,11 +44,11 @@ export class TxtNote extends React.Component {
         return (
             <div style={{ textAlign: 'start'}} className='new-txt-note'>
                 <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
-                <textarea autocomplete="off" placeholder='Title?' rows={3} name="title" type="text"
+                <textarea autoComplete="off" placeholder='Title?' rows={3} name="title" type="text"
               style={{paddingTop: '1.6rem', textAlign: 'start', cursor: 'text', fontSize: '1.4rem' }}
               onChange={(ev) => { this.handleChange(ev.target) }}>
                 </textarea>
-                <textarea autocomplete="off" placeholder="What's on your mind" rows={4} name="body" type="text"
+                <textarea autoComplete="off" placeholder="What's on your mind" rows={4} name="body" type="text"
               style={{width: '100%', textAlign: 'start', cursor: 'text', fontSize: '.8rem' }}
               onChange={(ev) => { this.handleChange(ev.target) }}>
                 </textarea>
