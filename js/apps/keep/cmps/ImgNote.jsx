@@ -1,5 +1,6 @@
 
 import { noteService } from '../services/note.service.js';
+import { DynamicImage } from '../../../../cmps/DynamicImage.jsx';
 
 export class ImgNote extends React.Component {
 
@@ -45,9 +46,34 @@ export class ImgNote extends React.Component {
                     <input autocomplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`,fontSize: '1.4rem'} } name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
                     <input autocomplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, fontSize: '.8rem'} } name='url' placeholder='Enter image url...' onChange={(ev) => { this.handleChange(ev.target) }} />
                     {url && <img src={url} style={{width: '200px', height: '200px', margin: '0 auto'}} />}
-                    <input type="color" name='backgroundColor' style={{width: '40px', height:'40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'}} onChange={(ev) => { this.handleChange(ev.target) }}></input>
-                    <button>save</button>
-                    <button onClick={this.props.handleClick}>✘</button>
+                    <div className="flex note-buttons ">
+          <input className="color-input"
+            type="color"
+            name="backgroundColor"
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              backgroundImage:
+                'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)',
+            }}
+            onChange={(ev) => {
+              this.handleChange(ev.target);
+            }}></input>
+          <button> <DynamicImage
+              txt=""
+              src="../../../assets/img/diskette.png"
+              classname=" save-note"
+            />
+          </button>
+          <button onClick={this.props.handleClick}>
+          <DynamicImage
+              txt=""
+              src="../../../assets/img/cancel.png"
+              classname=" delete-note"
+            />
+          </button>
+          </div>
                 </form>
             </div>
         )

@@ -9,5 +9,24 @@
 
 .notes-list>* {
     padding: 6px;
-    break-inside: avoid
+    break-inside: avoid;
+}
+
+.delete-note,
+.add-note-button,
+.save-note {
+    width: 25px;
+}
+
+.note-buttons {
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.note-buttons button,
+.save-note-todo,
+.add-note-img {
+    background-color: transparent;
+    border: none;
+    width: 25px;
 }
