@@ -6,15 +6,16 @@
 }
 
 .note-app-container .add-note {
-    width: 50%;
+    width: 40%;
     min-height: 3rem;
     border: 2px solid black;
     gap: 2rem;
     padding-inline-end: 1rem;
-    border-radius: 2rem;
+    border-radius: 5px;
 }
 
 .note-app-container .add-note input {
+
     padding: 1rem;
     font-size: 15px;
     font-family: 'Roboto';
