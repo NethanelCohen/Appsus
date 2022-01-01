@@ -36,3 +36,7 @@
 .logo-container {
     gap: 1rem;
 }
+
+.logo-container img:last-of-type {
+    margin-top: 5%;
+}

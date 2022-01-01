@@ -65,5 +65,6 @@ tr {
 .hover-mail-btn {
     position: absolute;
     gap: 0.5rem;
-    right: 13%;
+    right: 15%;
+    margin-block-start: .6rem;
 }

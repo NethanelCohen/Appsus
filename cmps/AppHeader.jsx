@@ -5,8 +5,9 @@ export function AppHeader() {
     <header className="app-header flex">
       <NavLink activeClassName="header-active" to="/">
         <div className="logo-container flex">
-          <h1 className="logo"> Appsus</h1>
           <img src="./assets/img/icons8-gmail-48.png" alt="" />
+          <img src="./assets/img/new-notes.png" alt="" />
+          {/* <h1 className="logo"> Appsus</h1> */}
         </div>
       </NavLink>
       
