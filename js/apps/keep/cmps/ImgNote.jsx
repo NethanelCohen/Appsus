@@ -42,8 +42,8 @@ export class ImgNote extends React.Component {
         return (
             <div style={{ textAlign: 'start', backgroundColor: `${backgroundColor}` }} className='new-txt-note'>
                 <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
-                    <input autocomplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`,fontSize: '1.4rem'} } name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
-                    <input autocomplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, fontSize: '.8rem'} } name='url' placeholder='Enter image url...' onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <input autoComplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`,fontSize: '1.4rem'} } name='title' placeholder='Title' onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <input autoComplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, fontSize: '.8rem'} } name='url' placeholder='Enter image url...' onChange={(ev) => { this.handleChange(ev.target) }} />
                     {url && <img src={url} style={{width: '200px', height: '200px', margin: '0 auto'}} />}
                     <input type="color" name='backgroundColor' style={{width: '40px', height:'40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'}} onChange={(ev) => { this.handleChange(ev.target) }}></input>
                     <button>save</button>

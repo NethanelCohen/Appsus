@@ -6,3 +6,8 @@
     padding: 1rem;
     gap: 1rem;
 }
+
+.footer-logo {
+    gap: 1rem;
+    align-items: center;
+}

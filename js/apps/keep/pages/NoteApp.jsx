@@ -26,13 +26,19 @@ export class NoteApp extends React.Component {
 
   handleClick = () => {
     const { isNoteClicked } = this.state;
-    !isNoteClicked ? this.setState({ isNoteClicked: true }) : this.setState({ isNoteClicked: false })
+    !isNoteClicked ? this.setState({ isNoteClicked: true, isNoteUpdating: true }) : this.setState({ isNoteClicked: false, isNoteUpdating: false })
     this.setState({background: '#C8E3D4'})
   }
 
   handleNoteBackground = (value) => {
     this.setState((prevState) => ({...prevState, background: value}));
   }
+
+  handleNoteClickForInput = () => {
+    if (this.state.isNoteClicked === true) this.setState({isNoteClicked: false}, this.loadNotes())
+  }
+
+  
 
   // handleChange = ({ name, value }) => {
   //   this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [name]: value } } }))
@@ -53,7 +59,7 @@ export class NoteApp extends React.Component {
   }
 
   render() {
-    const { notes, type, isNoteClicked, background} = this.state;
+    const { notes, type, isNoteClicked, background, isNoteUpdating} = this.state;
     if (!notes) return <h1> No notes </h1>
     return (
       <div className="note-app-container flex column">
@@ -97,7 +103,7 @@ export class NoteApp extends React.Component {
               {/* {type === 'note-video' && <VideoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />} */}
             </React.Fragment>}
           </div>
-        <NoteList notes={notes} loadNotes={this.loadNotes} />
+        <NoteList notes={notes} isNoteClicked={isNoteClicked} loadNotes={this.loadNotes} handleNoteClickForInput={this.handleNoteClickForInput} />
       </div >
     );
   }

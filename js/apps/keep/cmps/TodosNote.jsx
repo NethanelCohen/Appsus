@@ -57,11 +57,11 @@ export class TodoNote extends React.Component {
         return (
             <div style={{ textAlign: 'start', backgroundColor: `${backgroundColor}` }} className='new-txt-note'>
                 <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
-                    <input autocomplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, fontSize: '1.4rem' }} name='label' placeholder="Todo's label..." onChange={(ev) => { this.handleChange(ev.target) }} />
+                    <input autoComplete="off" style={{ width: '100%', textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, fontSize: '1.4rem' }} name='label' placeholder="Todo's label..." onChange={(ev) => { this.handleChange(ev.target) }} />
                     <ul>
                         {todos.map((todo, idx) => (
                             <li key={idx}>
-                            <textarea autocomplete="off" placeholder='todo?' rows={2} name="txt" type="text"
+                            <textarea autoComplete="off" placeholder='todo?' rows={2} name="txt" type="text"
                                 style={{ width: '100%', textAlign: 'start', cursor: 'text', fontSize: '.8rem', backgroundColor: `${backgroundColor}`, listStyleType: 'square' }}
                                 onChange={(ev) => { this.handleChange(ev.target) }}>
                             </textarea>
@@ -77,8 +77,3 @@ export class TodoNote extends React.Component {
         )
     }
 }
-
-{/* <li key={idx}> */ }
-{/* <input autocomplete="off"
-                            style={{textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, listStyleType: 'square'}} name='txt' placeholder='todo' onChange={(ev) => { this.handleChange(ev.target) }} />
-                            </li> */}
