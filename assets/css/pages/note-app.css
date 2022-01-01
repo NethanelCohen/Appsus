@@ -15,7 +15,6 @@
 }
 
 .note-app-container .add-note input {
-
     padding: 1rem;
     font-size: 15px;
     font-family: 'Roboto';
@@ -26,7 +25,6 @@
     align-self: center;
     cursor: text;
     color: #202124;
-
 }
 
 .note-app-container .add-note input:focus {
@@ -46,7 +44,7 @@
 .note-type-btn {
     position: absolute;
     top: 20%;
-    right:10px;
+    right: 10px;
     display: flex;
     flex-direction: column;
 }
