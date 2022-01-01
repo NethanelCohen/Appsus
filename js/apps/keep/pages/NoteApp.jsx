@@ -49,8 +49,7 @@ export class NoteApp extends React.Component {
   // }
 
   handleNoteType = ({ className }) => {
-    this.setState({type: className});
-    // this.setState((prevState) => ({ newNote: { ...prevState.newNote, type: className } }));
+    this.setState({type: className, isNoteClicked: true});
   }
 
 
@@ -59,16 +58,8 @@ export class NoteApp extends React.Component {
     if (!notes) return <h1> No notes </h1>
     return (
       <div className="note-app-container flex column">
-        <div style={{backgroundColor: `${background}`}} className="add-note flex">
-        {!isNoteClicked && <button style={{ opacity: '1', backgroundColor: 'none', cursor: 'text', width: '100%' }} onClick={this.handleClick}></button>}
-        {isNoteClicked &&
-            <React.Fragment>
-              {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
-              {type === 'note-image' && <ImgNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground}  handleClick={this.handleClick} />}
-              {type === 'note-todos' && <TodoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
-              {/* {type === 'note-video' && <VideoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />} */}
-            </React.Fragment>}
-            <div onClick={(ev) => this.handleNoteType(ev.target)}>
+        <div className='note-type-btn'>
+        <div onClick={(ev) => this.handleNoteType(ev.target)}>
               <img
                 className="note-txt"
                 src="../../../assets/img/font-solid.svg"
@@ -95,7 +86,17 @@ export class NoteApp extends React.Component {
                 src="../../../assets/img/list-solid.svg"
                 alt=""
               />
-            </div>
+            </div>      
+        </div>
+        <div style={{backgroundColor: `${background}`}} className="add-note flex">
+        {!isNoteClicked && <input value={'Add new note...'} onClick={this.handleClick} />}
+        {isNoteClicked &&
+            <React.Fragment>
+              {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
+              {type === 'note-image' && <ImgNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground}  handleClick={this.handleClick} />}
+              {type === 'note-todos' && <TodoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
+              {/* {type === 'note-video' && <VideoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />} */}
+            </React.Fragment>}
           </div>
         <NoteList notes={notes} loadNotes={this.loadNotes} />
       </div >
