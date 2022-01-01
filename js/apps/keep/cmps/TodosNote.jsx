@@ -133,7 +133,7 @@ export class TodoNote extends React.Component {
             {' '}
             <DynamicImage
               txt=""
-              src="../../../assets/img/plus.jpg"
+              src="../../../assets/img/checklist.png"
               classname=" add-note-img"
             />
           </button>
