@@ -61,3 +61,7 @@ a {
     border: none;
     color: #04293A;
 }
+
+.flex.align-center {
+    align-items: center;
+}
