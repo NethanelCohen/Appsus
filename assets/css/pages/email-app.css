@@ -9,6 +9,24 @@
     '. empty' '  . mails'
 }
 
+.email-list-container .compose {
+    width: 173px;
+    height: 60px;
+    padding: 6px;
+    border-radius: 3rem;
+    border: 1px solid black;
+    font-size: 1.5rem;
+    font-weight: 100;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.email-list-container .compose>img {
+    width: unset;
+}
+
 .search-filter {
     text-align: center;
     border-bottom: 2px solid #676fa3;

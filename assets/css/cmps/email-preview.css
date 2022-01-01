@@ -7,10 +7,6 @@
     border-radius: 1rem;
 }
 
-.blank {
-    height: 10px;
-}
-
 .mail-preview-container td,
 tr {
     overflow: hidden;
@@ -28,7 +24,7 @@ tr {
     padding: 1rem;
     height: 210px;
     justify-content: left;
-    border-bottom: 1px solid #5584AC;
+    border-bottom: 1px solid #5584ac;
     gap: 2rem;
     grid-template-rows: 50px 75px 1fr;
     grid-template-columns: 1fr 1fr 120px;
@@ -43,11 +39,27 @@ tr {
     gap: 0.5rem;
     width: 100%;
     grid-area: buttons;
-    /* max-height: 50px; */
+    margin-inline-start: 4rem;
+}
+
+.long-mail-view>.long-mail-btn>a,
+.unread-mail,
+.reply,
+.delete {
+    width: 1.5rem;
+    cursor: pointer;
 }
 
 .long-mail-view> :first-child {
     padding-inline-start: 1rem;
+}
+
+.hover-mail-btn>a,
+.unread-mail,
+.reply,
+.delete {
+    width: 1.5rem;
+    cursor: pointer;
 }
 
 .hover-mail-btn {
