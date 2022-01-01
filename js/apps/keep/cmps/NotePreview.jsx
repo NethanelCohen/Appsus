@@ -6,7 +6,8 @@ export class NotePreview extends React.Component {
   state = {
       note: null,
       isNoteClicked: false,
-      isUpdating: false
+      isUpdating: false,
+      isMouseOver: false
     };
 
   componentDidMount() {
@@ -63,10 +64,20 @@ export class NotePreview extends React.Component {
     this.setState({isNoteClicked: false, isUpdating: false});
   }
 
+  handleMouse = (state) => {
+    state === 'on'
+      ? this.setState({ isMouseOver: true })
+      : this.setState({ isMouseOver: false });
+  };
+
   render() {
     const { note } = this.props;
     const { isNoteClicked } = this.state
-    return (<div onClick={this.handleNoteClick} className="note flex column" style={{backgroundColor: `${note.style.backgroundColor}` }}>
+    const {isMouseOver} = this.state
+    return (<div onClick={this.handleNoteClick} className="note flex column" 
+    style={{backgroundColor: `${note.style.backgroundColor}` }}
+    onMouseOver={() => this.handleMouse('on')}
+        onMouseLeave={() => this.handleMouse('off')}>
       {note.type === 'note-image' && <img src={note.info.url} alt="" style={{width: '100%', height: '80%' }} />}
       {(note.type === 'note-txt' || note.type === 'note-image') && <h4>{note.info.title}</h4>}
       {note.type === 'note-txt' && <h6>{note.info.body}</h6>}
@@ -74,6 +85,14 @@ export class NotePreview extends React.Component {
       {note.type === 'note-todos' && note.todos.map((todo, idx) => {
         return <li key={idx}>{todo.txt}</li>
       })}
+      
+      {isMouseOver && 
+        <div className="pop-out-btns flex-end">
+        <img src="../../../assets/img/delete.png" alt="delete" style={{backgroundColor: `${note.style.backgroundColor}`}} onClick={() => this.handleNoteDelete(note.id)} />
+        <img src="../../../assets/img/diskette.png" alt="save" style={{backgroundColor: `${note.style.backgroundColor}`}} onClick={() => this.handleNoteUpdate(note)} />
+        <img src="../../../assets/img/cancel.png" alt="save" style={{backgroundColor: `${note.style.backgroundColor}`}} onClick={() => this.handleCloseNote()} />
+      </div>
+      }
       {isNoteClicked &&
         <div className="pop-out-note" style={{ backgroundColor: `${note.style.backgroundColor}` }} >
           {note.type === 'note-image' &&
