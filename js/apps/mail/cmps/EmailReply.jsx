@@ -14,7 +14,7 @@ export class EmailReply extends React.Component {
     },
   };
   inputRef = React.createRef();
-  removeEventBus = null;
+  // removeEventBus = null;
 
   componentDidMount() {
     this.inputRef.current.focus();
