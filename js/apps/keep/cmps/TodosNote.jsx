@@ -86,7 +86,7 @@ export class TodoNote extends React.Component {
             {todos.map((todo, idx) => (
               <li key={idx}>
                 <textarea
-                  autocomplete="off"
+                  autoComplete="off"
                   placeholder="todo?"
                   rows={2}
                   name="txt"
@@ -129,7 +129,7 @@ export class TodoNote extends React.Component {
             onChange={(ev) => {
               this.handleChange(ev.target);
             }}></input>
-          <button classname="add-note-button" onClick={this.handleAddTodo}>
+          <button className="add-note-button" onClick={this.handleAddTodo}>
             {' '}
             <DynamicImage
               txt=""
