@@ -50,6 +50,9 @@ export class NotePreview extends React.Component {
 
   handleAddTodo = () => {
     let tempTodos = this.state.note.todos;
+    if (tempTodos[tempTodos.length-1].txt === '') return;
+    // let newTodo = { txt: '', doneAt: null}
+    // tempTodos = [...tempTodos, newTodo]
     tempTodos.push({ txt: '', doneAt: null})
     this.setState({ todos: tempTodos});
   }
@@ -58,7 +61,8 @@ export class NotePreview extends React.Component {
     noteService.remove(noteId).then(this.props.loadNotes())
   }
 
-  handleNoteUpdate = (removedNote) => {
+  handleNoteUpdate = (ev, removedNote) => {
+    ev.stopPropagation()
     let notes = storageService.loadFromStorage('notes_DB');
     notes = notes.filter(note => note.id !== removedNote.id)
     notes = [this.state.note, ...notes];
@@ -68,10 +72,14 @@ export class NotePreview extends React.Component {
   }
 
   handleComposeNote = () => {
-    // eventBusService.emit('compose-note', this.state.note);
-    let url = window.location.href;
-    url = url.replace('note', '');
-    this.props.history.push('/mail')
+    const {note} = this.state.note;
+    // console.log(eventBusService);
+    eventBusService.emit('compose', note);
+    // let url = window.location.href;
+    // url = url.replace('note', 'mail');
+    // console.log("url: ", url);
+    // window.location.pathname = url;
+    // this.props.history.push('/mail');
     // console.log(url);
   
   }
@@ -105,7 +113,7 @@ export class NotePreview extends React.Component {
       {isMouseOver &&
         <div className="pop-out-btns">
           <img src="../../../assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
-          <img src="../../../assets/img/diskette.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteUpdate(note)} />
+          <img src="../../../assets/img/diskette.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={(ev) => this.handleNoteUpdate(ev, note)} />
           <img src="../../../assets/img/cancel.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
           <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} />
         </div>
