@@ -17,8 +17,8 @@ export function EmailList({
   return (
 
       <table className="mails-list">
-        <thead>
-      <tr className="mail-header flex">
+        {/* <thead>
+      <tr className="mail-header">
         <td><input type="checkbox" /></td>
           <td
           className= "star off"
@@ -34,7 +34,7 @@ export function EmailList({
         <td>Body</td>
         <td>Date</td>
       </tr>
-      </thead>
+      </thead> */}
       <tbody>
       {mails.map((mail) => (
         <EmailPreview

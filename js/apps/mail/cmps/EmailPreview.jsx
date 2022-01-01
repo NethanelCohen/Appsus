@@ -11,7 +11,7 @@ export class EmailPreview extends React.Component {
   };
 
   handleOpenMail = () => {
-    const {mail} = this.props;
+    const { mail } = this.props;
     emailService
       .isMailRead(mail.id, true)
       .then(this.setState({ isClicked: false }));
@@ -42,8 +42,6 @@ export class EmailPreview extends React.Component {
     if ((this.state.isClicked = true)) this.setState({ isClicked: false });
   };
 
-
-
   deleteMail = () => {
     const { mail } = this.props;
     emailService.remove(mail.id).then(this.props.loadMails);
@@ -64,17 +62,19 @@ export class EmailPreview extends React.Component {
     const isMailRead = mail.isRead ? 'white' : '#f18d8bf2';
     return (
       <React.Fragment>
-
-      <tr
-        className="mail-preview-container flex"
-        onClick={this.extandMailView}
-        onMouseOver={() => this.handleMouse('on')}
-        onMouseLeave={() => this.handleMouse('off')}>
-        {/* {!isClicked && (
-          <td
-            style={{ backgroundColor: `${isMailRead}` }}
-            className="short-mail-view flex"> */}
-            <td><input type="checkbox" /></td>
+        {!isClicked && (
+          <tr
+            className="mail-preview-container short-mail-view"
+            style={{
+              backgroundColor: `${isMailRead}`,
+              borderColor: `${isMailRead}`,
+            }}
+            onClick={this.extandMailView}
+            onMouseOver={() => this.handleMouse('on')}
+            onMouseLeave={() => this.handleMouse('off')}>
+            {/* <td>
+              <input type="checkbox" />
+            </td> */}
             <td
               className={mail.isStared === true ? 'star on' : 'star off'}
               onClick={(ev) => {
@@ -85,24 +85,30 @@ export class EmailPreview extends React.Component {
             </td>
             <td>{mail.subject}</td>
             <td>{mail.to}</td>
-            <td>{mail.body}</td>
-             {/* loggedinUser={loggedinUser} replyClicked={this.replyClicked} */}
-           
-            <td>{date}</td>
+            <td  style={{
+              innerHeight:'50px',
+            }}>{mail.body}</td>
+            {!isMouseOver && <td>{date}</td>}
             {isMouseOver && (
               <td className="hover-mail-btn flex">
-                <Link to={{pathname:`/mail/${mail.id}`}}>
-                  <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" classname="" />
+                <Link to={{ pathname: `/mail/${mail.id}` }}>
+                  <StyledButton
+                    func={this.handleOpenMail}
+                    txt="❏"
+                    bgc="grey"
+                    classname=""
+                  />
                 </Link>
-                <StyledButton classname=""
+                <StyledButton
+                  classname=""
                   func={this.handleUnreadClick}
                   txt="unread"
                   bgc="#8cd5ee"
                 />
                 {!this.props.isReplyClicked && (
-                  <StyledButton 
-                  func={() => this.props.replyClicked()}
-                  classname=""
+                  <StyledButton
+                    func={() => this.props.replyClicked()}
+                    classname=""
                     txt="reply"
                     bgc="green"
                     loadMails={this.props.loadMails}
@@ -110,57 +116,67 @@ export class EmailPreview extends React.Component {
                     replyClicked={this.props.replyClicked}
                   />
                 )}
-                <StyledButton classname=""
+                <StyledButton
+                  classname=""
                   func={this.deleteMail}
                   txt="Delete"
                   bgc="hsl(345deg 100% 47%)"
                 />
               </td>
-          //   )}
-          // </td>
+            )}
+          </tr>
         )}
         {isClicked && (
-          <div
+          <tr
+            onClick={this.extandMailView}
             style={{ backgroundColor: `${isMailRead}` }}
-            className="long-mail-view grid">
-            <div className="long-mail-btn flex">
+            className="long-mail-view">
+            {/* <td>
+              <input type="checkbox" />
+            </td> */}
+            <td className="subject">{mail.subject}</td>
+            <td className="to">
+              {' '}
+              {to.substring(0, to.indexOf('@'))}: {mail.to}
+            </td>
+            <td className="date">{date}</td>
+            <td className="mail-body">{mail.body}</td>
+            <td className="long-mail-btn flex">
               <Link to={`/mail/${mail.id}`}>
-                <StyledButton func={this.handleOpenMail} txt="❏" bgc="grey" classname="" />
+                <StyledButton
+                  func={this.handleOpenMail}
+                  txt="❏"
+                  bgc="grey"
+                  classname=""
+                />
               </Link>
-              <StyledButton classname=""
+              <StyledButton
+                classname=""
                 func={this.handleUnreadClick}
                 txt="unread"
                 bgc="#8cd5ee"
               />
               {!this.props.isReplyClicked && (
-                  <StyledButton 
+                <StyledButton
                   func={() => this.props.replyClicked()}
                   classname=""
-                    txt="reply"
-                    bgc="green"
-                    loadMails={this.props.loadMails}
-                    loggedinUser={this.props.loggedinUser}
-                    replyClicked={this.props.replyClicked}
-                  />
-                )}
-              <StyledButton classname=""
+                  txt="reply"
+                  bgc="green"
+                  loadMails={this.props.loadMails}
+                  loggedinUser={this.props.loggedinUser}
+                  replyClicked={this.props.replyClicked}
+                />
+              )}
+              <StyledButton
+                classname=""
                 func={this.deleteMail}
                 txt="Delete"
                 bgc="hsl(345deg 100% 47%)"
               />
-            </div>
-            <h4 className="subject">{mail.subject}</h4>
-            <h6 className="to">
-              {' '}
-              {to.substring(0, to.indexOf('@'))}: {mail.to}
-            </h6>
-            <h6 className="date">{date}</h6>
-            <h6 className="mail-body">{mail.body}</h6>
-          </div>
+            </td>
+          </tr>
         )}
-      </tr>
       </React.Fragment>
-
     );
   }
 }

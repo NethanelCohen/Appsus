@@ -1,4 +1,4 @@
-import { storageService } from "../services/storage.service.js";
+import { storageService } from "../../../services/storage.service.js";
 import { noteService } from "../services/note.service.js";
 
 export class NotePreview extends React.Component {

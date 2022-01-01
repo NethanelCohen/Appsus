@@ -28,7 +28,7 @@ export function Folders({handleCriteriaStatus , activeStatus}) {
         <li
           className={activeStatus === 'stared' ? 'active-filter' : ''}
           data-value="stared">
-          Stared
+          Starred
         </li>
       </ul>
     </section>
