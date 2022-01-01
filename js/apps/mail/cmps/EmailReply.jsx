@@ -43,6 +43,7 @@ export class EmailReply extends React.Component {
 
   handleMailWindow = (ev,submit) => {
     ev.preventDefault();
+    console.log(this.props)
     const { subject, body, to } = this.state.newMail;
     let mails = storageService.loadFromStorage('mails_DB');
     if ((!submit)&&ev.type === 'click' && (subject || body || to)) {
@@ -76,7 +77,7 @@ export class EmailReply extends React.Component {
             To:{' '}
           </label>
           <input ref={this.inputRef} type="email" name="sendTo" onChange={this.handleChange} id="sendTo" />
-          <h6>From: {loggedinUser.email}</h6>
+          {/* <h6>From: {loggedinUser.email}</h6> */}
           <label className="subject-headline" htmlFor="subject">Subject: </label>
           <input className="subject-input" id="subject"
             type="text"

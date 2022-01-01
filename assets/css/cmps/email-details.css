@@ -32,3 +32,11 @@
     grid-area: body;
     padding-bottom: 2rem;
 }
+
+.mail-details .mail-body input {
+    border: 3px solid black;
+}
+
+.mail-inner-btn {
+    gap: 1rem;
+}

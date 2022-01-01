@@ -15,10 +15,12 @@ export function EmailList({
   if (!mails.length)
     return <h1 className="empty-messege"> Folder is empty... </h1>;
   return (
-    <section className="mails-list grid">
-      <div className="mail-header flex">
-        <input type="checkbox" />
-        <h6
+
+      <table className="mails-list">
+        <thead>
+      <tr className="mail-header flex">
+        <td><input type="checkbox" /></td>
+          <td
           className= "star off"
           // onClick={(ev) => {
             // this.props.setColorStar(ev);
@@ -26,12 +28,14 @@ export function EmailList({
           // }}
           >
           &#9733;
-        </h6>
-        <h6>Subject</h6>
-        <h6>Sender</h6>
-        <h6>Body</h6>
-        <h6>Date</h6>
-      </div>
+        </td>
+        <td>Subject</td>
+        <td>Sender</td>
+        <td>Body</td>
+        <td>Date</td>
+      </tr>
+      </thead>
+      <tbody>
       {mails.map((mail) => (
         <EmailPreview
           key={mail.id}
@@ -43,6 +47,7 @@ export function EmailList({
           replyClicked={replyClicked}
         />
       ))}
-    </section>
+      </tbody>
+      </table>
   );
 }
