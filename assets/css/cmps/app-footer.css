@@ -1,5 +1,8 @@
-footer {
+.footer-container {
     color: #04293A;
+    font-size: 1.5rem;
     text-align: center;
     border-top: 1px solid #04293A;
+    padding: 1rem;
+    gap: 1rem;
 }
