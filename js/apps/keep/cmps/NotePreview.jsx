@@ -27,7 +27,7 @@ export class NotePreview extends React.Component {
   handleNoteClick = () => {
     if (this.state.isUpdating === true) return
     this.props.handleNoteClickForInput()
-    this.props.isNoteUpdating === true
+    this.props.isNoteClicked = !this.props.isNoteClicked;
     if (this.props.isNoteClicked === true) this.setState({isNoteClicked: false, isUpdating: false })
     this.setState({ isNoteClicked: true, isUpdating: true });
   }
@@ -120,7 +120,7 @@ export class NotePreview extends React.Component {
           <img src="../../../assets/img/cancel.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
           <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} />
         </div>}
-      {isNoteClicked &&
+      {isNoteClicked && !this.props.isNoteClicked &&
         <div className="pop-out-note" style={{ backgroundColor: `${note.style.backgroundColor}` }} >
           {note.type === 'note-image' &&
             <div className="image-type-note">
