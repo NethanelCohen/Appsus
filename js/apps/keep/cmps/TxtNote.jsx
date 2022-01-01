@@ -11,7 +11,7 @@ export class TxtNote extends React.Component {
                 body: ''
             },
             style: {
-                backgroundColor: 'White'
+                backgroundColor: '#C8E3D4'
             }
         }
     }
@@ -37,25 +37,25 @@ export class TxtNote extends React.Component {
         console.log("newNote: ", newNote);
         noteService.createNote(newNote).then(notes => this.setState({ notes }, this.props.handleClick))
         this.props.loadNotes()
-        this.props.handleNoteBackground('white');
+        this.props.handleNoteBackground('#C8E3D4');
     }
 
     render() {
         return (
             <div style={{ textAlign: 'start'}} className='new-txt-note'>
                 <form onSubmit={(ev) => this.handleNoteAdd(ev)}>
-                <textarea placeholder='Title?' rows={2} name="title" type="text"
-              style={{ width: '100%', textAlign: 'start', cursor: 'text' }}
+                <textarea autocomplete="off" placeholder='Title?' rows={3} name="title" type="text"
+              style={{paddingTop: '1.6rem', textAlign: 'start', cursor: 'text', fontSize: '1.4rem' }}
               onChange={(ev) => { this.handleChange(ev.target) }}>
                 </textarea>
-                <textarea placeholder="What's on your mind" rows={4} name="body" type="text"
-              style={{ width: '100%', textAlign: 'start', cursor: 'text' }}
+                <textarea autocomplete="off" placeholder="What's on your mind" rows={4} name="body" type="text"
+              style={{width: '100%', textAlign: 'start', cursor: 'text', fontSize: '.8rem' }}
               onChange={(ev) => { this.handleChange(ev.target) }}>
                 </textarea>
                     <input type="color" name='backgroundColor' 
                     style={{width: '40px', height:'40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'}} onChange={(ev) => { this.handleChange(ev.target) }}>
                     </input>
-                    <button>keep</button>
+                    <button>save</button>
                     <button onClick={this.props.handleClick}>✘</button>
                 </form>
             </div>

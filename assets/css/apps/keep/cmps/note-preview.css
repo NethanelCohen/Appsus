@@ -40,7 +40,7 @@ textarea {
 
 .pop-out-note {
     width: 40%;
-    height: 40%;
+    height: fit-content;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -56,12 +56,10 @@ textarea {
 }
 
 .pop-out-btns {
-    margin-bottom: .8rem;
     margin-right: .8rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* align-items: center; */
     color: black;
     border: none;
     align-self: flex-end;
@@ -71,10 +69,10 @@ textarea {
     margin-right: .8rem;
 }
 
-.flex-end {
-    padding-top: 8%;
+/* .flex-end {
+    margin-inline-end: .2rem;
     margin-left: .8rem;
-}
+} */
 
 .pop-out-btns img {
     width: 1.2rem;
@@ -85,7 +83,6 @@ textarea {
 }
 
 .pop-out-btns img:hover {
-
     opacity: 1;
 }
 

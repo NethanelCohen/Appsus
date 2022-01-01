@@ -12,9 +12,8 @@ export class NoteApp extends React.Component {
     notes: [],
     isNoteClicked: false,
     type: 'note-txt',
-    background: 'white'
+    background: '#C8E3D4'
   };
-
   componentDidMount() {
     this.loadNotes()
   }
@@ -28,6 +27,7 @@ export class NoteApp extends React.Component {
   handleClick = () => {
     const { isNoteClicked } = this.state;
     !isNoteClicked ? this.setState({ isNoteClicked: true }) : this.setState({ isNoteClicked: false })
+    this.setState({background: '#C8E3D4'})
   }
 
   handleNoteBackground = (value) => {
@@ -51,7 +51,6 @@ export class NoteApp extends React.Component {
   handleNoteType = ({ className }) => {
     this.setState({type: className, isNoteClicked: true});
   }
-
 
   render() {
     const { notes, type, isNoteClicked, background} = this.state;
@@ -89,7 +88,7 @@ export class NoteApp extends React.Component {
             </div>      
         </div>
         <div style={{backgroundColor: `${background}`}} className="add-note flex">
-        {!isNoteClicked && <input value={'Add new note...'} onClick={this.handleClick} />}
+        {!isNoteClicked && <input style={{backgroundColor: `${background}`}} value={'Add new note...'} onClick={this.handleClick} />}
         {isNoteClicked &&
             <React.Fragment>
               {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
