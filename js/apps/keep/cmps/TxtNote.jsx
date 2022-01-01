@@ -53,7 +53,7 @@ export class TxtNote extends React.Component {
               onChange={(ev) => { this.handleChange(ev.target) }}>
                 </textarea>
                     <input type="color" name='backgroundColor' 
-                    style={{width: '40px', height:'40px', borderRadius: '50%'}} onChange={(ev) => { this.handleChange(ev.target) }}>
+                    style={{width: '40px', height:'40px', borderRadius: '50%', backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'}} onChange={(ev) => { this.handleChange(ev.target) }}>
                     </input>
                     <button>keep</button>
                     <button onClick={this.props.handleClick}>✘</button>
@@ -62,5 +62,3 @@ export class TxtNote extends React.Component {
         )
     }
 }
-
-// , backgroundImage: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)'

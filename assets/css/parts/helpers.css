@@ -11,3 +11,7 @@
 .column {
     flex-direction: column;
 }
+
+.flex-end {
+    align-items: flex-end;
+}
