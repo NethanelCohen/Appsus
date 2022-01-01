@@ -14,12 +14,18 @@ export class EmailReply extends React.Component {
     },
   };
   inputRef = React.createRef();
+  removeEventBus = null;
 
-  // componentDidMount() {
-  //   this.inputRef.current.focus();
-  //   this.removeEventBus = eventBusService.on('compose-note', (note) =>
-  //   console.log(note))
-  // }
+  componentDidMount() {
+    this.inputRef.current.focus();
+    eventBusService.on('compose', (data) => {
+    console.log(data)
+      })
+  }
+
+  componentWillUnmount() {
+    this.removeEventBus()
+  }
 
   handleChange = (ev) => {
     const field = ev.target.name;

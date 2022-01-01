@@ -20,10 +20,6 @@ export class EmailApp extends React.Component {
     this.loadMails();
   }
 
-  // componentWillUnmount() {
-  //   this.removeEventBus()
-  // }
-
   handleCriteriaStatus = (param) => {   
       this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status: param } }), () => this.loadMails())
   }
