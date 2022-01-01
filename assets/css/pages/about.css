@@ -23,3 +23,7 @@
     gap: 1rem;
     width: 200px;
 }
+
+.about-container .user-images img {
+    border-radius: 25rem;
+}
