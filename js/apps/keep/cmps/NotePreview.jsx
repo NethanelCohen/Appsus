@@ -74,7 +74,7 @@ export class NotePreview extends React.Component {
   handleComposeNote = () => {
     const {note} = this.state.note;
     // console.log(eventBusService);
-    eventBusService.emit('compose', note);
+    // eventBusService.emit('compose', note);
     // let url = window.location.href;
     // url = url.replace('note', 'mail');
     // console.log("url: ", url);
