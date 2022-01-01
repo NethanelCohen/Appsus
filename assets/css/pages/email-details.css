@@ -10,14 +10,12 @@
     text-align: center;
     border: 3px solid black;
     grid-template-areas: 'description subject buttons'/* / */
-    '. body . '/* / */
+    '. body . '
+    /* / */
 }
 
-.mail-inner-btn {
-    margin-inline-end: 2rem;
-    grid-area: buttons;
-    justify-self: flex-end;
-    gap: 1rem;
+.mail-details form {
+    gap: 2rem;
 }
 
 .mail-details .mail-subject {

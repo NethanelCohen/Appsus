@@ -11,6 +11,13 @@ export class EmailReply extends React.Component {
       to: '',
     },
   };
+  inputRef = React.createRef()
+
+  componentDidMount() {
+    this.inputRef.current.focus()
+  }
+  
+
 
   handleChange = (ev) => {
     const field = ev.target.name;
@@ -49,7 +56,9 @@ export class EmailReply extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     let { loggedinUser } = this.props;
+    
     return (
       <div className="reply-to-mail">
       
@@ -66,10 +75,10 @@ export class EmailReply extends React.Component {
           <label className="send-to-headline" htmlFor="sendTo">
             To:{' '}
           </label>
-          <input type="email" name="sendTo" onChange={this.handleChange} />
+          <input ref={this.inputRef} type="email" name="sendTo" onChange={this.handleChange} id="sendTo" />
           <h6>From: {loggedinUser.email}</h6>
           <label className="subject-headline" htmlFor="subject">Subject: </label>
-          <input className="subject-input"
+          <input className="subject-input" id="subject"
             type="text"
             name="subject"
             placeholder={'Enter your text here'}
