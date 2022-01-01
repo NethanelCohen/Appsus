@@ -21,10 +21,10 @@ export class TxtNote extends React.Component {
         if (field === 'title' || field === 'body') {
             return this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [field]: value } } }))
         }
-        else if (field === 'backgroundColor') {
-            this.setState((prevState) => ({ newNote: { ...prevState.newNote, style: { ...prevState.newNote.info, [field]: value } } }))
-        }
-        this.props.handleNoteBackground(value)
+        // else if (field === 'backgroundColor') {
+        //     this.setState((prevState) => ({ newNote: { ...prevState.newNote, style: { ...prevState.newNote.info, [field]: value } } }))
+        // }
+        // this.props.handleNoteBackground(value)
     }
 
     handleNoteAdd = (ev) => {
