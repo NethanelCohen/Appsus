@@ -1,6 +1,6 @@
 .mails-list {
     grid-template-rows: 1fr;
-    font-size: 2rem;
+    font-size: 2px;
     gap: 1rem;
     border: 1px solid black;
     grid-area: mails;
@@ -9,6 +9,7 @@
 
 .mails-list>* {
     text-align: left;
+    font-size: 1rem;
 }
 
 .mails-list .mail-header {
@@ -17,8 +18,11 @@
     padding: 1rem;
     border-bottom: 1px solid black;
     align-items: center;
+    justify-content: space-around;
 }
 
+
+/* 
 .mails-list .mail-header :first-child {
     padding-inline-start: 75px;
 }
@@ -41,15 +45,17 @@
 .mails-list .mail-header :nth-child(5) {
     padding-inline-start: 2rem;
     flex-grow: 0.7;
-}
+} */
 
 
+/* 
 /* .mails-list .mail-header :nth-child(6) {
     color: chartreuse;
     flex-grow: 1;
 } */
 
-.mails-list .mail-header :last-child {
+
+/* .mails-list .mail-header :last-child {
     flex-grow: 0.2;
 }
 
@@ -85,12 +91,14 @@
 }
 
 .mails-list .short-mail-view {
-    padding: 1rem;
+    max-height: 4.2rem;
     width: 100%;
-    gap: 1rem;
-    align-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid black;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .mails-list .short-mail-view input {
     height: 1rem;
-}
+} */
