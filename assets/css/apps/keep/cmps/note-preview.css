@@ -22,7 +22,7 @@ textarea {
     overflow-wrap: break-word;
     border-radius: 5px;
     margin-bottom: 0.5rem;
-    font-size: 16px;
+    font-size: 1.4rem;
     min-height: 100px;
     opacity: 1;
     transition: opacity .2s;
@@ -30,9 +30,6 @@ textarea {
 }
 
 
-/* .note:hover {
-    opacity: .7;
-} */
 
 .pop-out-note {
     width: 40%;
