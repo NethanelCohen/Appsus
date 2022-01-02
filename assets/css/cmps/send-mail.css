@@ -56,7 +56,7 @@
 .reply-to-mail .new-mail .header {
     grid-area: header;
     text-align: center;
-    padding: 1rem;
+    padding-bottom: 2rem;
     font-size: 3rem;
 }
 

@@ -51,7 +51,7 @@ export class EmailReply extends React.Component {
   };
 
   render() {
-    let { loggedinUser } = this.props;
+    // let { loggedinUser } = this.props;
     const today = new Date();
     const time = today.toLocaleTimeString('it-IT');
 
@@ -110,7 +110,7 @@ export class EmailReply extends React.Component {
             func={(ev) => {
               this.handleMailWindow(ev, 'submit');
             }}
-            txt="send"
+            txt="Send"
             bgc="#CDDEFF"
           />
         </form>
