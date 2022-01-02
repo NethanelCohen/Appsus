@@ -36,7 +36,8 @@ a,
 .img-note-txt,
 .img-note-image,
 .img-note-video,
-.img-note-list {
+.img-note-list,
+.long-mail-view {
     cursor: pointer;
 }
 
