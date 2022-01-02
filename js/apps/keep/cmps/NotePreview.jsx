@@ -32,6 +32,11 @@ export class NotePreview extends React.Component {
 
   onInputChange = ({ name, value }, idx) => {
     if (name === 'title' || name === 'body' || name === 'url') {
+      if (value.includes('youtube')) {
+        let baseUrl = 'https://www.youtube.com/embed/'
+        let modified = value.substring(value.indexOf('=')+1);
+        value = baseUrl + modified;
+      }
       return this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [name]: value } } }))
     }
     if (name === 'label') {
@@ -44,7 +49,6 @@ export class NotePreview extends React.Component {
         delete tempTodos[idx];
       } 
       this.setState({ todos: tempTodos});
-      console.log(this.state.note.todos);
     }
   }
 
@@ -56,7 +60,6 @@ export class NotePreview extends React.Component {
   }
 
   handleNoteDelete = (noteId) => {
-    debugger
     noteService.remove(noteId).then(this.props.loadNotes())
   }
 
@@ -68,19 +71,6 @@ export class NotePreview extends React.Component {
     storageService.saveToStorage('notes_DB', notes);
     this.setState({ isNoteClicked: false, isUpdating: false });
     this.props.loadNotes();
-  }
-
-  handleComposeNote = () => {
-    const {note} = this.state.note;
-    // console.log(eventBusService);
-    // eventBusService.emit('compose', note);
-    // let url = window.location.href;
-    // url = url.replace('note', 'mail');
-    // console.log("url: ", url);
-    // window.location.pathname = url;
-    // this.props.history.push('/mail');
-    // console.log(url);
-  
   }
 
   handleCloseNote = () => {
@@ -95,7 +85,6 @@ export class NotePreview extends React.Component {
 
   render() {
     const { note } = this.props;
-    const { isUpdating } = this.state;
     const { isNoteClicked } = this.state
     const { isMouseOver } = this.state
     return (
@@ -104,6 +93,7 @@ export class NotePreview extends React.Component {
       onMouseOver={() => this.handleMouse('on')}
       onMouseLeave={() => this.handleMouse('off')}>
       {note.type === 'note-image' && <img src={note.info.url} alt="" style={{ marginBottom: '1rem', width: '100%', height: '80%' }} />}
+      {note.type === 'note-video' && <iframe src={note.info.url} alt="" style={{ marginBottom: '1rem', width: '100%', height: '80%' }}></iframe>}
       {(note.type === 'note-txt' || note.type === 'note-image') && <h4 style={{ marginBottom: '1rem' }} >{note.info.title}</h4>}
       {note.type === 'note-txt' && <h6 style={{ marginBottom: '1rem' }}>{note.info.body}</h6>}
       {note.type === 'note-todos' && <h4 style={{ marginBottom: '1rem' }}>{note.label}</h4>}
@@ -113,12 +103,10 @@ export class NotePreview extends React.Component {
       {isMouseOver &&
         <div className="pop-out-btns">
           <img src="../../../assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
-          {/* <img src="../../../assets/img/diskette.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={(ev) => this.handleNoteUpdate(note)} />
-          <img src="../../../assets/img/cancel.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
-          <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} /> */}
         </div>}
       {isNoteClicked &&
         <div className="pop-out-note" style={{ backgroundColor: `${note.style.backgroundColor}` }} >
+          
           {note.type === 'note-image' &&
             <div className="image-type-note">
               <textarea value={note.info.url} rows={3} name="url" type="text"
@@ -127,6 +115,14 @@ export class NotePreview extends React.Component {
               </textarea>
               <img src={this.state.note.info.url} style={{ width: '100%', height: '80%'}} />
             </div>}
+            {note.type === 'note-video' && 
+            <div className="video-type-note">
+              <iframe name='url' allowFullScreen frameBorder="0" src={this.state.note.info.url} style={{width: '100%', height: '300', margin: 'auto'}}></iframe>            
+              <textarea value={note.info.url} rows={3} name="url" type="text"
+                style={{ width: '100%'}}
+                onChange={(ev) => this.onInputChange(ev.target, note.id)}>
+              </textarea>
+              </div>}
           {(note.type === 'note-txt' || note.type === 'note-image') &&
             <div className="txt-title-type-note">
               <textarea value={this.state.note.info.title} rows={3} name="title" type="text"
@@ -148,7 +144,8 @@ export class NotePreview extends React.Component {
                 onChange={(ev) => this.onInputChange(ev.target, note.id)}>
               </textarea>
             </div>}
-          {note.type === 'note-todos' && <div className="todo-li-note">
+          {note.type === 'note-todos' && 
+          <div className="todo-li-note">
             {note.todos.map((todo, idx) => {
               return <li key={todo.id}>
                 <textarea value={this.state.note.todos[idx].txt} name="todo" type="text"
@@ -160,14 +157,11 @@ export class NotePreview extends React.Component {
             <button onClick={this.handleAddTodo}>+</button>
           </div>
           }
-          {/* {note.todos.map((todo, idx) => {
-            return <li key={idx}>{todo.txt}</li>
-          })} */}
           <div className="pop-out-btns">
             <img src="../../../assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
             <img src="../../../assets/img/diskette.png" alt="save" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteUpdate(note)} />
             <img src="../../../assets/img/cancel.png" alt="cancel" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleCloseNote()} />
-            <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} />
+            {/* <img src="../../../assets/img/reply.png" alt="send" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleComposeNote()} /> */}
           </div>
         </div>}
         </div>

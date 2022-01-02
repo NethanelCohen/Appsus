@@ -43,7 +43,6 @@ export class TxtNote extends React.Component {
       this.props.loadNotes();
       return this.props.handleClick();
     }
-    console.log('newNote: ', newNote);
     noteService.createNote(newNote)
       .then((notes) => this.setState({ notes }, this.props.handleClick));
     this.props.loadNotes();

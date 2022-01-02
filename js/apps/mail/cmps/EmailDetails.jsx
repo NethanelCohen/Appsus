@@ -12,7 +12,6 @@ export class EmailDetails extends React.Component {
 
   componentDidMount() {
     this.loadMail();
-    console.log(this.props);
   }
 
   componentDidUpdate(prevProps, prevState) {

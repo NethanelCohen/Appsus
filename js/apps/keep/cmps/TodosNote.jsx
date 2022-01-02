@@ -19,7 +19,6 @@ export class TodoNote extends React.Component {
   };
 
   handleAddTodo = () => {
-    let { todos } = this.state.newNote;
     const todo = { txt: '', doneAt: null };
     this.setState((prevState) => ({
       newNote: { ...prevState.newNote, todos: [...prevState.todos, todo] },
@@ -28,7 +27,6 @@ export class TodoNote extends React.Component {
 
   handleChange = ({ name, value }) => {
     const field = name;
-    console.log('field: ', field);
     if (field === 'label') {
       return this.setState((prevState) => ({
         newNote: { ...prevState.newNote, [field]: value },

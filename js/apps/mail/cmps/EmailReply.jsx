@@ -19,7 +19,6 @@ export class EmailReply extends React.Component {
   componentDidMount() {
     this.inputRef.current.focus();
     // eventBusService.on('compose', (data) => {
-    // console.log(data)
     //   })
   }
 

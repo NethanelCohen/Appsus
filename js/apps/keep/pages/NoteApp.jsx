@@ -3,9 +3,7 @@ import { NoteList } from '../cmps/NoteList.jsx'
 import { TxtNote } from '../cmps/TxtNote.jsx';
 import { ImgNote } from '../cmps/ImgNote.jsx';
 import {TodoNote} from '../cmps/TodosNote.jsx'
-import { VideoNote } from '../cmps/VideoNote.jsx'
-
-
+import { VideoNote } from '../cmps/VideoNote.jsx';
 
 export class NoteApp extends React.Component {
   state = {
@@ -38,22 +36,6 @@ export class NoteApp extends React.Component {
   handleNoteClickForInput = () => {
     if (this.state.isNoteClicked) this.setState({isNoteClicked: false}, this.loadNotes())
   }
-
-  
-
-  // handleChange = ({ name, value }) => {
-  //   this.setState((prevState) => ({ newNote: { ...prevState.newNote, info: { ...prevState.newNote.info, [name]: value } } }))
-  // }
-
-  // handleNoteAdd = (ev) => {
-  //   ev.preventDefault();
-  //   const { newNote } = this.state;
-  //   noteService.createNote(newNote).then(notes => this.setState({ notes }))
-  // }
-
-  // handleTypeClick = () => {
-  //   this.setState({ isNoteClicked: true })
-  // }
 
   handleNoteType = ({ className }) => {
     this.setState({type: className, isNoteClicked: true});
@@ -101,7 +83,7 @@ export class NoteApp extends React.Component {
               {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
               {type === 'note-image' && <ImgNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground}  handleClick={this.handleClick} />}
               {type === 'note-todos' && <TodoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
-              {/* {type === 'note-video' && <VideoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />} */}
+              {type === 'note-video' && <VideoNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}
             </React.Fragment>}
           </div>
         <NoteList notes={notes} isNoteClicked={isNoteClicked} loadNotes={this.loadNotes} handleNoteClickForInput={this.handleNoteClickForInput} />
