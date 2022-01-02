@@ -55,18 +55,18 @@ export class EmailDetails extends React.Component {
           <Link to={'/mail'}>
             <DynamicImage
               txt=""
-              src="../../../assets/img/mail-open.png"
+              src="../../../assets/img/reply-mail.png"
               classname=" open-mail"
             />
           </Link>
-          {!repliedClicked && (
+          {/* {!repliedClicked && (
             <DynamicImage
               func={() => this.props.replyClicked()}
               txt=""
               src="../../../assets/img/reply-mail.png"
               classname=" reply"
             />
-          )}
+          )} */}
           <DynamicImage
             func={this.deleteMail}
             txt=""

@@ -8,6 +8,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     transition: filter 250ms;
+    min-height: 25px;
 }
 
 .dynamic-image:hover {

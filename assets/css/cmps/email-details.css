@@ -41,6 +41,7 @@
 
 .mail-inner-btn {
     gap: 1rem;
+    justify-content: center;
 }
 
 .mail-inner-btn>a,
