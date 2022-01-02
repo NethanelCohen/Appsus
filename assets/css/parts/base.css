@@ -30,6 +30,7 @@ main {
 }
 
 button,
+textarea,
 input,
 a,
 .star,
@@ -37,7 +38,8 @@ a,
 .img-note-image,
 .img-note-video,
 .img-note-list,
-.long-mail-view {
+.long-mail-view,
+.color-input {
     cursor: pointer;
 }
 

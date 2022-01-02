@@ -74,7 +74,7 @@ export class EmailReply extends React.Component {
           </label>
           <input
             autoComplete="off"
-            required 
+            required
             className="send-to"
             ref={this.inputRef}
             type="email"

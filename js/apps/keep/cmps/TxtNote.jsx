@@ -61,7 +61,6 @@ export class TxtNote extends React.Component {
             style={{
               paddingTop: '1.6rem',
               textAlign: 'start',
-              cursor: 'text',
               fontSize: '1.4rem',
             }}
             onChange={(ev) => {
@@ -76,7 +75,6 @@ export class TxtNote extends React.Component {
             style={{
               width: '100%',
               textAlign: 'start',
-              cursor: 'text',
               fontSize: '.8rem',
             }}
             onChange={(ev) => {
