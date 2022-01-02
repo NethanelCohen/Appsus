@@ -11,6 +11,7 @@ export class NoteApp extends React.Component {
   state = {
     notes: [],
     isNoteClicked: false,
+    isNoteUpdating: false,
     type: 'note-txt',
     background: '#C8E3D4'
   };
@@ -35,7 +36,7 @@ export class NoteApp extends React.Component {
   }
 
   handleNoteClickForInput = () => {
-    if (this.state.isNoteClicked === true) this.setState({isNoteClicked: false}, this.loadNotes())
+    if (this.state.isNoteClicked) this.setState({isNoteClicked: false}, this.loadNotes())
   }
 
   
