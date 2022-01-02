@@ -85,3 +85,19 @@ textarea {
     margin-block-start: 2rem;
     font-size: 2rem;
 }
+
+.note-color {
+    width: 220px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
+    align-items: center;
+}
+
+.note-color input {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
