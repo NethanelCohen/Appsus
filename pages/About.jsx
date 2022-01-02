@@ -2,7 +2,7 @@ export function About() {
   return (
     <div className="about-container flex column">
       <h1>Welcome To the About Page</h1>
-      <h2>This page was created as a part of the Coding Academy course</h2>
+      <h4>This page was created as a part of the Coding Academy course</h4>
       <h6>We did our best and super proud of the result!</h6>
       <div className="user-images flex">
         <div className="flex column">

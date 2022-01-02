@@ -3,14 +3,14 @@
     justify-content: space-between;
     align-items: center;
     gap: 3rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     padding-block-end: 5rem;
     text-align: center;
 }
 
 .about-container h1 {
     color: #FF5959;
-    text-shadow: 5px 5px #676FA3;
+    text-shadow: 2px 2px #b9bee0;
     text-align: center;
 }
 
