@@ -36,7 +36,7 @@ tr {
 .long-mail-view>.long-mail-btn {
     padding-top: 1rem;
     vertical-align: top;
-    gap: 0.5rem;
+    gap: 1rem;
     width: 100%;
     grid-area: buttons;
     margin-inline-start: 4rem;
@@ -64,7 +64,7 @@ tr {
 
 .hover-mail-btn {
     position: absolute;
-    gap: 0.5rem;
+    gap: 1rem;
     right: 15%;
     margin-block-start: .6rem;
 }

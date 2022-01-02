@@ -29,6 +29,7 @@ export class ImgNote extends React.Component {
     }
 
     handleNoteAdd = (ev) => {
+        debugger
         ev.preventDefault();
         const { newNote } = this.state;
         noteService.createNote(newNote).then(notes => this.setState({ notes }, this.props.handleClick))
@@ -66,8 +67,9 @@ export class ImgNote extends React.Component {
               classname=" save-note"
             />
           </button>
-          <button onClick={this.props.handleClick}>
+          <button>
           <DynamicImage
+          func={this.props.handleClick}
               txt=""
               src="../../../assets/img/cancel.png"
               classname=" delete-note"

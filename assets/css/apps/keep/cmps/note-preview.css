@@ -82,3 +82,8 @@ textarea {
 .pop-out-btns img:hover {
     opacity: 1;
 }
+
+.empty-messege-note {
+    margin-block-start: 2rem;
+    font-size: 2rem;
+}

@@ -56,6 +56,7 @@ export class NotePreview extends React.Component {
   }
 
   handleNoteDelete = (noteId) => {
+    debugger
     noteService.remove(noteId).then(this.props.loadNotes())
   }
 
