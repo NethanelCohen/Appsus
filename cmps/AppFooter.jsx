@@ -3,7 +3,7 @@ export function AppFooter() {
     <footer>
       <div className="footer-container flex align-center column ">
         <div className="copy-rights ">
-        © 2021 All Rights Reserved - Nati & Nati
+        © 2021 All Rights Reserved - Nati &#38; Nati
         </div>
         <div className="footer-logo flex">
           <img src="./assets/img/icons8-gmail-48.png" alt="" />
