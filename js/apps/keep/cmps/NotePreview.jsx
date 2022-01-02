@@ -26,7 +26,7 @@ export class NotePreview extends React.Component {
   handleNoteClick = () => {
     if (this.state.isUpdating === true) return
     this.props.handleNoteClickForInput()
-    if (this.props.isNoteClicked === true) this.setState({isNoteClicked: false, isUpdating: false })
+    // if (this.props.isNoteClicked === true) this.setState({isNoteClicked: false, isUpdating: false })
     this.setState({ isNoteClicked: true, isUpdating: true });
   }
 
@@ -51,8 +51,6 @@ export class NotePreview extends React.Component {
   handleAddTodo = () => {
     let tempTodos = this.state.note.todos;
     if (tempTodos[tempTodos.length-1].txt === '') return;
-    // let newTodo = { txt: '', doneAt: null}
-    // tempTodos = [...tempTodos, newTodo]
     tempTodos.push({ txt: '', doneAt: null})
     this.setState({ todos: tempTodos});
   }
@@ -64,7 +62,7 @@ export class NotePreview extends React.Component {
   handleNoteUpdate = (removedNote) => {
     // ev.stopPropagation()
     let notes = storageService.loadFromStorage('notes_DB');
-    notes = notes.filter(note => {note.id !== removedNote.id})
+    notes = notes.filter(note => {return note.id !== removedNote.id})
     notes = [this.state.note, ...notes];
     storageService.saveToStorage('notes_DB', notes);
     this.setState({ isNoteClicked: false, isUpdating: false });
