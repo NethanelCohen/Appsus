@@ -50,28 +50,32 @@ export class NoteApp extends React.Component {
         <div onClick={(ev) => this.handleNoteType(ev.target)}>
               <img
                 className="note-txt"
-                src="../../../assets/img/font-solid.svg"
+                src="assets/img/font-solid.svg"
+                // src="../../../assets/img/font-solid.svg"
                 alt=""
               />
             </div>
             <div onClick={(ev) => this.handleNoteType(ev.target)}>
               <img
                 className="note-image"
-                src="../../../assets/img/image-regular.svg"
+                src="assets/img/image-regular.svg"
+                // src="../../../assets/img/image-regular.svg"
                 alt=""
               />
             </div>
             <div onClick={(ev) => this.handleNoteType(ev.target)}>
               <img
                 className="note-video"
-                src="../../../assets/img/youtube-brands.svg"
+                src="assets/img/youtube-brands.svg"
+                // src="../../../assets/img/youtube-brands.svg"
                 alt=""
               />
             </div>
             <div onClick={(ev) => this.handleNoteType(ev.target)}>
               <img
                 className="note-todos"
-                src="../../../assets/img/list-solid.svg"
+                src="assets/img/list-solid.svg"
+                // src="../../../assets/img/list-solid.svg"
                 alt=""
               />
             </div>      
