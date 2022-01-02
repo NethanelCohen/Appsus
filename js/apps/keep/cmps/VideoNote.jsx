@@ -62,7 +62,7 @@ export class VideoNote extends React.Component {
             }}></input>
           <button> <DynamicImage
               txt=""
-              src="assets/img/diskette.png"
+              src="./assets/img/diskette.png"
             //   src="../../../assets/img/diskette.png"
               classname=" save-note"
             />
@@ -71,7 +71,7 @@ export class VideoNote extends React.Component {
           <DynamicImage
           func={this.props.handleClick}
               txt=""
-              src="assets/img/cancel.png"
+              src="./assets/img/cancel.png"
             //   src="../../../assets/img/cancel.png"
               classname=" delete-note"
             />

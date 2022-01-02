@@ -107,7 +107,7 @@ export class TodoNote extends React.Component {
             {' '}
             <DynamicImage
               txt=""
-              src="assets/img/diskette.png"
+              src="./assets/img/diskette.png"
               // src="../../../assets/img/diskette.png"
               classname=" save-note"
             />
@@ -132,7 +132,7 @@ export class TodoNote extends React.Component {
             {' '}
             <DynamicImage
               txt=""
-              src="assets/img/checklist.png"
+              src="./assets/img/checklist.png"
               // src="../../../assets/img/checklist.png"
               classname=" add-note-img"
             />
@@ -140,7 +140,7 @@ export class TodoNote extends React.Component {
           <button onClick={this.props.handleClick}>
             <DynamicImage
               txt=""
-              src="assets/img/cancel.png"
+              src="./assets/img/cancel.png"
               // src="../../../assets/img/cancel.png"
               classname=" delete-note"
             />
