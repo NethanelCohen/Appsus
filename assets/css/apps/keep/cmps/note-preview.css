@@ -49,6 +49,7 @@ textarea {
 }
 
 .pop-out-btns {
+    position: absolute;
     margin-right: .8rem;
     display: flex;
     flex-direction: row;
