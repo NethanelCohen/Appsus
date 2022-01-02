@@ -100,28 +100,32 @@ export class EmailPreview extends React.Component {
                   <DynamicImage
                     func={this.handleOpenMail}
                     txt=""
-                    src="../../../assets/img/mail-open.png"
+                    src="assets/img/mail-open.png"
+                    // src="../../../assets/img/mail-open.png"
                     classname=" open-mail"
                   />
                 </Link>
                 <DynamicImage
                   func={this.handleUnreadClick}
                   txt=""
-                  src="../../../assets/img/unread.png"
+                  src="assets/img/unread.png"
+                  // src="../../../assets/img/unread.png"
                   classname=" unread-mail"
                 />
                 {!this.props.isReplyClicked && (
                   <DynamicImage
                     func={() => this.props.replyClicked()}
                     txt=""
-                    src="../../../assets/img/reply-mail.png"
+                    src="assets/img/reply-mail.png"
+                    // src="../../../assets/img/reply-mail.png"
                     classname=" reply"
                   />
                 )}
                 <DynamicImage
                   func={this.deleteMail}
                   txt=""
-                  src="../../../assets/img/delete.png"
+                  src="assets/img/delete.png"
+                  // src="../../../assets/img/delete.png"
                   classname=" delete"
                 />
               </td>
@@ -148,14 +152,16 @@ export class EmailPreview extends React.Component {
                 <DynamicImage
                   func={this.handleOpenMail}
                   txt=""
-                  src="../../../assets/img/mail-open.png"
+                  src="assets/img/mail-open.png"
+                  // src="../../../assets/img/mail-open.png"
                   classname=" open-mail"
                 />
               </Link>
               <DynamicImage
                 func={this.handleUnreadClick}
                 txt=""
-                src="../../../assets/img/unread.png"
+                src="assets/img/unread.png"
+                // src="../../../assets/img/unread.png"
                 classname=" unread-mail"
               />
 
@@ -163,14 +169,16 @@ export class EmailPreview extends React.Component {
                 <DynamicImage
                   func={() => this.props.replyClicked()}
                   txt=""
-                  src="../../../assets/img/reply-mail.png"
+                  src="assets/img/reply-mail.png"
+                  // src="../../../assets/img/reply-mail.png"
                   classname=" reply"
                 />
               )}
               <DynamicImage
                 func={this.deleteMail}
                 txt=""
-                src="../../../assets/img/delete.png"
+                src="assets/img/delete.png"
+                // src="../../../assets/img/delete.png"
                 classname=" delete"
               />
             </td>
