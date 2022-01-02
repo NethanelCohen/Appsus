@@ -54,7 +54,7 @@ export class EmailDetails extends React.Component {
           <Link to={'/mail'}>
             <DynamicImage
               txt=""
-              src="./assets/img/reply-mail.png"
+              src="assets/img/reply-mail.png"
               classname=" open-mail"
             />
           </Link>
@@ -69,7 +69,7 @@ export class EmailDetails extends React.Component {
           <DynamicImage
             func={this.deleteMail}
             txt=""
-            src="./assets/img/delete.png"
+            src="assets/img/delete.png"
             classname=" delete"
           />
         </div>
