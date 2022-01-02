@@ -98,14 +98,16 @@ export class TxtNote extends React.Component {
             }}></input>
           <button> <DynamicImage
               txt=""
-              src="../../../assets/img/diskette.png"
+              src="assets/img/diskette.png"
+              // src="../../../assets/img/diskette.png"
               classname=" save-note"
             />
           </button>
           <button onClick={this.props.handleClick}>
           <DynamicImage
               txt=""
-              src="../../../assets/img/cancel.png"
+              src="assets/img/cancel.png"
+              // src="../../../assets/img/cancel.png"
               classname=" delete-note"
             />
           </button>

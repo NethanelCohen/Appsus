@@ -107,7 +107,8 @@ export class TodoNote extends React.Component {
             {' '}
             <DynamicImage
               txt=""
-              src="../../../assets/img/diskette.png"
+              src="assets/img/diskette.png"
+              // src="../../../assets/img/diskette.png"
               classname=" save-note"
             />
           </button>
@@ -131,14 +132,16 @@ export class TodoNote extends React.Component {
             {' '}
             <DynamicImage
               txt=""
-              src="../../../assets/img/checklist.png"
+              src="assets/img/checklist.png"
+              // src="../../../assets/img/checklist.png"
               classname=" add-note-img"
             />
           </button>
           <button onClick={this.props.handleClick}>
             <DynamicImage
               txt=""
-              src="../../../assets/img/cancel.png"
+              src="assets/img/cancel.png"
+              // src="../../../assets/img/cancel.png"
               classname=" delete-note"
             />
           </button>
@@ -148,11 +151,3 @@ export class TodoNote extends React.Component {
   }
 }
 
-{
-  /* <li key={idx}> */
-}
-{
-  /* <input autocomplete="off"
-                            style={{textAlign: 'start', cursor: 'text', backgroundColor: `${backgroundColor}`, listStyleType: 'square'}} name='txt' placeholder='todo' onChange={(ev) => { this.handleChange(ev.target) }} />
-                            </li> */
-}
