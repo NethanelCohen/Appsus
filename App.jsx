@@ -1,20 +1,12 @@
-import { EmailApp } from "js/apps/mail/pages/EmailApp.jsx";
-// import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
-import { NoteApp } from "js/apps/keep/pages/NoteApp.jsx";
-// import { NoteApp } from "./js/apps/keep/pages/NoteApp.jsx";
-import { Home } from 'pages/Home.jsx';
-// import { Home } from './pages/Home.jsx';
-import { About } from 'pages/About.jsx';
-// import { About } from './pages/About.jsx';
-import { EmailDetails } from "js/apps/mail/cmps/EmailDetails.jsx";
-// import { EmailDetails } from "./js/apps/mail/cmps/EmailDetails.jsx";
 
-import { AppHeader } from 'cmps/AppHeader.jsx';
-// import { AppHeader } from './cmps/AppHeader.jsx';
-import { AppFooter } from 'cmps/AppFooter.jsx';
-// import { AppFooter } from './cmps/AppFooter.jsx';
-import { UserMsg } from 'cmps/UserMsg.jsx';
-// import { UserMsg } from './cmps/UserMsg.jsx';
+import { EmailApp } from "./js/apps/mail/pages/EmailApp.jsx";
+import { NoteApp } from "./js/apps/keep/pages/NoteApp.jsx";
+import { Home } from './pages/Home.jsx';
+import { About } from './pages/About.jsx';
+import { EmailDetails } from "./js/apps/mail/cmps/EmailDetails.jsx";
+import { AppHeader } from './cmps/AppHeader.jsx';
+import { AppFooter } from './cmps/AppFooter.jsx';
+import { UserMsg } from './cmps/UserMsg.jsx';
 
 
 const Router = ReactRouterDOM.HashRouter

@@ -1,5 +1,4 @@
 import { EmailPreview } from '../cmps/EmailPreview.jsx';
-import { utilService } from '../../../services/util.services.js';
 export function EmailList({
   mails,
   loadMails,
