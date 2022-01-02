@@ -101,7 +101,7 @@ export class NotePreview extends React.Component {
       })}
       {isMouseOver &&
         <div className="pop-out-btns">
-          <img src="./assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
+          <img src="assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} />
           {/* <img src="../../../assets/img/delete.png" alt="delete" style={{ backgroundColor: `${note.style.backgroundColor}` }} onClick={() => this.handleNoteDelete(note.id)} /> */}
         </div>}
       {isNoteClicked &&
