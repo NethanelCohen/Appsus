@@ -53,10 +53,7 @@ export class EmailDetails extends React.Component {
         <div className="mail-inner-btn flex">
           <Link to={'/mail'}>
             <DynamicImage
-              txt=""
-              src="assets/img/reply-mail.png"
-              classname=" open-mail"
-            />
+              txt="" src="./assets/img/reply-mail.png" classname=" open-mail"/>
           </Link>
           {/* {!repliedClicked && (
             <DynamicImage
@@ -68,10 +65,7 @@ export class EmailDetails extends React.Component {
           )} */}
           <DynamicImage
             func={this.deleteMail}
-            txt=""
-            src="assets/img/delete.png"
-            classname=" delete"
-          />
+            txt="" src="./assets/img/delete.png" classname=" delete"/>
         </div>
         <h1 className="mail-subject">{mail.subject}</h1>
         <div className="mail-description flex column">
