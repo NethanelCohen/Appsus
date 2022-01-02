@@ -1,8 +1,13 @@
-import { emailService } from '../services/email.service.js';
-import { EmailList } from '../cmps/EmailList.jsx';
-import { Folders } from '../cmps/Folders.jsx';
-import { DynamicImage } from '../../../../cmps/DynamicImage.jsx';
-import {EmailReply} from '../cmps/EmailReply.jsx'
+import { emailService } from 'services/email.service.js';
+// import { emailService } from '../services/email.service.js';
+import { EmailList } from 'cmps/EmailList.jsx';
+// import { EmailList } from '../cmps/EmailList.jsx';
+import { Folders } from 'cmps/Folders.jsx';
+// import { Folders } from '../cmps/Folders.jsx';
+import { DynamicImage } from 'cmps/DynamicImage.jsx';
+// import { DynamicImage } from '../../../../cmps/DynamicImage.jsx';
+import {EmailReply} from 'cmps/EmailReply.jsx'
+// import {EmailReply} from '../cmps/EmailReply.jsx'
 
 export class EmailApp extends React.Component {
   state = {
