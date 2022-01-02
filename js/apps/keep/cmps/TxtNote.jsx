@@ -36,7 +36,6 @@ export class TxtNote extends React.Component {
   };
 
   handleNoteAdd = (ev) => {
-     
     ev.preventDefault();
     const { newNote } = this.state;
     if (!newNote.info.title || !newNote.info.body) {

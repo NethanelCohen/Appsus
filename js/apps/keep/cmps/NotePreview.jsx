@@ -1,6 +1,5 @@
 import { storageService } from "../../../services/storage.service.js";
 import { noteService } from "../services/note.service.js";
-import {eventBusService} from '../../../services/event-bus.service.js'
 
 export class NotePreview extends React.Component {
 

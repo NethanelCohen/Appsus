@@ -29,7 +29,6 @@ export class ImgNote extends React.Component {
     }
 
     handleNoteAdd = (ev) => {
-        debugger
         ev.preventDefault();
         const { newNote } = this.state;
         noteService.createNote(newNote).then(notes => this.setState({ notes }, this.props.handleClick))

@@ -1,7 +1,10 @@
 .jumbo {
     padding-top: 3rem;
-    font-size: 7rem;
-    color: black;
+    font-size: 4rem;
+    color: #FF5959;
     text-align: center;
-    text-shadow: 5px 5px gray;
+    text-shadow: 2px 2px gray;
+    font-family: 'roboto';
+    font-weight: 100;
+    letter-spacing: .2rem;
 }

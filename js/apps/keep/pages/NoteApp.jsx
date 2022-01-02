@@ -77,7 +77,7 @@ export class NoteApp extends React.Component {
             </div>      
         </div>
         <div style={{backgroundColor: `${background}`}} className="add-note flex">
-        {!isNoteClicked && <input style={{backgroundColor: `${background}`}} value={'Add new note...'} onClick={this.handleClick} />}
+        {!isNoteClicked && <input style={{backgroundColor: `${background}`}} defaultValue={'Add new note...'} onClick={this.handleClick} />}
         {isNoteClicked &&
             <React.Fragment>
               {type === 'note-txt' && <TxtNote loadNotes={this.loadNotes} handleNoteBackground={this.handleNoteBackground} handleClick={this.handleClick} />}

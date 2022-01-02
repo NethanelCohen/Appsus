@@ -1,6 +1,5 @@
 import { utilService } from '../../../services/util.services.js';
 import { storageService } from '../../../services/storage.service.js';
-import {eventBusService} from '../../../event-bus.service.js'
 import { emailService } from '../services/email.service.js';
 import { StyledButton } from '../../../../cmps/StyledButton.jsx';
 
@@ -14,17 +13,10 @@ export class EmailReply extends React.Component {
     },
   };
   inputRef = React.createRef();
-  // removeEventBus = null;
 
   componentDidMount() {
     this.inputRef.current.focus();
-    // eventBusService.on('compose', (data) => {
-    //   })
   }
-
-  // componentWillUnmount() {
-  //   this.removeEventBus()
-  // }
 
   handleChange = (ev) => {
     const field = ev.target.name;
